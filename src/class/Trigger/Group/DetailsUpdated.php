@@ -21,7 +21,7 @@ class DetailsUpdated extends GroupTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/group/updated',
+			'slug' => 'buddypress/group/details_updated',
 			'name' => __( 'Group details updated', 'notification-buddypress' ),
 		) );
 

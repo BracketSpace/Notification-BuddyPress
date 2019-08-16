@@ -73,6 +73,7 @@ class Runtime extends Utils\DocHooks {
 		// Group.
 		notification_register_trigger( new Trigger\Group\CreateComplete() );
 		notification_register_trigger( new Trigger\Group\DetailsUpdated() );
+		notification_register_trigger( new Trigger\Group\SettingsUpdated() );
 
 	}
 
