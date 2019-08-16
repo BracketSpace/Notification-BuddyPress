@@ -5,10 +5,10 @@
  * @autor   Kuba Mikita (jakub@underdev.it)
  * @version 1.2.1
  * @usage   see https://github.com/Kubitomakita/Requirements
- * @package notification/slugnamexx
+ * @package notification/buddypress
  */
 
-namespace BracketSpace\Notification\XXNAMESPACEXX\Utils;
+namespace BracketSpace\Notification\BuddyPress\Utils;
 
 /**
  * Requirements class

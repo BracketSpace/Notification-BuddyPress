@@ -2,10 +2,10 @@
 /**
  * Runtime
  *
- * @package notification/slugnamexx
+ * @package notification/buddypress
  */
 
-namespace BracketSpace\Notification\XXNAMESPACEXX;
+namespace BracketSpace\Notification\BuddyPress;
 
 use BracketSpace\Notification\Utils;
 
@@ -55,10 +55,27 @@ class Runtime extends Utils\DocHooks {
 
 		$this->files = new Utils\Files( $this->plugin_file );
 
-		$i18n    = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-slugnamexx' ) );
+		$i18n    = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-buddypress' ) );
 		$scripts = $this->add_hooks( new Admin\Scripts( $this->files ) );
 
 	}
+
+	/**
+	 * Registers Triggers.
+	 *
+	 * @action plugins_loaded
+	 *
+	 * @since  1.1.0
+	 * @return void
+	 */
+	public function register_triggers() {
+
+		// Group.
+		notification_register_trigger( new Trigger\Group\CreateComplete() );
+		notification_register_trigger( new Trigger\Group\DetailsUpdated() );
+
+	}
+
 
 	/**
 	 * Creates instances when Notification plugin is fully loaded

@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 	            options: {
 	                cwd: '.',
 	                domainPath: 'languages',
-	                mainFile: 'notification-slugnamexx.php',
+	                mainFile: 'notification-buddypress.php',
 	                exclude: [
 		                'node_modules/',
 		                'assets',
@@ -28,12 +28,12 @@ module.exports = function(grunt) {
 
 	    addtextdomain: {
 	        options: {
-	            textdomain: 'notification-slugnamexx'
+	            textdomain: 'notification-buddypress'
 	        },
 	        target: {
 	            files: {
 	                src: [
-	                    'notification-slugnamexx.php',
+	                    'notification-buddypress.php',
 	                    './src/**/*.php',
 	                ]
 	            }

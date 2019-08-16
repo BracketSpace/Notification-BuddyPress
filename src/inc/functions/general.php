@@ -2,7 +2,7 @@
 /**
  * General functions
  *
- * @package notification/slugnamexx
+ * @package notification/buddypress
  */
 
 /**
@@ -11,6 +11,6 @@
  * @since  [Next]
  * @return View
  */
-function notification_slugnamexx_create_view() {
-	return notification_slugnamexx_runtime()->view();
+function notification_buddypress_create_view() {
+	return notification_buddypress_runtime()->view();
 }

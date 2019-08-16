@@ -2,7 +2,7 @@
 /**
  * Plugin uninstallation file
  *
- * @package notification/slugnamexx
+ * @package notification/buddypress
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {

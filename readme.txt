@@ -1,4 +1,4 @@
-=== Notification : Nicenamexx ===
+=== Notification : BuddyPress ===
 Contributors: notification
 Tags: notification, notify, email, mail
 Requires at least: 3.6

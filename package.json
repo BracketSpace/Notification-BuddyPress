@@ -1,5 +1,5 @@
 {
-  "name": "slugnamexx",
+  "name": "buddypress",
   "version": "5.0.0",
   "description": "",
   "main": "index.js",
@@ -20,6 +20,6 @@
     "grunt-cli": "^1.2.0",
     "grunt-contrib-compress": "^1.4.3",
     "grunt-wp-i18n": "^1.0.1",
-    "gulp": "^3.9.1",
+    "gulp": "^3.9.1"
   }
 }

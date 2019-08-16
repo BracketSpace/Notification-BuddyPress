@@ -1,5 +1,5 @@
 {
-	"name": "notification/slugnamexx",
+	"name": "notification/buddypress",
 	"type": "wordpress-plugin",
 	"scripts": {
 		"phpcs": "phpcs",
@@ -12,7 +12,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"BracketSpace\\Notification\\XXNAMESPACEXX\\": "src/class"
+			"BracketSpace\\Notification\\BuddyPress\\": "src/class"
 		}
 	}
 }

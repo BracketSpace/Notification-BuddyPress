@@ -2,10 +2,10 @@
 /**
  * Enqueues scripts
  *
- * @package notification/slugnamexx
+ * @package notification/buddypress
  */
 
-namespace BracketSpace\Notification\XXNAMESPACEXX\Admin;
+namespace BracketSpace\Notification\BuddyPress\Admin;
 
 use BracketSpace\Notification\Utils\Files;
 
@@ -59,10 +59,10 @@ class Scripts {
 	 */
 	public function enqueue_scripts( $page_hook ) {
 
-		wp_enqueue_style( 'notification-slugnamexx', $this->files->asset_url( 'css', 'style.css' ), [], $this->files->asset_mtime( 'css', 'style.css' ) );
-		wp_enqueue_script( 'notification-slugnamexx', $this->files->asset_url( 'js', 'scripts.min.js' ), [ 'jquery' ], $this->files->asset_mtime( 'js', 'scripts.min.js' ), true );
+		wp_enqueue_style( 'notification-buddypress', $this->files->asset_url( 'css', 'style.css' ), [], $this->files->asset_mtime( 'css', 'style.css' ) );
+		wp_enqueue_script( 'notification-buddypress', $this->files->asset_url( 'js', 'scripts.min.js' ), [ 'jquery' ], $this->files->asset_mtime( 'js', 'scripts.min.js' ), true );
 
-		wp_localize_script( 'notification-slugnamexx', 'notification_slugnamexx', [
+		wp_localize_script( 'notification-buddypress', 'notification_buddypress', [
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		] );
 
