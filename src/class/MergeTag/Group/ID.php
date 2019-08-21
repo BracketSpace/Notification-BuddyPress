@@ -31,7 +31,7 @@ class ID extends IntegerTag {
 			'description' => 123,
 			'example'     => true,
 			'resolver'    => function() {
-				return $this->trigger->buddy_group->id;
+				return $this->trigger->group_id;
 			},
 		) );
 

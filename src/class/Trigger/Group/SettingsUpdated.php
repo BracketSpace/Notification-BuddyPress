@@ -31,11 +31,11 @@ class SettingsUpdated extends GroupTrigger {
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param int $group Newly created group ID.
+	 * @param int $group_id Newly created group ID.
 	 * @return mixed
 	 */
-	public function action( $group ) {
-		$this->group_id = $group;
-		$this->buddy_group = groups_get_group( $group );
+	public function action( $group_id ) {
+		$this->group_id = $group_id;
+		$this->buddy_group = groups_get_group( $this->group_id );
 	}
 }

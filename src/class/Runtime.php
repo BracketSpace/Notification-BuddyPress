@@ -74,7 +74,26 @@ class Runtime extends Utils\DocHooks {
 		notification_register_trigger( new Trigger\Group\CreateComplete() );
 		notification_register_trigger( new Trigger\Group\DetailsUpdated() );
 		notification_register_trigger( new Trigger\Group\SettingsUpdated() );
+		notification_register_trigger( new Trigger\Group\Deleted() );
 
+		notification_register_trigger( new Trigger\Group\SendInvites() );
+		notification_register_trigger( new Trigger\Group\UninviteUser() );
+
+		notification_register_trigger( new Trigger\Group\BanMember() );
+		notification_register_trigger( new Trigger\Group\UnbanMember() );
+
+		notification_register_trigger( new Trigger\Group\PremoteMember() );
+		notification_register_trigger( new Trigger\Group\DemoteMember() );
+
+		notification_register_trigger( new Trigger\Group\MembershipRequested() );
+		notification_register_trigger( new Trigger\Group\MembershipAccepted() );
+		notification_register_trigger( new Trigger\Group\MembershipRejected() );
+
+
+		// Friendship.
+		notification_register_trigger( new Trigger\Friendship\Accepted() );
+		notification_register_trigger( new Trigger\Friendship\Requested() );
+		notification_register_trigger( new Trigger\Friendship\Deleted() );
 	}
 
 
