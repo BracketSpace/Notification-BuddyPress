@@ -38,8 +38,60 @@ class MembershipRequested extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $user_id, $admins, $group_id, $membership_id ) {
-		$this->group_id = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
-		$this->banned_user = $user_id;
+		$this->group_id               = $group_id;
+		$this->buddy_group            = groups_get_group( $group_id );
+		$this->requesting_user_object = get_user_by( 'id', $user_id );
+	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Requesting user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'requesting_user_ID',
+			'name'          => __( 'Requesting user ID', 'notification' ),
+			'property_name' => 'requesting_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'requesting_user_login',
+			'name'          => __( 'Requesting user login', 'notification' ),
+			'property_name' => 'requesting_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'requesting_user_email',
+			'name'          => __( 'Requesting user email', 'notification' ),
+			'property_name' => 'requesting_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'requesting_user_display_name',
+			'name'          => __( 'Requesting user display name', 'notification' ),
+			'property_name' => 'requesting_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'requesting_user_first_name',
+			'name'          => __( 'Requesting user first name', 'notification' ),
+			'property_name' => 'requesting_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'requesting_user_last_name',
+			'name'          => __( 'Requesting user last name', 'notification' ),
+			'property_name' => 'requesting_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
 	}
 }

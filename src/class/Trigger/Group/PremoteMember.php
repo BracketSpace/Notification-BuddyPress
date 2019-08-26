@@ -37,9 +37,61 @@ class PremoteMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id, $status ) {
-		$this->group_id = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
-		$this->promoted_user = $user_id;
-		$this->promotion_status = $status;
+		$this->group_id             = $group_id;
+		$this->buddy_group          = groups_get_group( $group_id );
+		$this->promoted_user_object = get_user_by( 'id', $user_id );
+		$this->promotion_status     = $status;
+	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Promoted user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'promoted_user_ID',
+			'name'          => __( 'Promoted user ID', 'notification' ),
+			'property_name' => 'promoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'promoted_user_login',
+			'name'          => __( 'Promoted user login', 'notification' ),
+			'property_name' => 'promoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'promoted_user_email',
+			'name'          => __( 'Promoted user email', 'notification' ),
+			'property_name' => 'promoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'promoted_user_display_name',
+			'name'          => __( 'Promoted user display name', 'notification' ),
+			'property_name' => 'promoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'promoted_user_first_name',
+			'name'          => __( 'Promoted user first name', 'notification' ),
+			'property_name' => 'promoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'promoted_user_last_name',
+			'name'          => __( 'Promoted user last name', 'notification' ),
+			'property_name' => 'promoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
 	}
 }

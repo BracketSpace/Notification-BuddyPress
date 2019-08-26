@@ -35,6 +35,6 @@ class Deleted extends ActivityTrigger {
 	 * @return mixed
 	 */
 	public function action( $activity_ids_deleted ) {
-
+		$this->deleted_activities = implode( ',', $activity_ids_deleted );
 	}
 }

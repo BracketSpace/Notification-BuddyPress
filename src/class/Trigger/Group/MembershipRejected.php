@@ -37,9 +37,61 @@ class MembershipRejected extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $user_id, $group_id, $status ) {
-		$this->group_id          = $group_id;
-		$this->buddy_group       = groups_get_group( $group_id );
-		$this->banned_user       = $user_id;
-		$this->membership_status = $status;
+		$this->group_id             = $group_id;
+		$this->buddy_group          = groups_get_group( $group_id );
+		$this->rejected_user_object = get_user_by( 'id', $user_id );
+		$this->membership_status    = $status;
+	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Rejected user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'rejected_user_ID',
+			'name'          => __( 'Rejected user ID', 'notification' ),
+			'property_name' => 'rejected_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'rejected_user_login',
+			'name'          => __( 'Rejected user login', 'notification' ),
+			'property_name' => 'rejected_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'rejected_user_email',
+			'name'          => __( 'Rejected user email', 'notification' ),
+			'property_name' => 'rejected_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'rejected_user_display_name',
+			'name'          => __( 'Rejected user display name', 'notification' ),
+			'property_name' => 'rejected_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'rejected_user_first_name',
+			'name'          => __( 'Rejected user first name', 'notification' ),
+			'property_name' => 'rejected_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'rejected_user_last_name',
+			'name'          => __( 'Rejected user last name', 'notification' ),
+			'property_name' => 'rejected_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
 	}
 }

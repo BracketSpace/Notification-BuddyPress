@@ -1,6 +1,6 @@
 <?php
 /**
- * Group Creator ID merge tag
+ * Activity content merge tag
  *
  * Requirements:
  * - `buddy_group` property with BP_Groups_Group group object.
@@ -8,15 +8,15 @@
  * @package notification-buddypress
  */
 
-namespace BracketSpace\Notification\BuddyPress\MergeTag\Group;
+namespace BracketSpace\Notification\BuddyPress\MergeTag\Activity;
 
-use BracketSpace\Notification\Defaults\MergeTag\IntegerTag;
+use BracketSpace\Notification\Defaults\MergeTag\StringTag;
 
 
 /**
- * Group creator ID merge tag class
+ * Activity content merge tag class
  */
-class CreatorID extends IntegerTag {
+class Content extends StringTag {
 
 	/**
 	 * Merge tag constructor
@@ -26,12 +26,12 @@ class CreatorID extends IntegerTag {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'        => 'group_creator_ID',
-			'name'        => __( 'Group Creator ID' ),
-			'description' => 123,
+			'slug'        => 'activity_content',
+			'name'        => __( 'Activity content' ),
+			'description' => 'My Super News is awesome!',
 			'example'     => true,
 			'resolver'    => function() {
-				return $this->trigger->buddy_group->creator_id;
+				return $this->trigger->activity->content;
 			},
 		) );
 
@@ -43,6 +43,6 @@ class CreatorID extends IntegerTag {
 	 * @return boolean
 	 */
 	public function check_requirements() {
-		return isset( $this->trigger->buddy_group );
+		return isset( $this->trigger->activity );
 	}
 }

@@ -36,8 +36,60 @@ class Leave extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
-		$this->group_id = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
-		$this->user = $user_id;
+		$this->group_id            = $group_id;
+		$this->buddy_group         = groups_get_group( $group_id );
+		$this->leaving_user_object = get_user_by( 'id', $user_id );
+	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Leaving user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'leaving_user_ID',
+			'name'          => __( 'Leaving user ID', 'notification' ),
+			'property_name' => 'leaving_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'leaving_user_login',
+			'name'          => __( 'Leaving user login', 'notification' ),
+			'property_name' => 'leaving_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'leaving_user_email',
+			'name'          => __( 'Leaving user email', 'notification' ),
+			'property_name' => 'leaving_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'leaving_user_display_name',
+			'name'          => __( 'Leaving user display name', 'notification' ),
+			'property_name' => 'leaving_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'leaving_user_first_name',
+			'name'          => __( 'Leaving user first name', 'notification' ),
+			'property_name' => 'leaving_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'leaving_user_last_name',
+			'name'          => __( 'Leaving user last name', 'notification' ),
+			'property_name' => 'leaving_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
 	}
 }

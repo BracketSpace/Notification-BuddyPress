@@ -56,7 +56,6 @@ class Runtime extends Utils\DocHooks {
 		$this->files = new Utils\Files( $this->plugin_file );
 
 		$i18n    = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-buddypress' ) );
-		$scripts = $this->add_hooks( new Admin\Scripts( $this->files ) );
 
 	}
 
@@ -88,7 +87,6 @@ class Runtime extends Utils\DocHooks {
 		notification_register_trigger( new Trigger\Group\MembershipRequested() );
 		notification_register_trigger( new Trigger\Group\MembershipAccepted() );
 		notification_register_trigger( new Trigger\Group\MembershipRejected() );
-
 
 		// Friendship.
 		notification_register_trigger( new Trigger\Friendship\Accepted() );

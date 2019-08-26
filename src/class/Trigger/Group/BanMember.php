@@ -36,8 +36,60 @@ class BanMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
-		$this->group_id = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
-		$this->banned_user = $user_id;
+		$this->group_id           = $group_id;
+		$this->buddy_group        = groups_get_group( $group_id );
+		$this->banned_user_object = get_user_by( 'id', $user_id );
+	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Banned user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'banned_user_ID',
+			'name'          => __( 'Banned user ID', 'notification' ),
+			'property_name' => 'banned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'banned_user_login',
+			'name'          => __( 'Banned user login', 'notification' ),
+			'property_name' => 'banned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'banned_user_email',
+			'name'          => __( 'Banned user email', 'notification' ),
+			'property_name' => 'banned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'banned_user_display_name',
+			'name'          => __( 'Banned user display name', 'notification' ),
+			'property_name' => 'banned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'banned_user_first_name',
+			'name'          => __( 'Banned user first name', 'notification' ),
+			'property_name' => 'banned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'banned_user_last_name',
+			'name'          => __( 'Banned user last name', 'notification' ),
+			'property_name' => 'banned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
 	}
 }

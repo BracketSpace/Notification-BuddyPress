@@ -32,13 +32,13 @@ class SendInvites extends GroupTrigger {
 	 * Hooks to the action.
 	 *
 	 * @param int   $group_id       ID of the group who's being invited to.
-   * @param array $invited_users  Array of users being invited to the group.
-   * @param int   $inviting_user  ID of the inviting user.
+	 * @param array $invited_users  Array of users being invited to the group.
+	 * @param int   $inviting_user  ID of the inviting user.
 	 * @return mixed
 	 */
 	public function action( $group_id, $invited_users, $inviting_user ) {
-		$this->group_id = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
+		$this->group_id      = $group_id;
+		$this->buddy_group   = groups_get_group( $group_id );
 		$this->invited_users = $invited_users;
 		$this->inviting_user = $inviting_user;
 	}

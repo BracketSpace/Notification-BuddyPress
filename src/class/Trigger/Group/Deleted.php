@@ -36,7 +36,7 @@ class Deleted extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group ) {
-		$this->group_id = $group;
+		$this->group_id    = $group;
 		$this->buddy_group = groups_get_group( $group );
 	}
 

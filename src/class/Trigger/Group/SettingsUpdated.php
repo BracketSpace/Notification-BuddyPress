@@ -35,7 +35,7 @@ class SettingsUpdated extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id ) {
-		$this->group_id = $group_id;
+		$this->group_id    = $group_id;
 		$this->buddy_group = groups_get_group( $this->group_id );
 	}
 }

@@ -35,8 +35,8 @@ class Accepted extends FriendshipTrigger {
 	 * @return mixed
 	 */
 	public function action( $friendship_id, $friendship_initiatior_user_id, $friendship_friend_user_id ) {
-		$this->friendship_id = $friendship_id;
-		$this->friendship_initiator_user_id = $friendship_initiatior_user_id;
-		$this->friendship_friend_user_id = $friendship_friend_user_id;
+		$this->friendship_id                    = $friendship_id;
+		$this->friendship_initiator_user_object = get_user_by( 'id', $friendship_initiatior_user_id );
+		$this->friendship_friend_user_object    = get_user_by( 'id', $friendship_friend_user_id );
 	}
 }

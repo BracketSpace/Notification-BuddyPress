@@ -36,8 +36,7 @@ class UnbanMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
-		// action returns only group_id, user_id missing.
-		$this->group_id = $group_id;
+		$this->group_id    = $group_id;
 		$this->buddy_group = groups_get_group( $group_id );
 	}
 }

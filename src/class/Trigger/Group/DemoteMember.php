@@ -36,8 +36,60 @@ class DemoteMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
-		$this->group_id = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
+		$this->group_id     = $group_id;
+		$this->buddy_group  = groups_get_group( $group_id );
 		$this->demoted_user = $user_id;
+	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Demoted user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'demoted_user_ID',
+			'name'          => __( 'Demoted user ID', 'notification' ),
+			'property_name' => 'demoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'demoted_user_login',
+			'name'          => __( 'Demoted user login', 'notification' ),
+			'property_name' => 'demoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'demoted_user_email',
+			'name'          => __( 'Demoted user email', 'notification' ),
+			'property_name' => 'demoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'demoted_user_display_name',
+			'name'          => __( 'Demoted user display name', 'notification' ),
+			'property_name' => 'demoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'demoted_user_first_name',
+			'name'          => __( 'Demoted user first name', 'notification' ),
+			'property_name' => 'demoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'demoted_user_last_name',
+			'name'          => __( 'Demoted user last name', 'notification' ),
+			'property_name' => 'demoted_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
 	}
 }

@@ -36,8 +36,60 @@ class InviteUser extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
-		$this->group_id = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
-		$this->invited_user = $user_id;
+		$this->group_id            = $group_id;
+		$this->buddy_group         = groups_get_group( $group_id );
+		$this->invited_user_object = get_user_by( 'id', $user_id );
+	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Invited user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'invited_user_ID',
+			'name'          => __( 'Invited user ID', 'notification' ),
+			'property_name' => 'invited_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'invited_user_login',
+			'name'          => __( 'Invited user login', 'notification' ),
+			'property_name' => 'invited_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'invited_user_email',
+			'name'          => __( 'Invited user email', 'notification' ),
+			'property_name' => 'invited_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'invited_user_display_name',
+			'name'          => __( 'Invited user display name', 'notification' ),
+			'property_name' => 'invited_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'invited_user_first_name',
+			'name'          => __( 'Invited user first name', 'notification' ),
+			'property_name' => 'invited_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'invited_user_last_name',
+			'name'          => __( 'Invited user last name', 'notification' ),
+			'property_name' => 'invited_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
 	}
 }
