@@ -1,6 +1,6 @@
 <?php
 /**
- * Remove from favorites trigger
+ * Add to favorites fail trigger
  *
  * @package notification/buddypress
  */
@@ -11,9 +11,9 @@ use BracketSpace\Notification\BuddyPress\Trigger\Favorite as FavoriteTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
- * Remove from favorites trigger class
+ * Add to favorites fail trigger class
  */
-class Remove extends GroupTrigger {
+class Fail extends FavoriteTrigger {
 
 	/**
 	 * Constructor
@@ -21,11 +21,11 @@ class Remove extends GroupTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/favorite/remove',
-			'name' => __( 'Remove from favorites', 'notification-buddypress' ),
+			'slug' => 'buddypress/favorite/fail',
+			'name' => __( 'Add to favorites fail', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'bp_activity_remove_user_favorite', 100, 2 );
+		$this->add_action( 'bp_activity_add_user_favorite_fail', 100, 2 );
 	}
 
 	/**

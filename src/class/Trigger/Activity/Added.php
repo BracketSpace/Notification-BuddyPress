@@ -13,7 +13,7 @@ use BracketSpace\Notification\Defaults\MergeTag;
 /**
  * Activity added trigger class
  */
-class Add extends ActivityTrigger {
+class Added extends ActivityTrigger {
 
 	/**
 	 * Constructor
@@ -21,11 +21,11 @@ class Add extends ActivityTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/activity/deleted',
-			'name' => __( 'Activity deleted', 'notification-buddypress' ),
+			'slug' => 'buddypress/activity/added',
+			'name' => __( 'Activity added', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'bp_activity_add', 10 );
+		$this->add_action( 'bp_activity_add', 10, 2 );
 	}
 
 	/**
@@ -36,6 +36,6 @@ class Add extends ActivityTrigger {
 	 * @return mixed
 	 */
 	public function action( $r, $activity_id ) {
-
+		print_r( $r );
 	}
 }

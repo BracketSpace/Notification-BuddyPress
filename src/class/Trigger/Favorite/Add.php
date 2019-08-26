@@ -1,6 +1,6 @@
 <?php
 /**
- * Add to favorites fail trigger
+ * Add to favorites trigger
  *
  * @package notification/buddypress
  */
@@ -11,9 +11,9 @@ use BracketSpace\Notification\BuddyPress\Trigger\Favorite as FavoriteTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
- * Add to favorites fail trigger class
+ * Add to favorites trigger class
  */
-class Fail extends GroupTrigger {
+class Add extends FavoriteTrigger {
 
 	/**
 	 * Constructor
@@ -21,11 +21,11 @@ class Fail extends GroupTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/favorite/fail',
-			'name' => __( 'Add to favorites fail', 'notification-buddypress' ),
+			'slug' => 'buddypress/favorite/add',
+			'name' => __( 'Add to favorites', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'bp_activity_add_user_favorite_fail', 100, 2 );
+		$this->add_action( 'bp_activity_add_user_favorite', 100, 2 );
 	}
 
 	/**

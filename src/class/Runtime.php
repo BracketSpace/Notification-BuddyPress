@@ -92,6 +92,19 @@ class Runtime extends Utils\DocHooks {
 		notification_register_trigger( new Trigger\Friendship\Accepted() );
 		notification_register_trigger( new Trigger\Friendship\Requested() );
 		notification_register_trigger( new Trigger\Friendship\Deleted() );
+
+		// Favorites.
+		notification_register_trigger( new Trigger\Favorite\Add() );
+		notification_register_trigger( new Trigger\Favorite\Fail() );
+		notification_register_trigger( new Trigger\Favorite\Remove() );
+
+		// Activity.
+		notification_register_trigger( new Trigger\Activity\Added() );
+		notification_register_trigger( new Trigger\Activity\Comment() );
+		notification_register_trigger( new Trigger\Activity\Deleted() );
+		notification_register_trigger( new Trigger\Activity\RemoveComment() );
+		notification_register_trigger( new Trigger\Activity\Spam() );
+		notification_register_trigger( new Trigger\Activity\Updated() );
 	}
 
 
