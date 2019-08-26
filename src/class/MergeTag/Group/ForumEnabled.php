@@ -31,7 +31,7 @@ class ForumEnabled extends StringTag {
 			'description' => 123,
 			'example'     => true,
 			'resolver'    => function() {
-				return ( $this->trigger->buddy_group->enable_forum === '1' ) ? __( 'Enabled' ) : __( 'Disabled' );
+				return ( '1' === $this->trigger->buddy_group->enable_forum ) ? __( 'Enabled' ) : __( 'Disabled' );
 			},
 		) );
 

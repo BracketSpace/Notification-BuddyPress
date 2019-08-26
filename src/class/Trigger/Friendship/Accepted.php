@@ -31,12 +31,14 @@ class Accepted extends FriendshipTrigger {
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param int $group Newly created group ID.
+	 * @param int $friendship_id                ID of the pending friendship object.
+	 * @param int $friendship_initiator_user_id ID of the friendship initiator.
+	 * @param int $friendship_friend_user_id    ID of the user requested friendship with.
 	 * @return mixed
 	 */
-	public function action( $friendship_id, $friendship_initiatior_user_id, $friendship_friend_user_id ) {
+	public function action( $friendship_id, $friendship_initiator_user_id, $friendship_friend_user_id ) {
 		$this->friendship_id                    = $friendship_id;
-		$this->friendship_initiator_user_object = get_user_by( 'id', $friendship_initiatior_user_id );
+		$this->friendship_initiator_user_object = get_user_by( 'id', $friendship_initiator_user_id );
 		$this->friendship_friend_user_object    = get_user_by( 'id', $friendship_friend_user_id );
 	}
 }

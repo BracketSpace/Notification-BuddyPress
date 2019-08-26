@@ -31,13 +31,13 @@ class RemoveComment extends ActivityTrigger {
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param bool       $deleted              True if the activity was deleted false otherwise
-	 * @param WP_Comment $comment              Comment object.
-	 * @param object     $activity_post_object The post type tracking args object.
-	 * @param string     $value                The post type comment activity type.
+	 * @param bool       $deleted                 True if the activity was deleted false otherwise.
+	 * @param WP_Comment $comment                 Comment object.
+	 * @param object     $activity_post_object    The post type tracking args object.
+	 * @param object     $activity_comment_object The post type tracking args object.
 	 * @return mixed
 	 */
-	public function action( $deleted, $comment_id, $activity_post_object, $activity_comment_object ) {
+	public function action( $deleted, $comment, $activity_post_object, $activity_comment_object ) {
 
 	}
 }

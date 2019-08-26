@@ -55,7 +55,7 @@ class Runtime extends Utils\DocHooks {
 
 		$this->files = new Utils\Files( $this->plugin_file );
 
-		$i18n    = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-buddypress' ) );
+		$i18n = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-buddypress' ) );
 
 	}
 
