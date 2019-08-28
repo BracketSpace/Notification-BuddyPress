@@ -9,6 +9,8 @@ namespace BracketSpace\Notification\BuddyPress\Trigger\Activity;
 
 use BracketSpace\Notification\BuddyPress\Trigger\Activity as ActivityTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
+use BracketSpace\Notification\BuddyPress\MergeTag\Activity as ActivityMergeTag;
+
 
 /**
  * Activity deleted trigger class
@@ -25,16 +27,25 @@ class Deleted extends ActivityTrigger {
 			'name' => __( 'Activity deleted', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'bp_activity_deleted_activities', 10 );
+		$this->add_action( 'bp_activity_delete', 10 );
 	}
 
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param array $activity_ids_deleted Array of affected activity item IDs.
+	 * @param array $deleted_activity Array of deleted activity.
 	 * @return mixed
 	 */
-	public function action( $activity_ids_deleted ) {
-		$this->deleted_activities = implode( ',', $activity_ids_deleted );
+	public function action( $deleted_activity ) {
+		$this->activity->id = $deleted_activity['id'];
+		$this->user         = get_user_by( 'id', $deleted_activity['user_id'] );
+	}
+
+		/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
 	}
 }

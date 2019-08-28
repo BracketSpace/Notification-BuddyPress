@@ -36,8 +36,9 @@ class Remove extends FavoriteTrigger {
 	 * @return mixed
 	 */
 	public function action( $activity_id, $user_id ) {
-		$this->activity_id = $activity_id;
-		$this->activity    = new \BP_Activity_Activity( $this->activity_id );
-		$this->user_object = get_user_by( 'id', $user_id );
+		$this->activity_id          = $activity_id;
+		$this->activity             = new \BP_Activity_Activity( $this->activity_id );
+		$this->favorite_user_object = get_user_by( 'id', $user_id );
+		$this->author_user_object   = get_user_by( 'id', $this->activity->user_id );
 	}
 }

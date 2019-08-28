@@ -100,11 +100,7 @@ class Runtime extends Utils\DocHooks {
 
 		// Activity.
 		notification_register_trigger( new Trigger\Activity\Added() );
-		notification_register_trigger( new Trigger\Activity\Comment() );
 		notification_register_trigger( new Trigger\Activity\Deleted() );
-		notification_register_trigger( new Trigger\Activity\RemoveComment() );
-		notification_register_trigger( new Trigger\Activity\Spam() );
-		notification_register_trigger( new Trigger\Activity\Updated() );
 	}
 
 

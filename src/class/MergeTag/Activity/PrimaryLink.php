@@ -1,6 +1,6 @@
 <?php
 /**
- * Activity content merge tag
+ * Activity primary link merge tag
  *
  * Requirements:
  * - `activity` property with BP_Activity_Activity object.
@@ -10,13 +10,13 @@
 
 namespace BracketSpace\Notification\BuddyPress\MergeTag\Activity;
 
-use BracketSpace\Notification\Defaults\MergeTag\StringTag;
+use BracketSpace\Notification\Defaults\MergeTag\UrlTag;
 
 
 /**
- * Activity content merge tag class
+ * Activity primary link merge tag class
  */
-class Content extends StringTag {
+class PrimaryLink extends UrlTag {
 
 	/**
 	 * Merge tag constructor
@@ -26,13 +26,13 @@ class Content extends StringTag {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'        => 'activity_content',
-			'name'        => __( 'Activity content' ),
+			'slug'        => 'activity_primary_link',
+			'name'        => __( 'Activity primary link' ),
 			'group'       => __( 'Activity' ),
 			'description' => 'My Super News is awesome!',
 			'example'     => true,
 			'resolver'    => function() {
-				return $this->trigger->activity->content;
+				return $this->trigger->activity->primary_link;
 			},
 		) );
 

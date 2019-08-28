@@ -36,6 +36,11 @@ class Added extends ActivityTrigger {
 	 * @return mixed
 	 */
 	public function action( $r, $activity_id ) {
-		print_r( $r );
+		if ( 'activity_update' !== $r['type'] ) {
+			return;
+		}
+
+		$this->activity_content = $r['content'];
+		$this->user             = get_user_by( 'id', $r['user_id'] );
 	}
 }

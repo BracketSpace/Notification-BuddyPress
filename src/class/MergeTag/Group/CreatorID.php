@@ -28,6 +28,7 @@ class CreatorID extends IntegerTag {
 		parent::__construct( array(
 			'slug'        => 'group_creator_ID',
 			'name'        => __( 'Group Creator ID' ),
+			'group'       => __( 'Group' ),
 			'description' => 123,
 			'example'     => true,
 			'resolver'    => function() {
