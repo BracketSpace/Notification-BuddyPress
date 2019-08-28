@@ -73,38 +73,46 @@ class Runtime extends Utils\DocHooks {
 	 */
 	public function register_triggers() {
 
-		// Group.
-		notification_register_trigger( new Trigger\Group\CreateComplete() );
-		notification_register_trigger( new Trigger\Group\DetailsUpdated() );
-		notification_register_trigger( new Trigger\Group\SettingsUpdated() );
-		notification_register_trigger( new Trigger\Group\Deleted() );
-
-		notification_register_trigger( new Trigger\Group\SendInvites() );
-		notification_register_trigger( new Trigger\Group\UninviteUser() );
-
-		notification_register_trigger( new Trigger\Group\BanMember() );
-		notification_register_trigger( new Trigger\Group\UnbanMember() );
-
-		notification_register_trigger( new Trigger\Group\PremoteMember() );
-		notification_register_trigger( new Trigger\Group\DemoteMember() );
-
-		notification_register_trigger( new Trigger\Group\MembershipRequested() );
-		notification_register_trigger( new Trigger\Group\MembershipAccepted() );
-		notification_register_trigger( new Trigger\Group\MembershipRejected() );
-
-		// Friendship.
-		notification_register_trigger( new Trigger\Friendship\Accepted() );
-		notification_register_trigger( new Trigger\Friendship\Requested() );
-		notification_register_trigger( new Trigger\Friendship\Deleted() );
+		// Activity.
+		if ( notification_get_setting( 'notifications/buddypress/activity_enable' ) ) {
+			notification_register_trigger( new Trigger\Activity\Added() );
+			notification_register_trigger( new Trigger\Activity\Deleted() );
+		}
 
 		// Favorites.
-		notification_register_trigger( new Trigger\Favorite\Add() );
-		notification_register_trigger( new Trigger\Favorite\Fail() );
-		notification_register_trigger( new Trigger\Favorite\Remove() );
+		if ( notification_get_setting( 'notifications/buddypress/favorite_enable' ) ) {
+			notification_register_trigger( new Trigger\Favorite\Add() );
+			notification_register_trigger( new Trigger\Favorite\Fail() );
+			notification_register_trigger( new Trigger\Favorite\Remove() );
+		}
 
-		// Activity.
-		notification_register_trigger( new Trigger\Activity\Added() );
-		notification_register_trigger( new Trigger\Activity\Deleted() );
+		// Friendship.
+		if ( notification_get_setting( 'notifications/buddypress/friendship_enable' ) ) {
+			notification_register_trigger( new Trigger\Friendship\Accepted() );
+			notification_register_trigger( new Trigger\Friendship\Requested() );
+			notification_register_trigger( new Trigger\Friendship\Deleted() );
+		}
+
+		// Group.
+		if ( notification_get_setting( 'notifications/buddypress/group_enable' ) ) {
+			notification_register_trigger( new Trigger\Group\CreateComplete() );
+			notification_register_trigger( new Trigger\Group\DetailsUpdated() );
+			notification_register_trigger( new Trigger\Group\SettingsUpdated() );
+			notification_register_trigger( new Trigger\Group\Deleted() );
+
+			notification_register_trigger( new Trigger\Group\SendInvites() );
+			notification_register_trigger( new Trigger\Group\UninviteUser() );
+
+			notification_register_trigger( new Trigger\Group\BanMember() );
+			notification_register_trigger( new Trigger\Group\UnbanMember() );
+
+			notification_register_trigger( new Trigger\Group\PremoteMember() );
+			notification_register_trigger( new Trigger\Group\DemoteMember() );
+
+			notification_register_trigger( new Trigger\Group\MembershipRequested() );
+			notification_register_trigger( new Trigger\Group\MembershipAccepted() );
+			notification_register_trigger( new Trigger\Group\MembershipRejected() );
+		}
 	}
 
 
