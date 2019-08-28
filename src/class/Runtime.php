@@ -57,6 +57,10 @@ class Runtime extends Utils\DocHooks {
 
 		$i18n = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-buddypress' ) );
 
+		$settings = $this->add_hooks( new Core\Settings() );
+
+		notification_register_settings( [ $settings, 'register_settings' ] );
+
 	}
 
 	/**
