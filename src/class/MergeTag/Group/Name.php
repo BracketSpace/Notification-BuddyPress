@@ -29,6 +29,7 @@ class Name extends StringTag {
 			'slug'        => 'group_name',
 			'name'        => __( 'Group Name' ),
 			'description' => __( 'My Super Example Group' ),
+			'group'       => __( 'Group' ),
 			'example'     => true,
 			'resolver'    => function() {
 				return $this->trigger->buddy_group->name;

@@ -28,6 +28,7 @@ class ForumEnabled extends StringTag {
 		parent::__construct( array(
 			'slug'        => 'group_forum_enabled',
 			'name'        => __( 'Group Forum Enabled' ),
+			'group'       => __( 'Group' ),
 			'description' => 123,
 			'example'     => true,
 			'resolver'    => function() {
