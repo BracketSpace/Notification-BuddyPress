@@ -40,7 +40,23 @@ class Added extends ActivityTrigger {
 			return;
 		}
 
-		$this->activity_content = $r['content'];
-		$this->user             = get_user_by( 'id', $r['user_id'] );
+		$this->activity->content    = $r['content'];
+		$this->activity_user_object = get_user_by( 'id', $r['user_id'] );
+	}
+
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'activty_added_datetime',
+			'name'  => __( 'Activity added date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

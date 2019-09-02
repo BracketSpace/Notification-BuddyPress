@@ -92,5 +92,11 @@ class UninviteUser extends GroupTrigger {
 			'property_name' => 'uninvited_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'uninvite_datetime',
+			'name'  => __( 'Uninvite date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

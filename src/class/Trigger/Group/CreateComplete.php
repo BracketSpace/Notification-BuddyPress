@@ -38,4 +38,19 @@ class CreateComplete extends GroupTrigger {
 		$this->group_id    = $group;
 		$this->buddy_group = groups_get_group( $group );
 	}
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'creation_datetime',
+			'name'  => __( 'Creation date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
+	}
 }

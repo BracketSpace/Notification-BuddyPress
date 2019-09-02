@@ -36,7 +36,67 @@ class UnbanMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
-		$this->group_id    = $group_id;
-		$this->buddy_group = groups_get_group( $group_id );
+		$this->group_id             = $group_id;
+		$this->buddy_group          = groups_get_group( $group_id );
+		$this->unbanned_user_object = get_user_by( 'id', $user_id );
+	}
+
+
+	/**
+	 * Registers attached merge tags
+	 *
+	 * @return void
+	 */
+	public function merge_tags() {
+		parent::merge_tags();
+
+		// Banned user.
+		$this->add_merge_tag( new MergeTag\User\UserID( [
+			'slug'          => 'unbanned_user_ID',
+			'name'          => __( 'Banned user ID', 'notification' ),
+			'property_name' => 'unbanned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLogin( [
+			'slug'          => 'unbanned_user_login',
+			'name'          => __( 'Banned user login', 'notification' ),
+			'property_name' => 'unbanned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserEmail( [
+			'slug'          => 'unbanned_user_email',
+			'name'          => __( 'Banned user email', 'notification' ),
+			'property_name' => 'unbanned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
+			'slug'          => 'unbanned_user_display_name',
+			'name'          => __( 'Banned user display name', 'notification' ),
+			'property_name' => 'unbanned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
+			'slug'          => 'unbanned_user_first_name',
+			'name'          => __( 'Banned user first name', 'notification' ),
+			'property_name' => 'unbanned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\User\UserLastName( [
+			'slug'          => 'unbanned_user_last_name',
+			'name'          => __( 'Banned user last name', 'notification' ),
+			'property_name' => 'unbanned_user_object',
+			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'unban_datetime',
+			'name'  => __( 'Unban date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

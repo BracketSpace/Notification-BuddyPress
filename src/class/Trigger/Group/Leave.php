@@ -91,5 +91,11 @@ class Leave extends GroupTrigger {
 			'property_name' => 'leaving_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'leave_datetime',
+			'name'  => __( 'Leave date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

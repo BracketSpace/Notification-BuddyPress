@@ -91,5 +91,11 @@ class Join extends GroupTrigger {
 			'property_name' => 'joined_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'join_datetime',
+			'name'  => __( 'Join date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

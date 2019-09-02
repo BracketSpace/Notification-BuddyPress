@@ -91,5 +91,12 @@ class InviteUser extends GroupTrigger {
 			'property_name' => 'invited_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'invitation_datetime',
+			'name'  => __( 'Invitation date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
+
 	}
 }

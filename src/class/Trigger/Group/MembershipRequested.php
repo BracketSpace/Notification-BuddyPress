@@ -93,5 +93,11 @@ class MembershipRequested extends GroupTrigger {
 			'property_name' => 'requesting_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'membership_requested_datetime',
+			'name'  => __( 'Membership requested date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

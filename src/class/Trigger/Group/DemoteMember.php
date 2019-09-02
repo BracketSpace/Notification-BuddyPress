@@ -91,5 +91,11 @@ class DemoteMember extends GroupTrigger {
 			'property_name' => 'demoted_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'demote_datetime',
+			'name'  => __( 'Demote date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

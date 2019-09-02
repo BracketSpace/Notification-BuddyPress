@@ -91,5 +91,11 @@ class BanMember extends GroupTrigger {
 			'property_name' => 'banned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'ban_datetime',
+			'name'  => __( 'Ban date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

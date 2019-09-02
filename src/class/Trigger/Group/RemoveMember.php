@@ -91,5 +91,11 @@ class RemoveMember extends GroupTrigger {
 			'property_name' => 'removed_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'removal_datetime',
+			'name'  => __( 'Member removal date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

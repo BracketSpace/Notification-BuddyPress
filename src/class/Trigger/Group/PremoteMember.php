@@ -93,5 +93,11 @@ class PremoteMember extends GroupTrigger {
 			'property_name' => 'promoted_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'promotion_datetime',
+			'name'  => __( 'Promotion date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }

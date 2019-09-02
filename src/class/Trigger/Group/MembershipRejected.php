@@ -93,5 +93,11 @@ class MembershipRejected extends GroupTrigger {
 			'property_name' => 'rejected_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
+
+		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
+			'slug'  => 'membership_rejected_datetime',
+			'name'  => __( 'Membership rejected date and time', 'notification-buddypress' ),
+			'group' => __( 'Date', 'notification' ),
+		) ) );
 	}
 }
