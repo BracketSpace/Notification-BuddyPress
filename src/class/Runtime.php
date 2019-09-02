@@ -74,27 +74,27 @@ class Runtime extends Utils\DocHooks {
 	public function register_triggers() {
 
 		// Activity.
-		if ( notification_get_setting( 'notifications/buddypress/activity_enable' ) ) {
+		if ( notification_get_setting( 'triggers/buddypress/activity_enable' ) ) {
 			notification_register_trigger( new Trigger\Activity\Added() );
 			notification_register_trigger( new Trigger\Activity\Deleted() );
 		}
 
 		// Favorites.
-		if ( notification_get_setting( 'notifications/buddypress/favorite_enable' ) ) {
+		if ( notification_get_setting( 'triggers/buddypress/favorite_enable' ) ) {
 			notification_register_trigger( new Trigger\Favorite\Add() );
 			notification_register_trigger( new Trigger\Favorite\Fail() );
 			notification_register_trigger( new Trigger\Favorite\Remove() );
 		}
 
 		// Friendship.
-		if ( notification_get_setting( 'notifications/buddypress/friendship_enable' ) ) {
+		if ( notification_get_setting( 'triggers/buddypress/friendship_enable' ) ) {
 			notification_register_trigger( new Trigger\Friendship\Accepted() );
 			notification_register_trigger( new Trigger\Friendship\Requested() );
 			notification_register_trigger( new Trigger\Friendship\Deleted() );
 		}
 
 		// Group.
-		if ( notification_get_setting( 'notifications/buddypress/group_enable' ) ) {
+		if ( notification_get_setting( 'triggers/buddypress/group_enable' ) ) {
 			notification_register_trigger( new Trigger\Group\CreateComplete() );
 			notification_register_trigger( new Trigger\Group\DetailsUpdated() );
 			notification_register_trigger( new Trigger\Group\SettingsUpdated() );
