@@ -102,15 +102,15 @@ class Runtime extends Utils\DocHooks {
 			notification_register_trigger( new Trigger\Group\BanMember() );
 			notification_register_trigger( new Trigger\Group\UnbanMember() );
 
-			notification_register_trigger( new Trigger\Group\PremoteMember() );
+			notification_register_trigger( new Trigger\Group\PromoteMember() );
 			notification_register_trigger( new Trigger\Group\DemoteMember() );
 
 			notification_register_trigger( new Trigger\Group\MembershipRequested() );
 			notification_register_trigger( new Trigger\Group\MembershipAccepted() );
 			notification_register_trigger( new Trigger\Group\MembershipRejected() );
 		}
-	}
 
+	}
 
 	/**
 	 * Creates instances when Notification plugin is fully loaded
