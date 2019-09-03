@@ -26,6 +26,7 @@ class MembershipAccepted extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_membership_accepted', 100, 3 );
+
 	}
 
 	/**
@@ -37,9 +38,13 @@ class MembershipAccepted extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $user_id, $group_id, $status ) {
+
 		$this->group_id      = $group_id;
 		$this->buddy_group   = groups_get_group( $group_id );
 		$this->accepted_user = $user_id;
+
+		$this->membership_accepted_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -48,6 +53,7 @@ class MembershipAccepted extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Accepted user.
@@ -98,5 +104,7 @@ class MembershipAccepted extends GroupTrigger {
 			'name'  => __( 'Membership accepted date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

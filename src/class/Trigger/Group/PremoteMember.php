@@ -1,6 +1,6 @@
 <?php
 /**
- * Premote group member trigger
+ * Promote group member trigger
  *
  * @package notification/buddypress
  */
@@ -11,9 +11,9 @@ use BracketSpace\Notification\BuddyPress\Trigger\Group as GroupTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
- * Premote group member trigger class
+ * Promote group member trigger class
  */
-class PremoteMember extends GroupTrigger {
+class PromoteMember extends GroupTrigger {
 
 	/**
 	 * Constructor
@@ -21,11 +21,12 @@ class PremoteMember extends GroupTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/group/premote_member',
-			'name' => __( 'Premote group member', 'notification-buddypress' ),
+			'slug' => 'buddypress/group/promote_member',
+			'name' => __( 'Promote group member', 'notification-buddypress' ),
 		) );
 
 		$this->add_action( 'groups_promote_member', 1000, 3 );
+
 	}
 
 	/**
@@ -37,10 +38,14 @@ class PremoteMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id, $status ) {
+
 		$this->group_id             = $group_id;
 		$this->buddy_group          = groups_get_group( $group_id );
 		$this->promoted_user_object = get_user_by( 'id', $user_id );
 		$this->promotion_status     = $status;
+
+		$this->promotion_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -49,6 +54,7 @@ class PremoteMember extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Promoted user.
@@ -99,5 +105,7 @@ class PremoteMember extends GroupTrigger {
 			'name'  => __( 'Promotion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

@@ -27,6 +27,7 @@ class Deleted extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_delete_group', 10 );
+
 	}
 
 	/**
@@ -36,8 +37,12 @@ class Deleted extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group ) {
+
 		$this->group_id    = $group;
 		$this->buddy_group = groups_get_group( $group );
+
+		$this->deletion_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -46,6 +51,7 @@ class Deleted extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		$this->add_merge_tag( new GroupMergeTag\ID() );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
@@ -53,5 +59,7 @@ class Deleted extends GroupTrigger {
 			'name'  => __( 'Deletion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

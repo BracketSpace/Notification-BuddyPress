@@ -26,6 +26,7 @@ class RemoveMember extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_remove_member', 100, 2 );
+
 	}
 
 	/**
@@ -36,9 +37,13 @@ class RemoveMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id     = $group_id;
 		$this->buddy_group  = groups_get_group( $group_id );
 		$this->removed_user = $user_id;
+
+		$this->removal_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,6 +52,7 @@ class RemoveMember extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Removed user.
@@ -97,5 +103,7 @@ class RemoveMember extends GroupTrigger {
 			'name'  => __( 'Member removal date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

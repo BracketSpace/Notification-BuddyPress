@@ -37,8 +37,12 @@ class Deleted extends ActivityTrigger {
 	 * @return mixed
 	 */
 	public function action( $deleted_activity ) {
-		$this->activity->id         = $deleted_activity['id'];
+
+		$this->activity             = new \BP_Activity_Activity( $deleted_activity['id'] );
 		$this->activity_user_object = get_user_by( 'id', $deleted_activity['user_id'] );
+
+		$this->activty_deleted_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,6 +51,7 @@ class Deleted extends ActivityTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
@@ -54,5 +59,7 @@ class Deleted extends ActivityTrigger {
 			'name'  => __( 'Activity deleted date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

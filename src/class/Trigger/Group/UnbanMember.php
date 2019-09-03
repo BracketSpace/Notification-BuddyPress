@@ -26,6 +26,7 @@ class UnbanMember extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_unban_member', 100, 2 );
+
 	}
 
 	/**
@@ -36,11 +37,14 @@ class UnbanMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id             = $group_id;
 		$this->buddy_group          = groups_get_group( $group_id );
 		$this->unbanned_user_object = get_user_by( 'id', $user_id );
-	}
 
+		$this->unban_datetime = current_time( 'timestamp' );
+
+	}
 
 	/**
 	 * Registers attached merge tags
@@ -48,6 +52,7 @@ class UnbanMember extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Banned user.
@@ -98,5 +103,7 @@ class UnbanMember extends GroupTrigger {
 			'name'  => __( 'Unban date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

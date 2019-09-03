@@ -26,6 +26,7 @@ class SettingsUpdated extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_settings_updated', 10 );
+
 	}
 
 	/**
@@ -35,12 +36,13 @@ class SettingsUpdated extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id ) {
+
 		$this->group_id    = $group_id;
 		$this->buddy_group = groups_get_group( $this->group_id );
+
+		$this->settings_updated_datetime = current_time( 'timestamp' );
+
 	}
-
-
-
 
 	/**
 	 * Registers attached merge tags
@@ -48,6 +50,7 @@ class SettingsUpdated extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
@@ -55,5 +58,7 @@ class SettingsUpdated extends GroupTrigger {
 			'name'  => __( 'Settings updated date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

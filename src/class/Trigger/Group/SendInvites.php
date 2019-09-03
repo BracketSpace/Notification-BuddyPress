@@ -26,6 +26,7 @@ class SendInvites extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_send_invites', 11, 3 );
+
 	}
 
 	/**
@@ -37,9 +38,12 @@ class SendInvites extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $invited_users, $inviting_user ) {
+
 		$this->group_id      = $group_id;
 		$this->buddy_group   = groups_get_group( $group_id );
 		$this->invited_users = $invited_users;
 		$this->inviting_user = $inviting_user;
+
 	}
+
 }

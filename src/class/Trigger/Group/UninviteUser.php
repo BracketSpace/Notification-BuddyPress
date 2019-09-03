@@ -26,6 +26,7 @@ class UninviteUser extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_uninvite_user', 100, 2 );
+
 	}
 
 	/**
@@ -36,9 +37,13 @@ class UninviteUser extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id       = $group_id;
 		$this->buddy_group    = groups_get_group( $group_id );
 		$this->uninvited_user = $user_id;
+
+		$this->uninvite_datetime = current_time( 'timestamp' );
+
 	}
 
 
@@ -48,6 +53,7 @@ class UninviteUser extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Invited user.
@@ -98,5 +104,7 @@ class UninviteUser extends GroupTrigger {
 			'name'  => __( 'Uninvite date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

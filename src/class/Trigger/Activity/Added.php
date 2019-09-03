@@ -26,6 +26,7 @@ class Added extends ActivityTrigger {
 		) );
 
 		$this->add_action( 'bp_activity_add', 10, 2 );
+
 	}
 
 	/**
@@ -36,12 +37,16 @@ class Added extends ActivityTrigger {
 	 * @return mixed
 	 */
 	public function action( $r, $activity_id ) {
+
 		if ( 'activity_update' !== $r['type'] ) {
 			return;
 		}
 
 		$this->activity->content    = $r['content'];
 		$this->activity_user_object = get_user_by( 'id', $r['user_id'] );
+
+		$this->activty_added_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -50,6 +55,7 @@ class Added extends ActivityTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
@@ -57,5 +63,7 @@ class Added extends ActivityTrigger {
 			'name'  => __( 'Activity added date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

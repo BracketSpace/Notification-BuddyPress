@@ -26,6 +26,7 @@ class MembershipRequested extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_membership_requested', 100, 4 );
+
 	}
 
 	/**
@@ -38,9 +39,13 @@ class MembershipRequested extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $user_id, $admins, $group_id, $membership_id ) {
+
 		$this->group_id               = $group_id;
 		$this->buddy_group            = groups_get_group( $group_id );
 		$this->requesting_user_object = get_user_by( 'id', $user_id );
+
+		$this->membership_request_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -49,6 +54,7 @@ class MembershipRequested extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Requesting user.
@@ -95,9 +101,11 @@ class MembershipRequested extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'membership_requested_datetime',
-			'name'  => __( 'Membership requested date and time', 'notification-buddypress' ),
+			'slug'  => 'membership_request_datetime',
+			'name'  => __( 'Membership request date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }
