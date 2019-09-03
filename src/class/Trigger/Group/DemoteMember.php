@@ -42,7 +42,7 @@ class DemoteMember extends GroupTrigger {
 		$this->buddy_group  = groups_get_group( $group_id );
 		$this->demoted_user = $user_id;
 
-		$this->demote_datetime = current_time( 'timestamp' );
+		$this->demotion_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -99,8 +99,8 @@ class DemoteMember extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'demote_datetime',
-			'name'  => __( 'Demote date and time', 'notification-buddypress' ),
+			'slug'  => 'demotion_datetime',
+			'name'  => __( 'Demotion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

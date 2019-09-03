@@ -40,7 +40,7 @@ class SettingsUpdated extends GroupTrigger {
 		$this->group_id    = $group_id;
 		$this->buddy_group = groups_get_group( $this->group_id );
 
-		$this->settings_updated_datetime = current_time( 'timestamp' );
+		$this->settings_update_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -54,8 +54,8 @@ class SettingsUpdated extends GroupTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'settings_updated_datetime',
-			'name'  => __( 'Settings updated date and time', 'notification-buddypress' ),
+			'slug'  => 'settings_update_datetime',
+			'name'  => __( 'Settings update date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

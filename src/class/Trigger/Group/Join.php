@@ -22,7 +22,7 @@ class Join extends GroupTrigger {
 
 		parent::__construct( array(
 			'slug' => 'buddypress/group/join',
-			'name' => __( 'Join group', 'notification-buddypress' ),
+			'name' => __( 'User joined to group', 'notification-buddypress' ),
 		) );
 
 		$this->add_action( 'groups_join_group', 100, 2 );

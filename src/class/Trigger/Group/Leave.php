@@ -22,7 +22,7 @@ class Leave extends GroupTrigger {
 
 		parent::__construct( array(
 			'slug' => 'buddypress/group/leave',
-			'name' => __( 'Leave group', 'notification-buddypress' ),
+			'name' => __( 'User leaves group', 'notification-buddypress' ),
 		) );
 
 		$this->add_action( 'groups_leave_group', 100, 2 );

@@ -42,7 +42,20 @@ class PromoteMember extends GroupTrigger {
 		$this->group_id             = $group_id;
 		$this->buddy_group          = groups_get_group( $group_id );
 		$this->promoted_user_object = get_user_by( 'id', $user_id );
-		$this->promotion_status     = $status;
+
+		switch ( $status ) {
+			case 'mod':
+				$this->promotion_status = __( 'Moderator', 'notification-buddypress' );
+				break;
+
+			case 'admin':
+				$this->promotion_status = __( 'Administrator', 'notification-buddypress' );
+				break;
+
+			default:
+				$this->promotion_status = __( 'Undefined', 'notification-buddypress' );
+				break;
+		}
 
 		$this->promotion_datetime = current_time( 'timestamp' );
 
@@ -98,6 +111,16 @@ class PromoteMember extends GroupTrigger {
 			'name'          => __( 'Promoted user last name', 'notification' ),
 			'property_name' => 'promoted_user_object',
 			'group'         => __( 'User', 'notification' ),
+		] ) );
+
+		$this->add_merge_tag( new MergeTag\StringTag( [
+			'slug'        => 'promoted_user_status',
+			'name'        => __( 'Promoted user status in group', 'notification' ),
+			'description' => __( 'Either Moderator or Administrator', 'notification' ),
+			'group'       => __( 'User', 'notification' ),
+			'resolver'    => function( $trigger ) {
+				return $trigger->promotion_status;
+			},
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(

@@ -41,9 +41,9 @@ class MembershipAccepted extends GroupTrigger {
 
 		$this->group_id      = $group_id;
 		$this->buddy_group   = groups_get_group( $group_id );
-		$this->accepted_user = $user_id;
+		$this->accepted_user = get_user_by( 'id', $user_id );
 
-		$this->membership_accepted_datetime = current_time( 'timestamp' );
+		$this->membership_acceptance_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -100,8 +100,8 @@ class MembershipAccepted extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'membership_accepted_datetime',
-			'name'  => __( 'Membership accepted date and time', 'notification-buddypress' ),
+			'slug'  => 'membership_acceptance_datetime',
+			'name'  => __( 'Membership acceptance date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

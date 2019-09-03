@@ -39,7 +39,7 @@ class DetailsUpdated extends GroupTrigger {
 		$this->group_id    = $group;
 		$this->buddy_group = groups_get_group( $group );
 
-		$this->details_updated_datetime = current_time( 'timestamp' );
+		$this->details_update_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -53,8 +53,8 @@ class DetailsUpdated extends GroupTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'details_updated_datetime',
-			'name'  => __( 'Details updated date and time', 'notification-buddypress' ),
+			'slug'  => 'details_update_datetime',
+			'name'  => __( 'Details update date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

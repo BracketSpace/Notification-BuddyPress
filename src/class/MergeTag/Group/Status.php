@@ -26,12 +26,10 @@ class Status extends StringTag {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'        => 'group_status',
-			'name'        => __( 'Group Status' ),
-			'group'       => __( 'Group' ),
-			'description' => 'my-super-example-group',
-			'example'     => true,
-			'resolver'    => function() {
+			'slug'     => 'group_status',
+			'name'     => __( 'Group status' ),
+			'group'    => __( 'Group' ),
+			'resolver' => function() {
 				return ucfirst( $this->trigger->buddy_group->status );
 			},
 		) );

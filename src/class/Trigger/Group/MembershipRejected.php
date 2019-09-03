@@ -44,7 +44,7 @@ class MembershipRejected extends GroupTrigger {
 		$this->rejected_user_object = get_user_by( 'id', $user_id );
 		$this->membership_status    = $status;
 
-		$this->membership_rejected_datetime = current_time( 'timestamp' );
+		$this->membership_rejection_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -101,8 +101,8 @@ class MembershipRejected extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'membership_rejected_datetime',
-			'name'  => __( 'Membership rejected date and time', 'notification-buddypress' ),
+			'slug'  => 'membership_rejection_datetime',
+			'name'  => __( 'Membership rejection date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

@@ -96,8 +96,11 @@ class Runtime extends Utils\DocHooks {
 			notification_register_trigger( new Trigger\Group\SettingsUpdated() );
 			notification_register_trigger( new Trigger\Group\Deleted() );
 
-			notification_register_trigger( new Trigger\Group\SendInvites() );
+			notification_register_trigger( new Trigger\Group\InviteUser() );
 			notification_register_trigger( new Trigger\Group\UninviteUser() );
+			notification_register_trigger( new Trigger\Group\Join() );
+			notification_register_trigger( new Trigger\Group\Leave() );
+			notification_register_trigger( new Trigger\Group\RemoveMember() );
 
 			notification_register_trigger( new Trigger\Group\BanMember() );
 			notification_register_trigger( new Trigger\Group\UnbanMember() );
@@ -109,19 +112,6 @@ class Runtime extends Utils\DocHooks {
 			notification_register_trigger( new Trigger\Group\MembershipAccepted() );
 			notification_register_trigger( new Trigger\Group\MembershipRejected() );
 		}
-
-	}
-
-	/**
-	 * Creates instances when Notification plugin is fully loaded
-	 * Useful when you are depending on registered Carriers or Triggers
-	 *
-	 * @action notification/boot
-	 *
-	 * @since  [Next]
-	 * @return void
-	 */
-	public function late_instances() {
 
 	}
 

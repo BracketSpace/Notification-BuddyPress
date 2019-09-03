@@ -41,7 +41,7 @@ class Deleted extends ActivityTrigger {
 		$this->activity             = new \BP_Activity_Activity( $deleted_activity['id'] );
 		$this->activity_user_object = get_user_by( 'id', $deleted_activity['user_id'] );
 
-		$this->activty_deleted_datetime = current_time( 'timestamp' );
+		$this->activty_deletion_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -55,8 +55,8 @@ class Deleted extends ActivityTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'activty_deleted_datetime',
-			'name'  => __( 'Activity deleted date and time', 'notification-buddypress' ),
+			'slug'  => 'activty_deletion_datetime',
+			'name'  => __( 'Activity deletion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

@@ -98,7 +98,7 @@ abstract class Friendship extends Abstracts\Trigger {
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'friend_user_email',
-			'name'          => __( 'Parent comment author user email', 'notification' ),
+			'name'          => __( 'Friend user email', 'notification' ),
 			'property_name' => 'friendship_friend_user_object',
 			'group'         => __( 'Friend', 'notification' ),
 		] ) );

@@ -40,7 +40,7 @@ class Deleted extends FriendshipTrigger {
 		$this->friendship_initiator_user_object = get_user_by( 'id', $friendship_initiator_user_id );
 		$this->friendship_friend_user_object    = get_user_by( 'id', $friendship_friend_user_id );
 
-		$this->friendship_deleted_datetime = current_time( 'timestamp' );
+		$this->friendship_deletion_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -54,8 +54,8 @@ class Deleted extends FriendshipTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'friendship_deleted_datetime',
-			'name'  => __( 'Friendship deleted date and time', 'notification-buddypress' ),
+			'slug'  => 'friendship_deletion_datetime',
+			'name'  => __( 'Friendship deletion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 
