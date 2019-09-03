@@ -42,7 +42,7 @@ class Requested extends FriendshipTrigger {
 		$this->friendship_initiator_user_object = get_user_by( 'id', $friendship_initiator_user_id );
 		$this->friendship_friend_user_object    = get_user_by( 'id', $friendship_friend_user_id );
 
-		$this->friendship_requested_datetime = current_time( 'timestamp' );
+		$this->friendship_request_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -56,8 +56,8 @@ class Requested extends FriendshipTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'friendship_requested_datetime',
-			'name'  => __( 'Friendship requested date and time', 'notification-buddypress' ),
+			'slug'  => 'friendship_request_datetime',
+			'name'  => __( 'Friendship request date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 
