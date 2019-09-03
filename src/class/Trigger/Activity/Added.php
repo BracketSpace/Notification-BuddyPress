@@ -44,7 +44,6 @@ class Added extends ActivityTrigger {
 		$this->activity_user_object = get_user_by( 'id', $r['user_id'] );
 	}
 
-
 	/**
 	 * Registers attached merge tags
 	 *

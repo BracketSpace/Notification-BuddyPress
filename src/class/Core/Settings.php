@@ -36,16 +36,6 @@ class Settings {
 				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
 			] )
 			->add_field( [
-				'name'     => __( 'Favorite Triggers', 'notification-buddypress' ),
-				'slug'     => 'favorite_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable favorite triggers', 'notification-buddypress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] )
-			->add_field( [
 				'name'     => __( 'Friendship Triggers', 'notification-buddypress' ),
 				'slug'     => 'friendship_enable',
 				'default'  => true,
