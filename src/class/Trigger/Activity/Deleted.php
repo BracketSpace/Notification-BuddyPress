@@ -38,6 +38,10 @@ class Deleted extends ActivityTrigger {
 	 */
 	public function action( $deleted_activity ) {
 
+		if ( 'activity_update' !== $deleted_activity['type'] ) {
+			return false;
+		}
+
 		$this->activity             = new \BP_Activity_Activity( $deleted_activity['id'] );
 		$this->activity_user_object = get_user_by( 'id', $deleted_activity['user_id'] );
 
