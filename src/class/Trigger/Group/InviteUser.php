@@ -25,7 +25,7 @@ class InviteUser extends GroupTrigger {
 			'name' => __( 'Invite user to group', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'groups_invite_user', 100, 2 );
+		$this->add_action( 'notification_buddypress_group_invite', 10, 2 );
 	}
 
 	/**
