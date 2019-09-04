@@ -30,7 +30,7 @@ class PrimaryLink extends UrlTag {
 			'name'     => __( 'Activity primary link' ),
 			'group'    => __( 'Activity' ),
 			'resolver' => function() {
-				return bp_activity_get_permalink( $this->trigger->activity->ID );
+				return bp_activity_get_permalink( $this->trigger->activity->id );
 			},
 		) );
 
