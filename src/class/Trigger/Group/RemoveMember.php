@@ -40,7 +40,7 @@ class RemoveMember extends GroupTrigger {
 
 		$this->group_id     = $group_id;
 		$this->buddy_group  = groups_get_group( $group_id );
-		$this->removed_user = $user_id;
+		$this->removed_user = get_user_by( 'id', $user_id );
 
 		$this->removal_datetime = current_time( 'timestamp' );
 

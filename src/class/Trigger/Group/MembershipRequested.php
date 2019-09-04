@@ -57,6 +57,16 @@ class MembershipRequested extends GroupTrigger {
 
 		parent::merge_tags();
 
+		$this->add_merge_tag( new MergeTag\UrlTag( [
+			'slug'        => 'group_requests_url',
+			'name'        => __( 'Group requests link', 'notification-buddypress' ),
+			'description' => __( 'Leads to group membership requests page', 'notification-buddypress' ),
+			'group'       => __( 'Group', 'notification' ),
+			'resolver'    => function( $trigger ) {
+				return esc_url( bp_get_group_permalink( $trigger->buddy_group ) . 'admin/membership-requests' );
+			},
+		] ) );
+
 		// Requesting user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'requesting_user_ID',
