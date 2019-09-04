@@ -61,6 +61,16 @@ class Requested extends FriendshipTrigger {
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 
+		$this->add_merge_tag( new MergeTag\UrlTag( [
+			'slug'        => 'friend_requests_url',
+			'name'        => __( 'Friend requests URL', 'notification-buddypress' ),
+			'description' => __( 'Leads to friend requests page of the invited user', 'notification-buddypress' ),
+			'group'       => __( 'Friend', 'notification' ),
+			'resolver'    => function( $trigger ) {
+				return esc_url( bp_core_get_user_domain( $trigger->friendship_friend_user_object->ID ) . bp_get_friends_slug() . '/requests/' );
+			},
+		] ) );
+
 	}
 
 }
