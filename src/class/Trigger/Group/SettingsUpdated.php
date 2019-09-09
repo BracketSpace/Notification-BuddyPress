@@ -51,7 +51,7 @@ class SettingsUpdated extends GroupTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'settings_updated_datetime',
+			'slug'  => 'settings_update_datetime',
 			'name'  => __( 'Settings updated date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );

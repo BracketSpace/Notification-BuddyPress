@@ -53,8 +53,8 @@ class Fail extends FavoriteTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'favorite_failed_datetime',
-			'name'  => __( 'Favorite failed date and time', 'notification-buddypress' ),
+			'slug'  => 'favorite_fail_datetime',
+			'name'  => __( 'Favorite fail date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 	}

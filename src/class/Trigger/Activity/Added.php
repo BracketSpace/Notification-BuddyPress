@@ -36,8 +36,8 @@ class Added extends ActivityTrigger {
 	 * @return mixed
 	 */
 	public function action( $r, $activity_id ) {
-		if ( 'activity_update' !== $r['type'] ) {
-			return;
+		if ( ( 'activity' !== $r['component'] ) && ( 'activity_update' !== $r['type'] ) ) {
+			return false;
 		}
 
 		$this->activity = new \BP_Activity_Activity( $activity_id );

@@ -51,8 +51,8 @@ class Accepted extends FriendshipTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'friendship_accepted_datetime',
-			'name'  => __( 'Friendship accepted date and time', 'notification-buddypress' ),
+			'slug'  => 'friendship_acceptation_datetime',
+			'name'  => __( 'Friendship acceptation date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 	}

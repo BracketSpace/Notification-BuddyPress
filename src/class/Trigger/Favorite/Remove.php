@@ -51,8 +51,8 @@ class Remove extends FavoriteTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'favorite_removed_datetime',
-			'name'  => __( 'Favorite removed date and time', 'notification-buddypress' ),
+			'slug'  => 'favorite_removal_datetime',
+			'name'  => __( 'Favorite removal date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 	}

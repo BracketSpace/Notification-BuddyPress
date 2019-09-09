@@ -93,7 +93,7 @@ class DemoteMember extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'demote_datetime',
+			'slug'  => 'demotion_datetime',
 			'name'  => __( 'Demote date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );

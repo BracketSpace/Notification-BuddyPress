@@ -50,8 +50,8 @@ class Deleted extends ActivityTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'activty_deleted_datetime',
-			'name'  => __( 'Activity deleted date and time', 'notification-buddypress' ),
+			'slug'  => 'activty_delettion_datetime',
+			'name'  => __( 'Activity deletion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 	}

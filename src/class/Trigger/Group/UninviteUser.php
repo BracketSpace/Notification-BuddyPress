@@ -94,7 +94,7 @@ class UninviteUser extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'uninvite_datetime',
+			'slug'  => 'uninvitation_datetime',
 			'name'  => __( 'Uninvite date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );

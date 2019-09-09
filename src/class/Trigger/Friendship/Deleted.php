@@ -49,8 +49,8 @@ class Deleted extends FriendshipTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'friendship_deleted_datetime',
-			'name'  => __( 'Friendship deleted date and time', 'notification-buddypress' ),
+			'slug'  => 'friendship_deletion_datetime',
+			'name'  => __( 'Friendship deletion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 	}

@@ -95,7 +95,7 @@ class MembershipRejected extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'membership_rejected_datetime',
+			'slug'  => 'membership_rejection_datetime',
 			'name'  => __( 'Membership rejected date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );

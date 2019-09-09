@@ -26,7 +26,7 @@ class Deleted extends GroupTrigger {
 			'name' => __( 'Group deleted', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'groups_delete_group', 10 );
+		$this->add_action( 'groups_before_delete_group', 10 );
 	}
 
 	/**

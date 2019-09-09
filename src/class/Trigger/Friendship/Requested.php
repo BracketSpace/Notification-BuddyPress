@@ -52,8 +52,8 @@ class Requested extends FriendshipTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'friendship_requested_datetime',
-			'name'  => __( 'Friendship requested date and time', 'notification-buddypress' ),
+			'slug'  => 'friendship_request_datetime',
+			'name'  => __( 'Friendship request date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

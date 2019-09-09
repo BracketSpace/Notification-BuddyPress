@@ -95,7 +95,7 @@ class MembershipRequested extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'membership_requested_datetime',
+			'slug'  => 'membership_request_datetime',
 			'name'  => __( 'Membership requested date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
