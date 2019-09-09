@@ -39,7 +39,7 @@ class MembershipAccepted extends GroupTrigger {
 	public function action( $user_id, $group_id, $status ) {
 		$this->group_id      = $group_id;
 		$this->buddy_group   = groups_get_group( $group_id );
-		$this->accepted_user = $user_id;
+		$this->accepted_user = get_user_by( 'id', $user_id );
 	}
 
 	/**
