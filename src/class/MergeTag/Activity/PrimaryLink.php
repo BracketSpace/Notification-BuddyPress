@@ -29,7 +29,7 @@ class PrimaryLink extends UrlTag {
 			'slug'        => 'activity_primary_link',
 			'name'        => __( 'Activity primary link' ),
 			'group'       => __( 'Activity' ),
-			'description' => 'My Super News is awesome!',
+			'description' => 'https://example.com/my-super-example-activity/',
 			'example'     => true,
 			'resolver'    => function() {
 				return $this->trigger->activity->primary_link;

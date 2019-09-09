@@ -100,7 +100,7 @@ abstract class Favorite extends Abstracts\Trigger {
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'author_user_email',
-			'name'          => __( 'Parent comment author user email', 'notification' ),
+			'name'          => __( 'Author user email', 'notification' ),
 			'property_name' => 'author_user_object',
 			'group'         => __( 'Author', 'notification' ),
 		] ) );

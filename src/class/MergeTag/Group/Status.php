@@ -29,7 +29,7 @@ class Status extends StringTag {
 			'slug'        => 'group_status',
 			'name'        => __( 'Group Status' ),
 			'group'       => __( 'Group' ),
-			'description' => 'my-super-example-group',
+			'description' => __( 'Public / Private / Hidden' ),
 			'example'     => true,
 			'resolver'    => function() {
 				return ucfirst( $this->trigger->buddy_group->status );

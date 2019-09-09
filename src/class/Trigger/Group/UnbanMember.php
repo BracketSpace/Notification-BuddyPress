@@ -53,42 +53,42 @@ class UnbanMember extends GroupTrigger {
 		// Banned user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'unbanned_user_ID',
-			'name'          => __( 'Banned user ID', 'notification' ),
+			'name'          => __( 'Unbanned user ID', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'unbanned_user_login',
-			'name'          => __( 'Banned user login', 'notification' ),
+			'name'          => __( 'Unbanned user login', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'unbanned_user_email',
-			'name'          => __( 'Banned user email', 'notification' ),
+			'name'          => __( 'Unbanned user email', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'unbanned_user_display_name',
-			'name'          => __( 'Banned user display name', 'notification' ),
+			'name'          => __( 'Unbanned user display name', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'unbanned_user_first_name',
-			'name'          => __( 'Banned user first name', 'notification' ),
+			'name'          => __( 'Unbanned user first name', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'unbanned_user_last_name',
-			'name'          => __( 'Banned user last name', 'notification' ),
+			'name'          => __( 'Unbanned user last name', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
