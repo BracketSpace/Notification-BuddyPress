@@ -40,7 +40,7 @@ class Added extends ActivityTrigger {
 			return;
 		}
 
-		$this->activity->content    = $r['content'];
+		$this->activity = new \BP_Activity_Activity( $activity_id );
 		$this->activity_author_object = get_user_by( 'id', $r['user_id'] );
 	}
 

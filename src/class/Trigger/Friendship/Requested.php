@@ -56,5 +56,12 @@ class Requested extends FriendshipTrigger {
 			'name'  => __( 'Friendship requested date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
+		// $this->add_merge_tag( new MergeTag\UrlTag( [
+		// 	'slug'  => 'friend_requests_url',
+		// 	'name'  => __( 'Friend requests url', 'notification-buddypress' ),
+		// 	'group' => __( 'Friendship', 'notification' ),
+		// 	'property_name' => 'author_user_object',
+		// ] ) );
 	}
 }

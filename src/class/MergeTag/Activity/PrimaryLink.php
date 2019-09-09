@@ -32,7 +32,7 @@ class PrimaryLink extends UrlTag {
 			'description' => 'https://example.com/my-super-example-activity/',
 			'example'     => true,
 			'resolver'    => function() {
-				return $this->trigger->activity->primary_link;
+				return bp_activity_get_permalink( $this->trigger->activity->id );
 			},
 		) );
 
