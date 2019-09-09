@@ -46,7 +46,7 @@ class Deleted extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
-		$this->add_merge_tag( new GroupMergeTag\ID() );
+		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'deletion_datetime',

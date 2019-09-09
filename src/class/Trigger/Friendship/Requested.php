@@ -40,6 +40,7 @@ class Requested extends FriendshipTrigger {
 		$this->friendship_id                    = $friendship_id;
 		$this->friendship_initiator_user_object = get_user_by( 'id', $friendship_initiator_user_id );
 		$this->friendship_friend_user_object    = get_user_by( 'id', $friendship_friend_user_id );
+		$this->friendship_friend_requests_url   = esc_url( bp_core_get_user_domain( $friendship_friend_user_id ) . bp_get_friends_slug() . '/requests/' );
 	}
 
 
@@ -57,11 +58,13 @@ class Requested extends FriendshipTrigger {
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 
-		// $this->add_merge_tag( new MergeTag\UrlTag( [
-		// 	'slug'  => 'friend_requests_url',
-		// 	'name'  => __( 'Friend requests url', 'notification-buddypress' ),
-		// 	'group' => __( 'Friendship', 'notification' ),
-		// 	'property_name' => 'author_user_object',
-		// ] ) );
+		$this->add_merge_tag( new MergeTag\UrlTag( [
+			'slug'  => 'friend_requests_url',
+			'name'  => __( 'Friend requests url', 'notification-buddypress' ),
+			'group' => __( 'Friendship', 'notification' ),
+			'resolver' => function() {
+				return $this->friendship_friend_requests_url;
+			}
+		] ) );
 	}
 }

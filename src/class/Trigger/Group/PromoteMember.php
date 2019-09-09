@@ -99,5 +99,24 @@ class PromoteMember extends GroupTrigger {
 			'name'  => __( 'Promotion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
+		$this->add_merge_tag( new MergeTag\StringTag( [
+			'slug'  =>  'member_status',
+			'name'  => __( 'Member status', 'notification-buddypress' ),
+			'resolver' => function() {
+				switch( $this->promotion_status ) {
+						case 'mod':
+							return __( 'Moderator', 'notification-buddypress' );
+							break;
+
+						case 'admin':
+							return __( 'Administrator', 'notification-buddypress' );
+							break;
+
+						default:
+							return '';
+				}
+			}
+		] ) );
 	}
 }
