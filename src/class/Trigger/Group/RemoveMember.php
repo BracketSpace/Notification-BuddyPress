@@ -38,7 +38,7 @@ class RemoveMember extends GroupTrigger {
 	public function action( $group_id, $user_id ) {
 		$this->group_id     = $group_id;
 		$this->buddy_group  = groups_get_group( $group_id );
-		$this->removed_user = $user_id;
+		$this->removed_user_object = get_user_by( 'id', $user_id );
 	}
 
 	/**
