@@ -27,18 +27,23 @@ class Deleted extends ActivityTrigger {
 			'name' => __( 'Activity deleted', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'bp_activity_delete', 10 );
+		$this->add_action( 'bp_activity_before_delete', 10, 2 );
 	}
 
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param array $deleted_activity Array of deleted activity.
+	 * @param array $activities Array of activities.
+   * @param array $r          Array of parsed arguments.
 	 * @return mixed
 	 */
-	public function action( $deleted_activity ) {
-		$this->activity              = new BP_Activity_Activity( $deleted_activity['id'] );
-		$this->activity_author_object = get_user_by( 'id', $deleted_activity['user_id'] );
+	public function action( $activities, $r ) {
+		if ( ( 'activity' !== $activities[0]['component'] ) && ( 'activity_update' !== $activities[0]['type'] ) ) {
+			return false;
+		}
+
+		$this->activity              = new BP_Activity_Activity( $activities[0]['id'] );
+		$this->activity_author_object = get_user_by( 'id', $activities[0]['user_id'] );
 	}
 
 	/**
