@@ -38,7 +38,7 @@ class Deleted extends ActivityTrigger {
 	 */
 	public function action( $deleted_activity ) {
 		$this->activity->id         = $deleted_activity['id'];
-		$this->activity_user_object = get_user_by( 'id', $deleted_activity['user_id'] );
+		$this->activity_author_object = get_user_by( 'id', $deleted_activity['user_id'] );
 	}
 
 	/**

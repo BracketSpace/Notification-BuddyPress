@@ -44,47 +44,47 @@ abstract class Activity extends Abstracts\Trigger {
 		$this->add_merge_tag( new ActivityMergeTag\PrimaryLink() );
 		$this->add_merge_tag( new ActivityMergeTag\Content() );
 
-		// Banned user.
+		// Activity author user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
-			'slug'          => 'activity_user_ID',
-			'name'          => __( 'Banned user ID', 'notification' ),
-			'property_name' => 'activity_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'activity_author_ID',
+			'name'          => __( 'Activity author ID', 'notification' ),
+			'property_name' => 'activity_author_object',
+			'group'         => __( 'Activity author', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
-			'slug'          => 'activity_user_login',
-			'name'          => __( 'Banned user login', 'notification' ),
-			'property_name' => 'activity_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'activity_author_login',
+			'name'          => __( 'Activity author login', 'notification' ),
+			'property_name' => 'activity_author_object',
+			'group'         => __( 'Activity author', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
-			'slug'          => 'activity_user_email',
-			'name'          => __( 'Banned user email', 'notification' ),
-			'property_name' => 'activity_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'activity_author_email',
+			'name'          => __( 'Activity author email', 'notification' ),
+			'property_name' => 'activity_author_object',
+			'group'         => __( 'Activity author', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
-			'slug'          => 'activity_user_display_name',
-			'name'          => __( 'Banned user display name', 'notification' ),
-			'property_name' => 'activity_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'activity_author_display_name',
+			'name'          => __( 'Activity author display name', 'notification' ),
+			'property_name' => 'activity_author_object',
+			'group'         => __( 'Activity author', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
-			'slug'          => 'activity_user_first_name',
-			'name'          => __( 'Banned user first name', 'notification' ),
-			'property_name' => 'activity_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'activity_author_first_name',
+			'name'          => __( 'Activity author first name', 'notification' ),
+			'property_name' => 'activity_author_object',
+			'group'         => __( 'Activity author', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
-			'slug'          => 'activity_user_last_name',
-			'name'          => __( 'Banned user last name', 'notification' ),
-			'property_name' => 'activity_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'activity_author_last_name',
+			'name'          => __( 'Activity author last name', 'notification' ),
+			'property_name' => 'activity_author_object',
+			'group'         => __( 'Activity author', 'notification' ),
 		] ) );
 	}
 }

@@ -28,6 +28,7 @@ class Name extends StringTag {
 		parent::__construct( array(
 			'slug'        => 'group_name',
 			'name'        => __( 'Group Name' ),
+			'group'       => __( 'Group' ),
 			'description' => __( 'My Super Example Group' ),
 			'example'     => true,
 			'resolver'    => function() {

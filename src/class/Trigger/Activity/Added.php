@@ -41,7 +41,7 @@ class Added extends ActivityTrigger {
 		}
 
 		$this->activity->content    = $r['content'];
-		$this->activity_user_object = get_user_by( 'id', $r['user_id'] );
+		$this->activity_author_object = get_user_by( 'id', $r['user_id'] );
 	}
 
 

@@ -38,7 +38,7 @@ class Add extends FavoriteTrigger {
 	public function action( $activity_id, $user_id ) {
 		$this->activity_id          = $activity_id;
 		$this->activity             = new \BP_Activity_Activity( $this->activity_id );
-		$this->favorite_user_object = get_user_by( 'id', $user_id );
+		$this->favoring_user_object = get_user_by( 'id', $user_id );
 		$this->author_user_object   = get_user_by( 'id', $this->activity->user_id );
 	}
 
@@ -53,7 +53,7 @@ class Add extends FavoriteTrigger {
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'favorite_added_datetime',
-			'name'  => __( 'Friendship accepted date and time', 'notification-buddypress' ),
+			'name'  => __( 'Favorite added date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 	}

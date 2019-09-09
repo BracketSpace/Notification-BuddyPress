@@ -28,6 +28,7 @@ class Status extends StringTag {
 		parent::__construct( array(
 			'slug'        => 'group_status',
 			'name'        => __( 'Group Status' ),
+			'group'       => __( 'Group' ),
 			'description' => 'my-super-example-group',
 			'example'     => true,
 			'resolver'    => function() {

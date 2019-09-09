@@ -42,45 +42,45 @@ abstract class Favorite extends Abstracts\Trigger {
 	public function merge_tags() {
 		// User that added activity to favorites.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
-			'slug'          => 'favorite_user_ID',
-			'name'          => __( 'User user ID', 'notification' ),
-			'property_name' => 'favorite_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'favoring_user_ID',
+			'name'          => __( 'Favoring user ID', 'notification' ),
+			'property_name' => 'favoring_user_object',
+			'group'         => __( 'Favoring user', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
-			'slug'          => 'favorite_user_login',
-			'name'          => __( 'User user login', 'notification' ),
-			'property_name' => 'favorite_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'favoring_user_login',
+			'name'          => __( 'Favoring user login', 'notification' ),
+			'property_name' => 'favoring_user_object',
+			'group'         => __( 'Favoring user', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
-			'slug'          => 'favorite_user_email',
-			'name'          => __( 'favorite_user_object', 'notification' ),
-			'property_name' => 'favorite_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'favoring_user_email',
+			'name'          => __( 'favoring_user_object', 'notification' ),
+			'property_name' => 'favoring_user_object',
+			'group'         => __( 'Favoring user', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
-			'slug'          => 'favorite_user_display_name',
-			'name'          => __( 'User user display name', 'notification' ),
-			'property_name' => 'favorite_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'favoring_user_display_name',
+			'name'          => __( 'Favoring user display name', 'notification' ),
+			'property_name' => 'favoring_user_object',
+			'group'         => __( 'Favoring user', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
-			'slug'          => 'favorite_user_first_name',
-			'name'          => __( 'User user first name', 'notification' ),
-			'property_name' => 'favorite_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'favoring_user_first_name',
+			'name'          => __( 'Favoring user first name', 'notification' ),
+			'property_name' => 'favoring_user_object',
+			'group'         => __( 'Favoring user', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
-			'slug'          => 'favorite_user_last_name',
-			'name'          => __( 'User user last name', 'notification' ),
-			'property_name' => 'favorite_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'slug'          => 'favoring_user_last_name',
+			'name'          => __( 'Favoring user last name', 'notification' ),
+			'property_name' => 'favoring_user_object',
+			'group'         => __( 'Favoring user', 'notification' ),
 		] ) );
 
 		// Author user.

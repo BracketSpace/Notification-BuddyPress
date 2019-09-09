@@ -22,7 +22,7 @@ class Settings {
 	 */
 	public function register_settings( $settings ) {
 
-		$carriers = $settings->add_section( __( 'Carriers', 'notification-buddypress' ), 'notifications' );
+		$carriers = $settings->add_section( __( 'Triggers', 'notification-buddypress' ), 'triggers' );
 
 		$carriers->add_group( __( 'BuddyPress', 'notification-buddypress' ), 'buddypress' )
 			->add_field( [
