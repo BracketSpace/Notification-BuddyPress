@@ -15,13 +15,6 @@ use BracketSpace\Notification\Utils;
 class Runtime extends Utils\DocHooks {
 
 	/**
-	 * Plugin file path
-	 *
-	 * @var string
-	 */
-	protected $plugin_file;
-
-	/**
 	 * Class constructor
 	 *
 	 * @since [Next]
@@ -29,7 +22,6 @@ class Runtime extends Utils\DocHooks {
 	 */
 	public function __construct( $plugin_file ) {
 		$this->plugin_file = $plugin_file;
-		$this->add_hooks();
 	}
 
 	/**
@@ -42,6 +34,25 @@ class Runtime extends Utils\DocHooks {
 
 		$this->instances();
 		$this->load_functions();
+		$this->actions();
+
+	}
+
+	/**
+	 * Registers all the hooks with DocHooks
+	 *
+	 * @since  [Next]
+	 * @return void
+	 */
+	public function register_hooks() {
+
+		$this->add_hooks();
+
+		foreach ( get_object_vars( $this ) as $instance ) {
+			if ( is_object( $instance ) ) {
+				$this->add_hooks( $instance );
+			}
+		}
 
 	}
 
@@ -55,11 +66,7 @@ class Runtime extends Utils\DocHooks {
 
 		$this->files = new Utils\Files( $this->plugin_file );
 
-		$i18n = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-buddypress' ) );
-
-		$settings = $this->add_hooks( new Core\Settings() );
-
-		notification_register_settings( [ $settings, 'register_settings' ] );
+		$this->settings = new Core\Settings();
 
 	}
 
@@ -111,6 +118,27 @@ class Runtime extends Utils\DocHooks {
 			notification_register_trigger( new Trigger\Group\MembershipRequested() );
 			notification_register_trigger( new Trigger\Group\MembershipAccepted() );
 			notification_register_trigger( new Trigger\Group\MembershipRejected() );
+		}
+
+	}
+
+	/**
+	 * All WordPress actions this plugin utilizes
+	 * Should register plugin settings as well.
+	 *
+	 * @since  [Next]
+	 * @return void
+	 */
+	public function actions() {
+
+		$this->register_hooks();
+
+		notification_register_settings( [ $this->settings, 'register_settings' ] );
+
+		// DocHooks compatibility.
+		$hooks_file = $this->files->file_path( 'inc/hooks.php' );
+		if ( ! notification_dochooks_enabled() && file_exists( $hooks_file ) ) {
+			include_once $hooks_file;
 		}
 
 	}
