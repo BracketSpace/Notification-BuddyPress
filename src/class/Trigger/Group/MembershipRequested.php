@@ -9,6 +9,8 @@ namespace BracketSpace\Notification\BuddyPress\Trigger\Group;
 
 use BracketSpace\Notification\BuddyPress\Trigger\Group as GroupTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
+use BracketSpace\Notification\BuddyPress\MergeTag\Group as GroupMergeTag;
+
 
 /**
  * Membership requested trigger class
@@ -50,6 +52,8 @@ class MembershipRequested extends GroupTrigger {
 	 */
 	public function merge_tags() {
 		parent::merge_tags();
+
+		$this->add_merge_tag( new GroupMergeTag\MembershipRequestsLink() );
 
 		// Requesting user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [

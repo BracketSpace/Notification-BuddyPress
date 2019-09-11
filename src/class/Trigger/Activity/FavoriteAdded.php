@@ -5,15 +5,15 @@
  * @package notification/buddypress
  */
 
-namespace BracketSpace\Notification\BuddyPress\Trigger\Favorite;
+namespace BracketSpace\Notification\BuddyPress\Trigger\Activity;
 
-use BracketSpace\Notification\BuddyPress\Trigger\Favorite as FavoriteTrigger;
+use BracketSpace\Notification\BuddyPress\Trigger\Activity as ActivityTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
  * Add to favorites trigger class
  */
-class Add extends FavoriteTrigger {
+class FavoriteAdded extends ActivityTrigger {
 
 	/**
 	 * Constructor

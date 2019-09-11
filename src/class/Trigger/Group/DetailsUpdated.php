@@ -25,18 +25,24 @@ class DetailsUpdated extends GroupTrigger {
 			'name' => __( 'Group details updated', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'groups_details_updated', 10 );
+		$this->add_action( 'groups_details_updated', 10, 3 );
 	}
 
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param int $group Newly created group ID.
+	 * @param int             $group_id          ID of the group.
+	 * @param BP_Groups_Group $old_group      Group object, before being modified.
+	 * @param bool            $notify_members Whether to send an email notification to members about the change.
 	 * @return mixed
 	 */
-	public function action( $group ) {
-		$this->group_id    = $group;
-		$this->buddy_group = groups_get_group( $group );
+	public function action( $group_id, $old_group, $notify_members ) {
+		if ( 0 === $notify_members ) {
+			return false;
+		}
+
+		$this->group_id    = $group_id;
+		$this->buddy_group = groups_get_group( $group_id );
 	}
 
 	/**

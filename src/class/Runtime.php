@@ -77,13 +77,10 @@ class Runtime extends Utils\DocHooks {
 		if ( notification_get_setting( 'triggers/buddypress/activity_enable' ) ) {
 			notification_register_trigger( new Trigger\Activity\Added() );
 			notification_register_trigger( new Trigger\Activity\Deleted() );
-		}
 
-		// Favorites.
-		if ( notification_get_setting( 'triggers/buddypress/favorite_enable' ) ) {
-			notification_register_trigger( new Trigger\Favorite\Add() );
-			notification_register_trigger( new Trigger\Favorite\Fail() );
-			notification_register_trigger( new Trigger\Favorite\Remove() );
+			notification_register_trigger( new Trigger\Activity\FavoriteAdded() );
+			notification_register_trigger( new Trigger\Activity\FavoriteFailed() );
+			notification_register_trigger( new Trigger\Activity\FavoriteRemoved() );
 		}
 
 		// Friendship.
@@ -102,6 +99,9 @@ class Runtime extends Utils\DocHooks {
 
 			notification_register_trigger( new Trigger\Group\InviteUser() );
 			notification_register_trigger( new Trigger\Group\UninviteUser() );
+
+			notification_register_trigger( new Trigger\Group\Join() );
+			notification_register_trigger( new Trigger\Group\Leave() );
 
 			notification_register_trigger( new Trigger\Group\BanMember() );
 			notification_register_trigger( new Trigger\Group\UnbanMember() );

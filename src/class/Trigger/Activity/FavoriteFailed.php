@@ -1,19 +1,19 @@
 <?php
 /**
- * Remove from favorites trigger
+ * Activity added to favorites fail trigger
  *
  * @package notification/buddypress
  */
 
-namespace BracketSpace\Notification\BuddyPress\Trigger\Favorite;
+namespace BracketSpace\Notification\BuddyPress\Trigger\Activity;
 
-use BracketSpace\Notification\BuddyPress\Trigger\Favorite as FavoriteTrigger;
+use BracketSpace\Notification\BuddyPress\Trigger\Activity as ActivityTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
- * Remove from favorites trigger class
+ * Activity added to favorites fail trigger class
  */
-class Remove extends FavoriteTrigger {
+class FavoriteFailed extends ActivityTrigger {
 
 	/**
 	 * Constructor
@@ -21,11 +21,11 @@ class Remove extends FavoriteTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/favorite/remove',
-			'name' => __( 'Remove from favorites', 'notification-buddypress' ),
+			'slug' => 'buddypress/favorite/fail',
+			'name' => __( 'Add to favorites fail', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'bp_activity_remove_user_favorite', 100, 2 );
+		$this->add_action( 'bp_activity_add_user_favorite_fail', 100, 2 );
 	}
 
 	/**
@@ -42,6 +42,8 @@ class Remove extends FavoriteTrigger {
 		$this->author_user_object   = get_user_by( 'id', $this->activity->user_id );
 	}
 
+
+
 	/**
 	 * Registers attached merge tags
 	 *
@@ -51,8 +53,8 @@ class Remove extends FavoriteTrigger {
 		parent::merge_tags();
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'favorite_removal_datetime',
-			'name'  => __( 'Favorite removal date and time', 'notification-buddypress' ),
+			'slug'  => 'favorite_fail_datetime',
+			'name'  => __( 'Favorite fail date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 	}
