@@ -22,25 +22,15 @@ class Settings {
 	 */
 	public function register_settings( $settings ) {
 
-		$carriers = $settings->add_section( __( 'Carriers', 'notification-buddypress' ), 'notifications' );
+		$triggers = $settings->add_section( __( 'Triggers', 'notification-buddypress' ), 'triggers' );
 
-		$carriers->add_group( __( 'BuddyPress', 'notification-buddypress' ), 'buddypress' )
+		$triggers->add_group( __( 'BuddyPress', 'notification-buddypress' ), 'buddypress' )
 			->add_field( [
 				'name'     => __( 'Activity Triggers', 'notification-buddypress' ),
 				'slug'     => 'activity_enable',
 				'default'  => true,
 				'addons'   => [
 					'label' => __( 'Enable activity triggers', 'notification-buddypress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] )
-			->add_field( [
-				'name'     => __( 'Favorite Triggers', 'notification-buddypress' ),
-				'slug'     => 'favorite_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable favorite triggers', 'notification-buddypress' ),
 				],
 				'render'   => [ new CoreFields\Checkbox(), 'input' ],
 				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],

@@ -49,5 +49,7 @@ abstract class Group extends Abstracts\Trigger {
 		$this->add_merge_tag( new GroupMergeTag\Description() );
 		$this->add_merge_tag( new GroupMergeTag\Status() );
 		$this->add_merge_tag( new GroupMergeTag\ForumEnabled() );
+
 	}
+
 }

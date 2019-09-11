@@ -27,7 +27,8 @@ class ParentID extends IntegerTag {
 
 		parent::__construct( array(
 			'slug'        => 'group_parent_ID',
-			'name'        => __( 'Group Parent ID' ),
+			'name'        => __( 'Group parent ID' ),
+			'group'       => __( 'Group' ),
 			'description' => 123,
 			'example'     => true,
 			'resolver'    => function() {

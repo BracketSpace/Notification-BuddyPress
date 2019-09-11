@@ -25,7 +25,7 @@ class InviteUser extends GroupTrigger {
 			'name' => __( 'Invite user to group', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'groups_invite_user', 100, 2 );
+		$this->add_action( 'notification_buddypress_group_invite', 10, 2 );
 	}
 
 	/**
@@ -36,9 +36,13 @@ class InviteUser extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id            = $group_id;
 		$this->buddy_group         = groups_get_group( $group_id );
 		$this->invited_user_object = get_user_by( 'id', $user_id );
+
+		$this->invitation_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,6 +51,7 @@ class InviteUser extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Invited user.
@@ -99,4 +104,5 @@ class InviteUser extends GroupTrigger {
 		) ) );
 
 	}
+
 }

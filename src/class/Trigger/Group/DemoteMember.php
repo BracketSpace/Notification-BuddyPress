@@ -26,6 +26,7 @@ class DemoteMember extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_demote_member', 10, 2 );
+
 	}
 
 	/**
@@ -36,9 +37,13 @@ class DemoteMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id     = $group_id;
 		$this->buddy_group  = groups_get_group( $group_id );
-		$this->demoted_user = $user_id;
+		$this->demoted_user = get_user_by( 'id', $user_id );
+
+		$this->demotion_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,6 +52,7 @@ class DemoteMember extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Demoted user.
@@ -93,9 +99,11 @@ class DemoteMember extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'demote_datetime',
-			'name'  => __( 'Demote date and time', 'notification-buddypress' ),
+			'slug'  => 'demotion_datetime',
+			'name'  => __( 'Demotion date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

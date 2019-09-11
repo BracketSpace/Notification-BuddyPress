@@ -22,10 +22,11 @@ class Join extends GroupTrigger {
 
 		parent::__construct( array(
 			'slug' => 'buddypress/group/join',
-			'name' => __( 'Join group', 'notification-buddypress' ),
+			'name' => __( 'User joined to group', 'notification-buddypress' ),
 		) );
 
 		$this->add_action( 'groups_join_group', 100, 2 );
+
 	}
 
 	/**
@@ -36,9 +37,13 @@ class Join extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id           = $group_id;
 		$this->buddy_group        = groups_get_group( $group_id );
 		$this->joined_user_object = get_user_by( 'id', $user_id );
+
+		$this->join_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,6 +52,7 @@ class Join extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Joining user.
@@ -97,5 +103,7 @@ class Join extends GroupTrigger {
 			'name'  => __( 'Join date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

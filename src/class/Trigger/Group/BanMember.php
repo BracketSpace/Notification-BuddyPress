@@ -36,9 +36,13 @@ class BanMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id           = $group_id;
 		$this->buddy_group        = groups_get_group( $group_id );
 		$this->banned_user_object = get_user_by( 'id', $user_id );
+
+		$this->ban_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,6 +51,7 @@ class BanMember extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Banned user.
@@ -97,5 +102,7 @@ class BanMember extends GroupTrigger {
 			'name'  => __( 'Ban date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

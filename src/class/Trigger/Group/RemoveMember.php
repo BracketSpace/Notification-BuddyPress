@@ -26,6 +26,7 @@ class RemoveMember extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_remove_member', 100, 2 );
+
 	}
 
 	/**
@@ -36,9 +37,13 @@ class RemoveMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id     = $group_id;
 		$this->buddy_group  = groups_get_group( $group_id );
-		$this->removed_user = $user_id;
+		$this->removed_user = get_user_by( 'id', $user_id );
+
+		$this->removal_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,48 +52,49 @@ class RemoveMember extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Removed user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'removed_user_ID',
 			'name'          => __( 'Removed user ID', 'notification' ),
-			'property_name' => 'removed_user_object',
+			'property_name' => 'removed_user',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'removed_user_login',
 			'name'          => __( 'Removed user login', 'notification' ),
-			'property_name' => 'removed_user_object',
+			'property_name' => 'removed_user',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'removed_user_email',
 			'name'          => __( 'Removed user email', 'notification' ),
-			'property_name' => 'removed_user_object',
+			'property_name' => 'removed_user',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'removed_user_display_name',
 			'name'          => __( 'Removed user display name', 'notification' ),
-			'property_name' => 'removed_user_object',
+			'property_name' => 'removed_user',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'removed_user_first_name',
 			'name'          => __( 'Removed user first name', 'notification' ),
-			'property_name' => 'removed_user_object',
+			'property_name' => 'removed_user',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'removed_user_last_name',
 			'name'          => __( 'Removed user last name', 'notification' ),
-			'property_name' => 'removed_user_object',
+			'property_name' => 'removed_user',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
@@ -97,5 +103,7 @@ class RemoveMember extends GroupTrigger {
 			'name'  => __( 'Member removal date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

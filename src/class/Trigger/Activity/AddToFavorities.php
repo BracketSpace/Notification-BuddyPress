@@ -5,15 +5,15 @@
  * @package notification/buddypress
  */
 
-namespace BracketSpace\Notification\BuddyPress\Trigger\Favorite;
+namespace BracketSpace\Notification\BuddyPress\Trigger\Activity;
 
-use BracketSpace\Notification\BuddyPress\Trigger\Favorite as FavoriteTrigger;
+use BracketSpace\Notification\BuddyPress\Trigger\Activity as ActivityTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
  * Add to favorites trigger class
  */
-class Add extends FavoriteTrigger {
+class AddToFavorities extends ActivityTrigger {
 
 	/**
 	 * Constructor
@@ -21,8 +21,8 @@ class Add extends FavoriteTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/favorite/add',
-			'name' => __( 'Add to favorites', 'notification-buddypress' ),
+			'slug' => 'buddypress/activity/favorities/add',
+			'name' => __( 'Activity added to favorites', 'notification-buddypress' ),
 		) );
 
 		$this->add_action( 'bp_activity_add_user_favorite', 100, 2 );
@@ -36,12 +36,14 @@ class Add extends FavoriteTrigger {
 	 * @return mixed
 	 */
 	public function action( $activity_id, $user_id ) {
-		$this->activity_id          = $activity_id;
-		$this->activity             = new \BP_Activity_Activity( $this->activity_id );
-		$this->favorite_user_object = get_user_by( 'id', $user_id );
-		$this->author_user_object   = get_user_by( 'id', $this->activity->user_id );
-	}
 
+		$this->activity             = new \BP_Activity_Activity( $activity_id );
+		$this->favoring_user_object = get_user_by( 'id', $user_id );
+		$this->activity_user_object = get_user_by( 'id', $this->activity->user_id );
+
+		$this->activity_favorited_datetime = current_time( 'timestamp' );
+
+	}
 
 	/**
 	 * Registers attached merge tags
@@ -49,12 +51,17 @@ class Add extends FavoriteTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
+		parent::favoring_user_merge_tags();
+
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'favorite_added_datetime',
-			'name'  => __( 'Friendship accepted date and time', 'notification-buddypress' ),
+			'slug'  => 'activity_favorited_datetime',
+			'name'  => __( 'Activity favorited date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

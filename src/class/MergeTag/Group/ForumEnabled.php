@@ -27,8 +27,9 @@ class ForumEnabled extends StringTag {
 
 		parent::__construct( array(
 			'slug'        => 'group_forum_enabled',
-			'name'        => __( 'Group Forum Enabled' ),
-			'description' => 123,
+			'name'        => __( 'Group forum enabled' ),
+			'group'       => __( 'Group' ),
+			'description' => __( 'Returns: Enabled or Disabled' ),
 			'example'     => true,
 			'resolver'    => function() {
 				return ( '1' === $this->trigger->buddy_group->enable_forum ) ? __( 'Enabled' ) : __( 'Disabled' );

@@ -26,6 +26,7 @@ class MembershipRejected extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_membership_rejected', 100, 3 );
+
 	}
 
 	/**
@@ -37,10 +38,14 @@ class MembershipRejected extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $user_id, $group_id, $status ) {
+
 		$this->group_id             = $group_id;
 		$this->buddy_group          = groups_get_group( $group_id );
 		$this->rejected_user_object = get_user_by( 'id', $user_id );
 		$this->membership_status    = $status;
+
+		$this->membership_rejection_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -49,6 +54,7 @@ class MembershipRejected extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Rejected user.
@@ -95,9 +101,11 @@ class MembershipRejected extends GroupTrigger {
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'membership_rejected_datetime',
-			'name'  => __( 'Membership rejected date and time', 'notification-buddypress' ),
+			'slug'  => 'membership_rejection_datetime',
+			'name'  => __( 'Membership rejection date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

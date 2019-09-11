@@ -74,58 +74,44 @@ class Runtime extends Utils\DocHooks {
 	public function register_triggers() {
 
 		// Activity.
-		if ( notification_get_setting( 'notifications/buddypress/activity_enable' ) ) {
+		if ( notification_get_setting( 'triggers/buddypress/activity_enable' ) ) {
 			notification_register_trigger( new Trigger\Activity\Added() );
 			notification_register_trigger( new Trigger\Activity\Deleted() );
-		}
-
-		// Favorites.
-		if ( notification_get_setting( 'notifications/buddypress/favorite_enable' ) ) {
-			notification_register_trigger( new Trigger\Favorite\Add() );
-			notification_register_trigger( new Trigger\Favorite\Fail() );
-			notification_register_trigger( new Trigger\Favorite\Remove() );
+			notification_register_trigger( new Trigger\Activity\AddToFavorities() );
+			notification_register_trigger( new Trigger\Activity\AddToFavoritiesFail() );
+			notification_register_trigger( new Trigger\Activity\RemoveFromFavorities() );
 		}
 
 		// Friendship.
-		if ( notification_get_setting( 'notifications/buddypress/friendship_enable' ) ) {
+		if ( notification_get_setting( 'triggers/buddypress/friendship_enable' ) ) {
 			notification_register_trigger( new Trigger\Friendship\Accepted() );
 			notification_register_trigger( new Trigger\Friendship\Requested() );
 			notification_register_trigger( new Trigger\Friendship\Deleted() );
 		}
 
 		// Group.
-		if ( notification_get_setting( 'notifications/buddypress/group_enable' ) ) {
+		if ( notification_get_setting( 'triggers/buddypress/group_enable' ) ) {
 			notification_register_trigger( new Trigger\Group\CreateComplete() );
 			notification_register_trigger( new Trigger\Group\DetailsUpdated() );
 			notification_register_trigger( new Trigger\Group\SettingsUpdated() );
 			notification_register_trigger( new Trigger\Group\Deleted() );
 
-			notification_register_trigger( new Trigger\Group\SendInvites() );
+			notification_register_trigger( new Trigger\Group\InviteUser() );
 			notification_register_trigger( new Trigger\Group\UninviteUser() );
+			notification_register_trigger( new Trigger\Group\Join() );
+			notification_register_trigger( new Trigger\Group\Leave() );
+			notification_register_trigger( new Trigger\Group\RemoveMember() );
 
 			notification_register_trigger( new Trigger\Group\BanMember() );
 			notification_register_trigger( new Trigger\Group\UnbanMember() );
 
-			notification_register_trigger( new Trigger\Group\PremoteMember() );
+			notification_register_trigger( new Trigger\Group\PromoteMember() );
 			notification_register_trigger( new Trigger\Group\DemoteMember() );
 
 			notification_register_trigger( new Trigger\Group\MembershipRequested() );
 			notification_register_trigger( new Trigger\Group\MembershipAccepted() );
 			notification_register_trigger( new Trigger\Group\MembershipRejected() );
 		}
-	}
-
-
-	/**
-	 * Creates instances when Notification plugin is fully loaded
-	 * Useful when you are depending on registered Carriers or Triggers
-	 *
-	 * @action notification/boot
-	 *
-	 * @since  [Next]
-	 * @return void
-	 */
-	public function late_instances() {
 
 	}
 

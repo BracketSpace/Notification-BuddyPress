@@ -26,6 +26,7 @@ class UnbanMember extends GroupTrigger {
 		) );
 
 		$this->add_action( 'groups_unban_member', 100, 2 );
+
 	}
 
 	/**
@@ -36,11 +37,14 @@ class UnbanMember extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id             = $group_id;
 		$this->buddy_group          = groups_get_group( $group_id );
 		$this->unbanned_user_object = get_user_by( 'id', $user_id );
-	}
 
+		$this->unban_datetime = current_time( 'timestamp' );
+
+	}
 
 	/**
 	 * Registers attached merge tags
@@ -48,47 +52,48 @@ class UnbanMember extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Banned user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'unbanned_user_ID',
-			'name'          => __( 'Banned user ID', 'notification' ),
+			'name'          => __( 'Unbanned user ID', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'unbanned_user_login',
-			'name'          => __( 'Banned user login', 'notification' ),
+			'name'          => __( 'Unbanned user login', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'unbanned_user_email',
-			'name'          => __( 'Banned user email', 'notification' ),
+			'name'          => __( 'Unbanned user email', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'unbanned_user_display_name',
-			'name'          => __( 'Banned user display name', 'notification' ),
+			'name'          => __( 'Unbanned user display name', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'unbanned_user_first_name',
-			'name'          => __( 'Banned user first name', 'notification' ),
+			'name'          => __( 'Unbanned user first name', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'unbanned_user_last_name',
-			'name'          => __( 'Banned user last name', 'notification' ),
+			'name'          => __( 'Unbanned user last name', 'notification' ),
 			'property_name' => 'unbanned_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
@@ -98,5 +103,7 @@ class UnbanMember extends GroupTrigger {
 			'name'  => __( 'Unban date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }

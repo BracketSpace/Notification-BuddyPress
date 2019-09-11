@@ -26,13 +26,11 @@ class PrimaryLink extends UrlTag {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug'        => 'activity_primary_link',
-			'name'        => __( 'Activity primary link' ),
-			'group'       => __( 'Activity' ),
-			'description' => 'My Super News is awesome!',
-			'example'     => true,
-			'resolver'    => function() {
-				return $this->trigger->activity->primary_link;
+			'slug'     => 'activity_primary_link',
+			'name'     => __( 'Activity primary link' ),
+			'group'    => __( 'Activity' ),
+			'resolver' => function() {
+				return bp_activity_get_permalink( $this->trigger->activity->id );
 			},
 		) );
 

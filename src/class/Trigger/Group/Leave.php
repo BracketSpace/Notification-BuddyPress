@@ -22,10 +22,11 @@ class Leave extends GroupTrigger {
 
 		parent::__construct( array(
 			'slug' => 'buddypress/group/leave',
-			'name' => __( 'Leave group', 'notification-buddypress' ),
+			'name' => __( 'User leaves group', 'notification-buddypress' ),
 		) );
 
 		$this->add_action( 'groups_leave_group', 100, 2 );
+
 	}
 
 	/**
@@ -36,9 +37,13 @@ class Leave extends GroupTrigger {
 	 * @return mixed
 	 */
 	public function action( $group_id, $user_id ) {
+
 		$this->group_id            = $group_id;
 		$this->buddy_group         = groups_get_group( $group_id );
 		$this->leaving_user_object = get_user_by( 'id', $user_id );
+
+		$this->leave_datetime = current_time( 'timestamp' );
+
 	}
 
 	/**
@@ -47,6 +52,7 @@ class Leave extends GroupTrigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
 		parent::merge_tags();
 
 		// Leaving user.
@@ -97,5 +103,7 @@ class Leave extends GroupTrigger {
 			'name'  => __( 'Leave date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
+
 	}
+
 }
