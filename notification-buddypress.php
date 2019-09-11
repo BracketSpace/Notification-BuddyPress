@@ -21,7 +21,7 @@ require_once 'vendor/autoload.php';
 /**
  * Gets plugin runtime object.
  *
- * @since  [Next]
+ * @since  1.0.0
  * @return BracketSpace\Notification\BuddyPress\Runtime
  */
 function notification_buddypress_runtime() {
