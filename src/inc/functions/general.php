@@ -8,7 +8,7 @@
 /**
  * Creates new View object.
  *
- * @since  [Next]
+ * @since  1.0.0
  * @return View
  */
 function notification_buddypress_create_view() {

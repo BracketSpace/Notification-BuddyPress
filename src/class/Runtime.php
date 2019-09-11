@@ -17,7 +17,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Class constructor
 	 *
-	 * @since [Next]
+	 * @since 1.0.0
 	 * @param string $plugin_file Plugin main file full path.
 	 */
 	public function __construct( $plugin_file ) {
@@ -27,7 +27,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Loads needed files
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function boot() {
@@ -41,7 +41,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Registers all the hooks with DocHooks
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function register_hooks() {
@@ -59,7 +59,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Creates needed class instances
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function instances() {
@@ -126,7 +126,7 @@ class Runtime extends Utils\DocHooks {
 	 * All WordPress actions this plugin utilizes
 	 * Should register plugin settings as well.
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function actions() {
@@ -146,7 +146,7 @@ class Runtime extends Utils\DocHooks {
 	/**
 	 * Returns new View object
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return View view object
 	 */
 	public function view() {
@@ -157,7 +157,7 @@ class Runtime extends Utils\DocHooks {
 	 * Loads functions from src/inc/functions directory
 	 * All .php files are loaded automatically
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function load_functions() {
