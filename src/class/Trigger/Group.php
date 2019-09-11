@@ -39,6 +39,8 @@ abstract class Group extends Abstracts\Trigger {
 	 * @return void
 	 */
 	public function merge_tags() {
+
+		// Group.
 		$this->add_merge_tag( new GroupMergeTag\ID() );
 		$this->add_merge_tag( new GroupMergeTag\ParentID() );
 		$this->add_merge_tag( new GroupMergeTag\CreatorID() );
@@ -47,5 +49,7 @@ abstract class Group extends Abstracts\Trigger {
 		$this->add_merge_tag( new GroupMergeTag\Description() );
 		$this->add_merge_tag( new GroupMergeTag\Status() );
 		$this->add_merge_tag( new GroupMergeTag\ForumEnabled() );
+
 	}
+
 }

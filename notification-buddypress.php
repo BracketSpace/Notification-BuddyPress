@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Notification : BuddyPress
- * Description: Extension for Notification plugin
- * Plugin URI: https://bracketspace.com
+ * Description: BuddyPress integration with Notification plugin. Add Triggers for all BuddyPress actions.
+ * Plugin URI: http://wordpress.org/plugins/notification-buddypress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
  * Version: 1.0.0
@@ -14,18 +14,6 @@
  */
 
 /**
- * Things @todo. Replace globally these values:
- * - BuddyPress
- * - BuddyPress
- * - buddypress
- *
- * You can do this with this simple command replacing the sed parts:
- * find . -type f \( -iname \*.php -o -iname \*.txt -o -iname \*.json -o -iname \*.js \) -exec sed -i 's/BuddyPress/YOURNAMESPACE/g; s/BuddyPress/Your Nicename/g; s/buddypress/yourslug/g' {} +
- *
- * Or just execute the rename.sh script
- */
-
-/**
  * Load Composer dependencies.
  */
 require_once 'vendor/autoload.php';
@@ -33,7 +21,7 @@ require_once 'vendor/autoload.php';
 /**
  * Gets plugin runtime object.
  *
- * @since  [Next]
+ * @since  1.0.0
  * @return BracketSpace\Notification\BuddyPress\Runtime
  */
 function notification_buddypress_runtime() {

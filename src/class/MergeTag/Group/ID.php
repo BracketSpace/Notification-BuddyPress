@@ -28,10 +28,11 @@ class ID extends IntegerTag {
 		parent::__construct( array(
 			'slug'        => 'group_ID',
 			'name'        => __( 'Group ID' ),
+			'group'       => __( 'Group' ),
 			'description' => 123,
 			'example'     => true,
 			'resolver'    => function() {
-				return $this->trigger->buddy_group->id;
+				return $this->trigger->group_id;
 			},
 		) );
 

@@ -27,7 +27,8 @@ class CreatorID extends IntegerTag {
 
 		parent::__construct( array(
 			'slug'        => 'group_creator_ID',
-			'name'        => __( 'Group Creator ID' ),
+			'name'        => __( 'Group creator ID' ),
+			'group'       => __( 'Group' ),
 			'description' => 123,
 			'example'     => true,
 			'resolver'    => function() {
@@ -43,6 +44,6 @@ class CreatorID extends IntegerTag {
 	 * @return boolean
 	 */
 	public function check_requirements() {
-		return isset( $this->trigger->buddy_buddy_group );
+		return isset( $this->trigger->buddy_group );
 	}
 }

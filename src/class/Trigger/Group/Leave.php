@@ -1,6 +1,6 @@
 <?php
 /**
- * Invite user to group trigger
+ * Leave group trigger
  *
  * @package notification/buddypress
  */
@@ -11,9 +11,9 @@ use BracketSpace\Notification\BuddyPress\Trigger\Group as GroupTrigger;
 use BracketSpace\Notification\Defaults\MergeTag;
 
 /**
- * Invite user to group trigger class
+ * Leave group trigger class
  */
-class InviteUser extends GroupTrigger {
+class Leave extends GroupTrigger {
 
 	/**
 	 * Constructor
@@ -21,11 +21,12 @@ class InviteUser extends GroupTrigger {
 	public function __construct() {
 
 		parent::__construct( array(
-			'slug' => 'buddypress/group/invite_user',
-			'name' => __( 'Invite user to group', 'notification-buddypress' ),
+			'slug' => 'buddypress/group/leave',
+			'name' => __( 'User leaves group', 'notification-buddypress' ),
 		) );
 
-		$this->add_action( 'notification_buddypress_group_invite', 10, 2 );
+		$this->add_action( 'groups_leave_group', 100, 2 );
+
 	}
 
 	/**
@@ -39,9 +40,9 @@ class InviteUser extends GroupTrigger {
 
 		$this->group_id            = $group_id;
 		$this->buddy_group         = groups_get_group( $group_id );
-		$this->invited_user_object = get_user_by( 'id', $user_id );
+		$this->leaving_user_object = get_user_by( 'id', $user_id );
 
-		$this->invitation_datetime = current_time( 'timestamp' );
+		$this->leave_datetime = current_time( 'timestamp' );
 
 	}
 
@@ -54,52 +55,52 @@ class InviteUser extends GroupTrigger {
 
 		parent::merge_tags();
 
-		// Invited user.
+		// Leaving user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
-			'slug'          => 'invited_user_ID',
-			'name'          => __( 'Invited user ID', 'notification' ),
-			'property_name' => 'invited_user_object',
+			'slug'          => 'leaving_user_ID',
+			'name'          => __( 'Leaving user ID', 'notification' ),
+			'property_name' => 'leaving_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
-			'slug'          => 'invited_user_login',
-			'name'          => __( 'Invited user login', 'notification' ),
-			'property_name' => 'invited_user_object',
+			'slug'          => 'leaving_user_login',
+			'name'          => __( 'Leaving user login', 'notification' ),
+			'property_name' => 'leaving_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
-			'slug'          => 'invited_user_email',
-			'name'          => __( 'Invited user email', 'notification' ),
-			'property_name' => 'invited_user_object',
+			'slug'          => 'leaving_user_email',
+			'name'          => __( 'Leaving user email', 'notification' ),
+			'property_name' => 'leaving_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
-			'slug'          => 'invited_user_display_name',
-			'name'          => __( 'Invited user display name', 'notification' ),
-			'property_name' => 'invited_user_object',
+			'slug'          => 'leaving_user_display_name',
+			'name'          => __( 'Leaving user display name', 'notification' ),
+			'property_name' => 'leaving_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
-			'slug'          => 'invited_user_first_name',
-			'name'          => __( 'Invited user first name', 'notification' ),
-			'property_name' => 'invited_user_object',
+			'slug'          => 'leaving_user_first_name',
+			'name'          => __( 'Leaving user first name', 'notification' ),
+			'property_name' => 'leaving_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
-			'slug'          => 'invited_user_last_name',
-			'name'          => __( 'Invited user last name', 'notification' ),
-			'property_name' => 'invited_user_object',
+			'slug'          => 'leaving_user_last_name',
+			'name'          => __( 'Leaving user last name', 'notification' ),
+			'property_name' => 'leaving_user_object',
 			'group'         => __( 'User', 'notification' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'invitation_datetime',
-			'name'  => __( 'Invitation date and time', 'notification-buddypress' ),
+			'slug'  => 'leave_datetime',
+			'name'  => __( 'Leave date and time', 'notification-buddypress' ),
 			'group' => __( 'Date', 'notification' ),
 		) ) );
 

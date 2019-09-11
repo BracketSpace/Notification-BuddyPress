@@ -15,48 +15,58 @@ use BracketSpace\Notification\Utils;
 class Runtime extends Utils\DocHooks {
 
 	/**
-	 * Plugin file path
-	 *
-	 * @var string
-	 */
-	protected $plugin_file;
-
-	/**
 	 * Class constructor
 	 *
-	 * @since [Next]
+	 * @since 1.0.0
 	 * @param string $plugin_file Plugin main file full path.
 	 */
 	public function __construct( $plugin_file ) {
 		$this->plugin_file = $plugin_file;
-		$this->add_hooks();
 	}
 
 	/**
 	 * Loads needed files
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function boot() {
 
 		$this->instances();
 		$this->load_functions();
+		$this->actions();
+
+	}
+
+	/**
+	 * Registers all the hooks with DocHooks
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function register_hooks() {
+
+		$this->add_hooks();
+
+		foreach ( get_object_vars( $this ) as $instance ) {
+			if ( is_object( $instance ) ) {
+				$this->add_hooks( $instance );
+			}
+		}
 
 	}
 
 	/**
 	 * Creates needed class instances
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function instances() {
 
 		$this->files = new Utils\Files( $this->plugin_file );
 
-		$i18n    = $this->add_hooks( new Utils\Internationalization( $this->files, 'notification-buddypress' ) );
-		$scripts = $this->add_hooks( new Admin\Scripts( $this->files ) );
+		$this->settings = new Core\Settings();
 
 	}
 
@@ -70,30 +80,73 @@ class Runtime extends Utils\DocHooks {
 	 */
 	public function register_triggers() {
 
+		// Activity.
+		if ( notification_get_setting( 'triggers/buddypress/activity_enable' ) ) {
+			notification_register_trigger( new Trigger\Activity\Added() );
+			notification_register_trigger( new Trigger\Activity\Deleted() );
+			notification_register_trigger( new Trigger\Activity\AddToFavorities() );
+			notification_register_trigger( new Trigger\Activity\AddToFavoritiesFail() );
+			notification_register_trigger( new Trigger\Activity\RemoveFromFavorities() );
+		}
+
+		// Friendship.
+		if ( notification_get_setting( 'triggers/buddypress/friendship_enable' ) ) {
+			notification_register_trigger( new Trigger\Friendship\Accepted() );
+			notification_register_trigger( new Trigger\Friendship\Requested() );
+			notification_register_trigger( new Trigger\Friendship\Deleted() );
+		}
+
 		// Group.
-		notification_register_trigger( new Trigger\Group\CreateComplete() );
-		notification_register_trigger( new Trigger\Group\DetailsUpdated() );
+		if ( notification_get_setting( 'triggers/buddypress/group_enable' ) ) {
+			notification_register_trigger( new Trigger\Group\CreateComplete() );
+			notification_register_trigger( new Trigger\Group\DetailsUpdated() );
+			notification_register_trigger( new Trigger\Group\SettingsUpdated() );
+			notification_register_trigger( new Trigger\Group\Deleted() );
+
+			notification_register_trigger( new Trigger\Group\InviteUser() );
+			notification_register_trigger( new Trigger\Group\UninviteUser() );
+			notification_register_trigger( new Trigger\Group\Join() );
+			notification_register_trigger( new Trigger\Group\Leave() );
+			notification_register_trigger( new Trigger\Group\RemoveMember() );
+
+			notification_register_trigger( new Trigger\Group\BanMember() );
+			notification_register_trigger( new Trigger\Group\UnbanMember() );
+
+			notification_register_trigger( new Trigger\Group\PromoteMember() );
+			notification_register_trigger( new Trigger\Group\DemoteMember() );
+
+			notification_register_trigger( new Trigger\Group\MembershipRequested() );
+			notification_register_trigger( new Trigger\Group\MembershipAccepted() );
+			notification_register_trigger( new Trigger\Group\MembershipRejected() );
+		}
 
 	}
 
-
 	/**
-	 * Creates instances when Notification plugin is fully loaded
-	 * Useful when you are depending on registered Carriers or Triggers
+	 * All WordPress actions this plugin utilizes
+	 * Should register plugin settings as well.
 	 *
-	 * @action notification/boot
-	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
-	public function late_instances() {
+	public function actions() {
+
+		$this->register_hooks();
+
+		notification_register_settings( [ $this->settings, 'register_settings' ] );
+
+		// DocHooks compatibility.
+		$hooks_file = $this->files->file_path( 'inc/hooks.php' );
+		if ( ! notification_dochooks_enabled() && file_exists( $hooks_file ) ) {
+			include_once $hooks_file;
+		}
 
 	}
 
 	/**
 	 * Returns new View object
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return View view object
 	 */
 	public function view() {
@@ -104,7 +157,7 @@ class Runtime extends Utils\DocHooks {
 	 * Loads functions from src/inc/functions directory
 	 * All .php files are loaded automatically
 	 *
-	 * @since  [Next]
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function load_functions() {

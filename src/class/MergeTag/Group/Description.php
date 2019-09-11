@@ -27,7 +27,8 @@ class Description extends StringTag {
 
 		parent::__construct( array(
 			'slug'        => 'group_description',
-			'name'        => __( 'Group Description' ),
+			'name'        => __( 'Group description' ),
+			'group'       => __( 'Group' ),
 			'description' => 'My Super Example Group is awesome!',
 			'example'     => true,
 			'resolver'    => function() {
