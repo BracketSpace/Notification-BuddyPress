@@ -62,3 +62,15 @@ add_action( 'notification/boot/initial', function() {
 	$runtime->boot();
 
 } );
+
+/**
+ * Registers BuddyPress Component.
+ *
+ * @since  [Next]
+ * @param  array $components Registered components.
+ * @return void
+ */
+add_filter( 'bp_notifications_get_registered_components', function( $components = [] ) {
+	array_push( $components, 'notification-buddypress' );
+	return $components;
+} );
