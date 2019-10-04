@@ -13,6 +13,8 @@ Notification triggers for BuddyPress
 
 This is an extension for [Notification plugin](https://wordpress.org/plugins/notification/).
 
+This plugin adds ability to post notifications to user profiles with custom carrier.
+
 See the list of all available triggers below.
 
 = Activity =
@@ -59,6 +61,9 @@ This plugin requires at least PHP 5.6.0.
 Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
+
+= 1.1.0 =
+* [Added] Notification carrier
 
 = 1.0.0 =
 * Release
