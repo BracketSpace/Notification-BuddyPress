@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.org/plugins/notification-buddypress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 1.0.0
+ * Version: 1.1.0
  * License: GPL3
  * Text Domain: notification-buddypress
  * Domain Path: /languages
@@ -61,4 +61,16 @@ add_action( 'notification/boot/initial', function() {
 	$runtime = notification_buddypress_runtime();
 	$runtime->boot();
 
+} );
+
+/**
+ * Registers BuddyPress Component.
+ *
+ * @since  1.1.0
+ * @param  array $components Registered components.
+ * @return void
+ */
+add_filter( 'bp_notifications_get_registered_components', function( $components = [] ) {
+	array_push( $components, 'notification-buddypress' );
+	return $components;
 } );

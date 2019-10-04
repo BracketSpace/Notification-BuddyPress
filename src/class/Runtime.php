@@ -75,7 +75,7 @@ class Runtime extends Utils\DocHooks {
 	 *
 	 * @action plugins_loaded
 	 *
-	 * @since  1.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function register_triggers() {
@@ -119,6 +119,60 @@ class Runtime extends Utils\DocHooks {
 			notification_register_trigger( new Trigger\Group\MembershipAccepted() );
 			notification_register_trigger( new Trigger\Group\MembershipRejected() );
 		}
+
+	}
+
+	/**
+	 * Registers Carriers.
+	 *
+	 * @action plugins_loaded
+	 *
+	 * @since  1.1.0
+	 * @return void
+	 */
+	public function register_carriers() {
+
+		notification_register_recipient( 'buddypress-notification', new Recipient\User() );
+		notification_register_recipient( 'buddypress-notification', new Recipient\UserID() );
+		notification_register_recipient( 'buddypress-notification', new Recipient\UserEmail() );
+		notification_register_recipient( 'buddypress-notification', new Recipient\Role() );
+
+		notification_register_carrier( notification_add_doc_hooks( new Carrier\BuddyPressNotification() ) );
+
+	}
+
+	/**
+	 * Displays BuddyPress notification.
+	 *
+	 * @filter bp_notifications_get_notifications_for_user
+	 *
+	 * @since  1.1.0
+	 * @param  array $components Registered components.
+	 * @return void
+	 */
+	public function display_buddypress_notification( $content, $item_id, $secondary_item_id, $total_items, $format = 'string', $component_action_name, $component_name, $id ) {
+
+		if ( 'notification-buddypress' !== $component_name ) {
+			return;
+		}
+
+		$text = bp_notifications_get_meta( $id, 'notification_content', true );
+		$link = bp_notifications_get_meta( $id, 'notification_link', true );
+
+		if ( 'string' === $format ) {
+			if ( $link ) {
+				$content = '<a href="' . $link . '">' . $text . '</a>';
+			} else {
+				$content = $text;
+			}
+		} else {
+			$content = [
+				'text' => $text,
+				'link' => $link,
+			];
+		}
+
+		return $content;
 
 	}
 
