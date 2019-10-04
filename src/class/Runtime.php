@@ -127,7 +127,7 @@ class Runtime extends Utils\DocHooks {
 	 *
 	 * @action plugins_loaded
 	 *
-	 * @since  [Next]
+	 * @since  1.1.0
 	 * @return void
 	 */
 	public function register_carriers() {
@@ -146,7 +146,7 @@ class Runtime extends Utils\DocHooks {
 	 *
 	 * @filter bp_notifications_get_notifications_for_user
 	 *
-	 * @since  [Next]
+	 * @since  1.1.0
 	 * @param  array $components Registered components.
 	 * @return void
 	 */
