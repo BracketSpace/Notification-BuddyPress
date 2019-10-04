@@ -26,7 +26,7 @@ class BuddyPressNotification extends AbstractCarrier {
 	/**
 	 * Carrier constructor
 	 *
-	 * @since [Next]
+	 * @since 1.1.0
 	 */
 	public function __construct() {
 		parent::__construct( 'buddypress-notification', __( 'BuddyPress Notification', 'notification-buddypress' ) );
