@@ -60,6 +60,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+[Next]
+[Changed] Version 7 compatibility.
+
 = 1.0.0 =
 * Release
 

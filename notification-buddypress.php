@@ -1,76 +1,96 @@
 <?php
 /**
- * Plugin Name: Notification : BuddyPress
- * Description: BuddyPress integration with Notification plugin. Add Triggers for all BuddyPress actions.
- * Plugin URI: http://wordpress.org/plugins/notification-buddypress/
+ * Plugin Name: Notification : Buddy Press
+ * Description: Extension for Notification plugin
+ * Plugin URI: https://bracketspace.com
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 1.1.0
+ * Version: 1.0.0
  * License: GPL3
  * Text Domain: notification-buddypress
- * Domain Path: /languages
+ * Domain Path: /src/languages
  *
  * @package notification/buddypress
  */
 
 /**
- * Load Composer dependencies.
- */
-require_once 'vendor/autoload.php';
-
-/**
- * Gets plugin runtime object.
+ * Things @todo. Replace globally these values:
+ * - BuddyPress
+ * - Buddy Press
+ * - buddypress
  *
- * @since  1.0.0
- * @return BracketSpace\Notification\BuddyPress\Runtime
+ * You can do this with this simple command replacing the sed parts:
+ * find . -type f \( -iname \*.php -o -iname \*.txt -o -iname \*.json -o -iname \*.js \) -exec sed -i 's/BuddyPress/YOURNAMESPACE/g; s/Buddy Press/Your Nicename/g; s/buddypress/yourslug/g' {} +
+ *
+ * Or just execute the rename.sh script
  */
-function notification_buddypress_runtime() {
 
-	global $notification_buddypress_runtime;
-
-	if ( empty( $notification_buddypress_runtime ) ) {
-		$notification_buddypress_runtime = new BracketSpace\Notification\BuddyPress\Runtime( __FILE__ );
-	}
-
-	return $notification_buddypress_runtime;
-
-}
-
-/**
- * Boot up the plugin
- */
-add_action( 'notification/boot/initial', function() {
+if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 
 	/**
-	 * Requirements check
+	 * NotificationBuddyPress class
 	 */
-	$requirements = new BracketSpace\Notification\BuddyPress\Utils\Requirements( __( 'Notification : BuddyPress', 'notification-buddypress' ), [
-		'php'          => '5.6',
-		'wp'           => '4.9',
-		'notification' => '6.0.0',
-		'buddypress'   => '4.4.0',
-	] );
+	class NotificationBuddyPress {
 
-	$requirements->add_check( 'notification', require 'src/inc/requirements/notification.php' );
+		/**
+		 * Runtime object
+		 *
+		 * @var BracketSpace\Notification\BuddyPress\Runtime
+		 */
+		protected static $runtime;
 
-	if ( ! $requirements->satisfied() ) {
-		add_action( 'admin_notices', [ $requirements, 'notice' ] );
-		return;
+		/**
+		 * Initializes the plugin runtime
+		 *
+		 * @since  [Next]
+		 * @param  string $plugin_file Main plugin file.
+		 * @return BracketSpace\Notification\BuddyPress\Runtime
+		 */
+		public static function init( $plugin_file ) {
+			if ( ! isset( self::$runtime ) ) {
+				// Autoloading.
+				require_once dirname( $plugin_file ) . '/vendor/autoload.php';
+				self::$runtime = new BracketSpace\Notification\BuddyPress\Runtime( $plugin_file );
+			}
+
+			return self::$runtime;
+		}
+
+		/**
+		 * Gets runtime component
+		 *
+		 * @since  [Next]
+		 * @return array
+		 */
+		public static function components() {
+			return isset( self::$runtime ) ? self::$runtime->components() : [];
+		}
+
+		/**
+		 * Gets runtime component
+		 *
+		 * @since  [Next]
+		 * @param  string $component_name Component name.
+		 * @return mixed
+		 */
+		public static function component( $component_name ) {
+			return isset( self::$runtime ) ? self::$runtime->component( $component_name ) : null;
+		}
+
+		/**
+		 * Gets runtime object
+		 *
+		 * @since  [Next]
+		 * @return BracketSpace\Notification\Runtime
+		 */
+		public static function runtime() {
+			return self::$runtime;
+		}
+
 	}
 
-	$runtime = notification_buddypress_runtime();
-	$runtime->boot();
+endif;
 
-} );
-
-/**
- * Registers BuddyPress Component.
- *
- * @since  1.1.0
- * @param  array $components Registered components.
- * @return void
- */
-add_filter( 'bp_notifications_get_registered_components', function( $components = [] ) {
-	array_push( $components, 'notification-buddypress' );
-	return $components;
-} );
+add_action( 'notification/init', function() {
+	NotificationBuddyPress::init( __FILE__ )->init();
+}, 2 );
