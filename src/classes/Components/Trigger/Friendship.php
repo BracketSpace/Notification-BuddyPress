@@ -28,7 +28,7 @@ abstract class Friendship extends Abstracts\Trigger {
 
 		parent::__construct( $params['slug'], $params['name'] );
 
-		$this->set_group( __( 'BuddyPress : Friendship', 'notification-woocommerce' ) );
+		$this->set_group( __( 'BuddyPress : Friendship', 'notification' ) );
 
 	}
 

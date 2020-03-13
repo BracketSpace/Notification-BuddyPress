@@ -29,7 +29,7 @@ abstract class Activity extends Abstracts\Trigger {
 
 		parent::__construct( $params['slug'], $params['name'] );
 
-		$this->set_group( __( 'BuddyPress : Activity', 'notification-woocommerce' ) );
+		$this->set_group( __( 'BuddyPress : Activity', 'notification' ) );
 
 	}
 
