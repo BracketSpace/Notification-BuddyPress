@@ -58,50 +58,50 @@ class DemoteMember extends GroupTrigger {
 		// Demoted user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'demoted_user_ID',
-			'name'          => __( 'Demoted user ID', 'notification' ),
+			'name'          => __( 'Demoted user ID', 'notification-buddypress' ),
 			'property_name' => 'demoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'demoted_user_login',
-			'name'          => __( 'Demoted user login', 'notification' ),
+			'name'          => __( 'Demoted user login', 'notification-buddypress' ),
 			'property_name' => 'demoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'demoted_user_email',
-			'name'          => __( 'Demoted user email', 'notification' ),
+			'name'          => __( 'Demoted user email', 'notification-buddypress' ),
 			'property_name' => 'demoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'demoted_user_display_name',
-			'name'          => __( 'Demoted user display name', 'notification' ),
+			'name'          => __( 'Demoted user display name', 'notification-buddypress' ),
 			'property_name' => 'demoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'demoted_user_first_name',
-			'name'          => __( 'Demoted user first name', 'notification' ),
+			'name'          => __( 'Demoted user first name', 'notification-buddypress' ),
 			'property_name' => 'demoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'demoted_user_last_name',
-			'name'          => __( 'Demoted user last name', 'notification' ),
+			'name'          => __( 'Demoted user last name', 'notification-buddypress' ),
 			'property_name' => 'demoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'demotion_datetime',
 			'name'  => __( 'Demotion date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

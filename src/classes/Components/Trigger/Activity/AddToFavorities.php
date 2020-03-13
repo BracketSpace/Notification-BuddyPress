@@ -59,7 +59,7 @@ class AddToFavorities extends ActivityTrigger {
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'activity_favorited_datetime',
 			'name'  => __( 'Activity favorited date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

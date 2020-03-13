@@ -29,7 +29,7 @@ abstract class Group extends Abstracts\Trigger {
 
 		parent::__construct( $params['slug'], $params['name'] );
 
-		$this->set_group( __( 'BuddyPress : Group', 'notification' ) );
+		$this->set_group( __( 'BuddyPress : Group', 'notification-buddypress' ) );
 
 	}
 

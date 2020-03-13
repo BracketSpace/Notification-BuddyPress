@@ -73,51 +73,51 @@ class PromoteMember extends GroupTrigger {
 		// Promoted user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'promoted_user_ID',
-			'name'          => __( 'Promoted user ID', 'notification' ),
+			'name'          => __( 'Promoted user ID', 'notification-buddypress' ),
 			'property_name' => 'promoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'promoted_user_login',
-			'name'          => __( 'Promoted user login', 'notification' ),
+			'name'          => __( 'Promoted user login', 'notification-buddypress' ),
 			'property_name' => 'promoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'promoted_user_email',
-			'name'          => __( 'Promoted user email', 'notification' ),
+			'name'          => __( 'Promoted user email', 'notification-buddypress' ),
 			'property_name' => 'promoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'promoted_user_display_name',
-			'name'          => __( 'Promoted user display name', 'notification' ),
+			'name'          => __( 'Promoted user display name', 'notification-buddypress' ),
 			'property_name' => 'promoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'promoted_user_first_name',
-			'name'          => __( 'Promoted user first name', 'notification' ),
+			'name'          => __( 'Promoted user first name', 'notification-buddypress' ),
 			'property_name' => 'promoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'promoted_user_last_name',
-			'name'          => __( 'Promoted user last name', 'notification' ),
+			'name'          => __( 'Promoted user last name', 'notification-buddypress' ),
 			'property_name' => 'promoted_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\StringTag( [
 			'slug'        => 'promoted_user_status',
-			'name'        => __( 'Promoted user status in group', 'notification' ),
-			'description' => __( 'Either Moderator or Administrator', 'notification' ),
-			'group'       => __( 'User', 'notification' ),
+			'name'        => __( 'Promoted user status in group', 'notification-buddypress' ),
+			'description' => __( 'Either Moderator or Administrator', 'notification-buddypress' ),
+			'group'       => __( 'User', 'notification-buddypress' ),
 			'resolver'    => function( $trigger ) {
 				return $trigger->promotion_status;
 			},
@@ -126,7 +126,7 @@ class PromoteMember extends GroupTrigger {
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'promotion_datetime',
 			'name'  => __( 'Promotion date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

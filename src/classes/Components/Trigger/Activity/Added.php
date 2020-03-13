@@ -61,7 +61,7 @@ class Added extends ActivityTrigger {
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'activty_added_datetime',
 			'name'  => __( 'Activity added date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

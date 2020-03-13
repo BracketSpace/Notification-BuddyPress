@@ -61,7 +61,7 @@ class MembershipRequested extends GroupTrigger {
 			'slug'        => 'group_requests_url',
 			'name'        => __( 'Group requests link', 'notification-buddypress' ),
 			'description' => __( 'Leads to group membership requests page', 'notification-buddypress' ),
-			'group'       => __( 'Group', 'notification' ),
+			'group'       => __( 'Group', 'notification-buddypress' ),
 			'resolver'    => function( $trigger ) {
 				return esc_url( bp_get_group_permalink( $trigger->buddy_group ) . 'admin/membership-requests' );
 			},
@@ -70,50 +70,50 @@ class MembershipRequested extends GroupTrigger {
 		// Requesting user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'requesting_user_ID',
-			'name'          => __( 'Requesting user ID', 'notification' ),
+			'name'          => __( 'Requesting user ID', 'notification-buddypress' ),
 			'property_name' => 'requesting_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'requesting_user_login',
-			'name'          => __( 'Requesting user login', 'notification' ),
+			'name'          => __( 'Requesting user login', 'notification-buddypress' ),
 			'property_name' => 'requesting_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'requesting_user_email',
-			'name'          => __( 'Requesting user email', 'notification' ),
+			'name'          => __( 'Requesting user email', 'notification-buddypress' ),
 			'property_name' => 'requesting_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'requesting_user_display_name',
-			'name'          => __( 'Requesting user display name', 'notification' ),
+			'name'          => __( 'Requesting user display name', 'notification-buddypress' ),
 			'property_name' => 'requesting_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'requesting_user_first_name',
-			'name'          => __( 'Requesting user first name', 'notification' ),
+			'name'          => __( 'Requesting user first name', 'notification-buddypress' ),
 			'property_name' => 'requesting_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'requesting_user_last_name',
-			'name'          => __( 'Requesting user last name', 'notification' ),
+			'name'          => __( 'Requesting user last name', 'notification-buddypress' ),
 			'property_name' => 'requesting_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'membership_request_datetime',
 			'name'  => __( 'Membership request date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

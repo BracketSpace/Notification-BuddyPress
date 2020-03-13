@@ -55,7 +55,7 @@ class CreateComplete extends GroupTrigger {
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'creation_datetime',
 			'name'  => __( 'Creation date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

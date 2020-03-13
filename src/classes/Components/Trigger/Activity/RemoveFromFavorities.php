@@ -59,7 +59,7 @@ class RemoveFromFavorities extends ActivityTrigger {
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'activity_removal_from_favorities_datetime',
 			'name'  => __( 'Activity removal from favorities date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

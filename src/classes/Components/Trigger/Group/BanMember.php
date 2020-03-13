@@ -57,50 +57,50 @@ class BanMember extends GroupTrigger {
 		// Banned user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'banned_user_ID',
-			'name'          => __( 'Banned user ID', 'notification' ),
+			'name'          => __( 'Banned user ID', 'notification-buddypress' ),
 			'property_name' => 'banned_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'banned_user_login',
-			'name'          => __( 'Banned user login', 'notification' ),
+			'name'          => __( 'Banned user login', 'notification-buddypress' ),
 			'property_name' => 'banned_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'banned_user_email',
-			'name'          => __( 'Banned user email', 'notification' ),
+			'name'          => __( 'Banned user email', 'notification-buddypress' ),
 			'property_name' => 'banned_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'banned_user_display_name',
-			'name'          => __( 'Banned user display name', 'notification' ),
+			'name'          => __( 'Banned user display name', 'notification-buddypress' ),
 			'property_name' => 'banned_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'banned_user_first_name',
-			'name'          => __( 'Banned user first name', 'notification' ),
+			'name'          => __( 'Banned user first name', 'notification-buddypress' ),
 			'property_name' => 'banned_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'banned_user_last_name',
-			'name'          => __( 'Banned user last name', 'notification' ),
+			'name'          => __( 'Banned user last name', 'notification-buddypress' ),
 			'property_name' => 'banned_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'ban_datetime',
 			'name'  => __( 'Ban date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

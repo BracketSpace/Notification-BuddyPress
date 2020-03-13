@@ -47,7 +47,7 @@ class BuddyPressNotification extends AbstractCarrier {
 		] ) );
 
 		$this->add_form_field( new Field\InputField( [
-			'label' => __( 'Link', 'notification' ),
+			'label' => __( 'Link', 'notification-buddypress' ),
 			'name'  => 'link',
 		] ) );
 

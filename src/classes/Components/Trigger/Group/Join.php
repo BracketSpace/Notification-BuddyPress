@@ -58,50 +58,50 @@ class Join extends GroupTrigger {
 		// Joining user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'joined_user_ID',
-			'name'          => __( 'Joined user ID', 'notification' ),
+			'name'          => __( 'Joined user ID', 'notification-buddypress' ),
 			'property_name' => 'joined_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'joined_user_login',
-			'name'          => __( 'Joined user login', 'notification' ),
+			'name'          => __( 'Joined user login', 'notification-buddypress' ),
 			'property_name' => 'joined_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'joined_user_email',
-			'name'          => __( 'Joined user email', 'notification' ),
+			'name'          => __( 'Joined user email', 'notification-buddypress' ),
 			'property_name' => 'joined_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'joined_user_display_name',
-			'name'          => __( 'Joined user display name', 'notification' ),
+			'name'          => __( 'Joined user display name', 'notification-buddypress' ),
 			'property_name' => 'joined_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'joined_user_first_name',
-			'name'          => __( 'Joined user first name', 'notification' ),
+			'name'          => __( 'Joined user first name', 'notification-buddypress' ),
 			'property_name' => 'joined_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'joined_user_last_name',
-			'name'          => __( 'Joined user last name', 'notification' ),
+			'name'          => __( 'Joined user last name', 'notification-buddypress' ),
 			'property_name' => 'joined_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'join_datetime',
 			'name'  => __( 'Join date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

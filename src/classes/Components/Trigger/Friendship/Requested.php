@@ -58,14 +58,14 @@ class Requested extends FriendshipTrigger {
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'friendship_request_datetime',
 			'name'  => __( 'Friendship request date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 		$this->add_merge_tag( new MergeTag\UrlTag( [
 			'slug'        => 'friend_requests_url',
 			'name'        => __( 'Friend requests URL', 'notification-buddypress' ),
 			'description' => __( 'Leads to friend requests page of the invited user', 'notification-buddypress' ),
-			'group'       => __( 'Friend', 'notification' ),
+			'group'       => __( 'Friend', 'notification-buddypress' ),
 			'resolver'    => function( $trigger ) {
 				return esc_url( bp_core_get_user_domain( $trigger->friendship_friend_user_object->ID ) . bp_get_friends_slug() . '/requests/' );
 			},

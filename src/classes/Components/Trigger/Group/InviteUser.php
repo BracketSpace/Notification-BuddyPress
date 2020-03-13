@@ -57,50 +57,50 @@ class InviteUser extends GroupTrigger {
 		// Invited user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'invited_user_ID',
-			'name'          => __( 'Invited user ID', 'notification' ),
+			'name'          => __( 'Invited user ID', 'notification-buddypress' ),
 			'property_name' => 'invited_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'invited_user_login',
-			'name'          => __( 'Invited user login', 'notification' ),
+			'name'          => __( 'Invited user login', 'notification-buddypress' ),
 			'property_name' => 'invited_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'invited_user_email',
-			'name'          => __( 'Invited user email', 'notification' ),
+			'name'          => __( 'Invited user email', 'notification-buddypress' ),
 			'property_name' => 'invited_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'invited_user_display_name',
-			'name'          => __( 'Invited user display name', 'notification' ),
+			'name'          => __( 'Invited user display name', 'notification-buddypress' ),
 			'property_name' => 'invited_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'invited_user_first_name',
-			'name'          => __( 'Invited user first name', 'notification' ),
+			'name'          => __( 'Invited user first name', 'notification-buddypress' ),
 			'property_name' => 'invited_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'invited_user_last_name',
-			'name'          => __( 'Invited user last name', 'notification' ),
+			'name'          => __( 'Invited user last name', 'notification-buddypress' ),
 			'property_name' => 'invited_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'invitation_datetime',
 			'name'  => __( 'Invitation date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

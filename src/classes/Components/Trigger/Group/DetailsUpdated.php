@@ -61,7 +61,7 @@ class DetailsUpdated extends GroupTrigger {
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'details_update_datetime',
 			'name'  => __( 'Details update date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

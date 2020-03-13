@@ -60,50 +60,50 @@ class MembershipRejected extends GroupTrigger {
 		// Rejected user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'rejected_user_ID',
-			'name'          => __( 'Rejected user ID', 'notification' ),
+			'name'          => __( 'Rejected user ID', 'notification-buddypress' ),
 			'property_name' => 'rejected_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'rejected_user_login',
-			'name'          => __( 'Rejected user login', 'notification' ),
+			'name'          => __( 'Rejected user login', 'notification-buddypress' ),
 			'property_name' => 'rejected_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'rejected_user_email',
-			'name'          => __( 'Rejected user email', 'notification' ),
+			'name'          => __( 'Rejected user email', 'notification-buddypress' ),
 			'property_name' => 'rejected_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'rejected_user_display_name',
-			'name'          => __( 'Rejected user display name', 'notification' ),
+			'name'          => __( 'Rejected user display name', 'notification-buddypress' ),
 			'property_name' => 'rejected_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'rejected_user_first_name',
-			'name'          => __( 'Rejected user first name', 'notification' ),
+			'name'          => __( 'Rejected user first name', 'notification-buddypress' ),
 			'property_name' => 'rejected_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'rejected_user_last_name',
-			'name'          => __( 'Rejected user last name', 'notification' ),
+			'name'          => __( 'Rejected user last name', 'notification-buddypress' ),
 			'property_name' => 'rejected_user_object',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'membership_rejection_datetime',
 			'name'  => __( 'Membership rejection date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}

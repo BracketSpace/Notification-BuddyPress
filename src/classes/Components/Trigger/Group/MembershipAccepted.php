@@ -59,50 +59,50 @@ class MembershipAccepted extends GroupTrigger {
 		// Accepted user.
 		$this->add_merge_tag( new MergeTag\User\UserID( [
 			'slug'          => 'accepted_user_ID',
-			'name'          => __( 'Accepted user ID', 'notification' ),
+			'name'          => __( 'Accepted user ID', 'notification-buddypress' ),
 			'property_name' => 'accepted_user',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLogin( [
 			'slug'          => 'accepted_user_login',
-			'name'          => __( 'Accepted user login', 'notification' ),
+			'name'          => __( 'Accepted user login', 'notification-buddypress' ),
 			'property_name' => 'accepted_user',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserEmail( [
 			'slug'          => 'accepted_user_email',
-			'name'          => __( 'Accepted user email', 'notification' ),
+			'name'          => __( 'Accepted user email', 'notification-buddypress' ),
 			'property_name' => 'accepted_user',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserDisplayName( [
 			'slug'          => 'accepted_user_display_name',
-			'name'          => __( 'Accepted user display name', 'notification' ),
+			'name'          => __( 'Accepted user display name', 'notification-buddypress' ),
 			'property_name' => 'accepted_user',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserFirstName( [
 			'slug'          => 'accepted_user_first_name',
-			'name'          => __( 'Accepted user first name', 'notification' ),
+			'name'          => __( 'Accepted user first name', 'notification-buddypress' ),
 			'property_name' => 'accepted_user',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\User\UserLastName( [
 			'slug'          => 'accepted_user_last_name',
-			'name'          => __( 'Accepted user last name', 'notification' ),
+			'name'          => __( 'Accepted user last name', 'notification-buddypress' ),
 			'property_name' => 'accepted_user',
-			'group'         => __( 'User', 'notification' ),
+			'group'         => __( 'User', 'notification-buddypress' ),
 		] ) );
 
 		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
 			'slug'  => 'membership_acceptance_datetime',
 			'name'  => __( 'Membership acceptance date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification' ),
+			'group' => __( 'Date', 'notification-buddypress' ),
 		) ) );
 
 	}
