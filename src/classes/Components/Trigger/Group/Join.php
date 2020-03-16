@@ -42,7 +42,7 @@ class Join extends GroupTrigger {
 		$this->buddy_group        = groups_get_group( $group_id );
 		$this->joined_user_object = get_user_by( 'id', $user_id );
 
-		$this->join_datetime = current_time( 'timestamp' );
+		$this->join_datetime = $this->cache( 'join_datetime', time() );
 
 	}
 

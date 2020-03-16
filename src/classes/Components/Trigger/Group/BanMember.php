@@ -41,7 +41,7 @@ class BanMember extends GroupTrigger {
 		$this->buddy_group        = groups_get_group( $group_id );
 		$this->banned_user_object = get_user_by( 'id', $user_id );
 
-		$this->ban_datetime = current_time( 'timestamp' );
+		$this->ban_datetime = $this->cache( 'ban_datetime', time() );
 
 	}
 

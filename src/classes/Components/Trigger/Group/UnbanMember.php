@@ -42,7 +42,7 @@ class UnbanMember extends GroupTrigger {
 		$this->buddy_group          = groups_get_group( $group_id );
 		$this->unbanned_user_object = get_user_by( 'id', $user_id );
 
-		$this->unban_datetime = current_time( 'timestamp' );
+		$this->unban_datetime = $this->cache( 'unban_datetime', time() );
 
 	}
 

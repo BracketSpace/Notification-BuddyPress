@@ -45,7 +45,7 @@ class Added extends ActivityTrigger {
 		$this->activity             = new \BP_Activity_Activity( $activity_id );
 		$this->activity_user_object = get_user_by( 'id', $r['user_id'] );
 
-		$this->activty_added_datetime = current_time( 'timestamp' );
+		$this->activty_added_datetime = $this->cache( 'activty_added_datetime', time() );
 
 	}
 

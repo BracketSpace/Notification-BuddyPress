@@ -42,7 +42,7 @@ class Leave extends GroupTrigger {
 		$this->buddy_group         = groups_get_group( $group_id );
 		$this->leaving_user_object = get_user_by( 'id', $user_id );
 
-		$this->leave_datetime = current_time( 'timestamp' );
+		$this->leave_datetime = $this->cache( 'leave_datetime', time() );
 
 	}
 

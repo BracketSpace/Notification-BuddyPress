@@ -44,7 +44,7 @@ class MembershipRejected extends GroupTrigger {
 		$this->rejected_user_object = get_user_by( 'id', $user_id );
 		$this->membership_status    = $status;
 
-		$this->membership_rejection_datetime = current_time( 'timestamp' );
+		$this->membership_rejection_datetime = $this->cache( 'membership_rejection_datetime', time() );
 
 	}
 

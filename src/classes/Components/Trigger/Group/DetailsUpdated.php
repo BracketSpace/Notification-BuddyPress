@@ -45,7 +45,7 @@ class DetailsUpdated extends GroupTrigger {
 		$this->group_id    = $group_id;
 		$this->buddy_group = groups_get_group( $group_id );
 
-		$this->details_update_datetime = current_time( 'timestamp' );
+		$this->details_update_datetime = $this->cache( 'details_update_datetime', time() );
 
 	}
 

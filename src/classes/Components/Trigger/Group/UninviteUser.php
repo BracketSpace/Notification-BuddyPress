@@ -42,7 +42,7 @@ class UninviteUser extends GroupTrigger {
 		$this->buddy_group    = groups_get_group( $group_id );
 		$this->uninvited_user = get_user_by( 'id', $user_id );
 
-		$this->uninvite_datetime = current_time( 'timestamp' );
+		$this->uninvite_datetime = $this->cache( 'uninvite_datetime', time() );
 
 	}
 

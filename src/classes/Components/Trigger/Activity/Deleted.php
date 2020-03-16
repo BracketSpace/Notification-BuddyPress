@@ -45,7 +45,7 @@ class Deleted extends ActivityTrigger {
 		$this->activity             = new \BP_Activity_Activity( $deleted_activity['id'] );
 		$this->activity_user_object = get_user_by( 'id', $deleted_activity['user_id'] );
 
-		$this->activty_deletion_datetime = current_time( 'timestamp' );
+		$this->activty_deletion_datetime = $this->cache( 'activty_deletion_datetime', time() );
 
 	}
 

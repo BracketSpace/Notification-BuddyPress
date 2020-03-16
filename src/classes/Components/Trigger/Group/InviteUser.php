@@ -41,7 +41,7 @@ class InviteUser extends GroupTrigger {
 		$this->buddy_group         = groups_get_group( $group_id );
 		$this->invited_user_object = get_user_by( 'id', $user_id );
 
-		$this->invitation_datetime = current_time( 'timestamp' );
+		$this->invitation_datetime = $this->cache( 'invitation_datetime', time() );
 
 	}
 

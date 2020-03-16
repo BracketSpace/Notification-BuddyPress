@@ -40,7 +40,7 @@ class SettingsUpdated extends GroupTrigger {
 		$this->group_id    = $group_id;
 		$this->buddy_group = groups_get_group( $this->group_id );
 
-		$this->settings_update_datetime = current_time( 'timestamp' );
+		$this->settings_update_datetime = $this->cache( 'settings_update_datetime', time() );
 
 	}
 

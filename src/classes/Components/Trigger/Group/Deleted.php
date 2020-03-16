@@ -40,7 +40,7 @@ class Deleted extends GroupTrigger {
 
 		$this->buddy_group = groups_get_group( $group );
 
-		$this->deletion_datetime = current_time( 'timestamp' );
+		$this->deletion_datetime = $this->cache( 'deletion_datetime', time() );
 
 	}
 

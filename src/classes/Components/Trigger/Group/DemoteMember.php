@@ -42,7 +42,7 @@ class DemoteMember extends GroupTrigger {
 		$this->buddy_group  = groups_get_group( $group_id );
 		$this->demoted_user = get_user_by( 'id', $user_id );
 
-		$this->demotion_datetime = current_time( 'timestamp' );
+		$this->demotion_datetime = $this->cache( 'demotion_datetime', time() );
 
 	}
 

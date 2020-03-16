@@ -40,7 +40,7 @@ class Deleted extends FriendshipTrigger {
 		$this->friendship_initiator_user_object = get_user_by( 'id', $friendship_initiator_user_id );
 		$this->friendship_friend_user_object    = get_user_by( 'id', $friendship_friend_user_id );
 
-		$this->friendship_deletion_datetime = current_time( 'timestamp' );
+		$this->friendship_deletion_datetime = $this->cache( 'friendship_deletion_datetime', time() );
 
 	}
 

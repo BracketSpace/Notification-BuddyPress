@@ -43,7 +43,7 @@ class MembershipAccepted extends GroupTrigger {
 		$this->buddy_group   = groups_get_group( $group_id );
 		$this->accepted_user = get_user_by( 'id', $user_id );
 
-		$this->membership_acceptance_datetime = current_time( 'timestamp' );
+		$this->membership_acceptance_datetime = $this->cache( 'membership_acceptance_datetime', time() );
 
 	}
 

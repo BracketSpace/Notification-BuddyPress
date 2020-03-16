@@ -57,7 +57,7 @@ class PromoteMember extends GroupTrigger {
 				break;
 		}
 
-		$this->promotion_datetime = current_time( 'timestamp' );
+		$this->promotion_datetime = $this->cache( 'promotion_datetime', time() );
 
 	}
 

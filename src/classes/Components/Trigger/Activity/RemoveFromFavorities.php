@@ -41,7 +41,7 @@ class RemoveFromFavorities extends ActivityTrigger {
 		$this->favoring_user_object = get_user_by( 'id', $user_id );
 		$this->activity_user_object = get_user_by( 'id', $this->activity->user_id );
 
-		$this->activity_removal_from_favorities_datetime = current_time( 'timestamp' );
+		$this->activity_removal_from_favorities_datetime = $this->cache( 'activity_removal_from_favorities_datetime', time() );
 
 	}
 

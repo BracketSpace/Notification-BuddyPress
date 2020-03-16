@@ -39,7 +39,7 @@ class CreateComplete extends GroupTrigger {
 		$this->group_id    = $group;
 		$this->buddy_group = groups_get_group( $group );
 
-		$this->creation_datetime = current_time( 'timestamp' );
+		$this->creation_datetime = $this->cache( 'creation_datetime', time() );
 
 	}
 

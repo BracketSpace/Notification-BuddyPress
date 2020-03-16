@@ -65,10 +65,17 @@ class Runtime {
 		}
 
 		// Requirements check.
-		$requirements = new Requirements( __( 'Notification : Buddy Press', 'notification-buddypress' ), [
+		$requirements = new Requirements( __( 'Notification : BuddyPress', 'notification-buddypress' ), [
 			'php'          => '7.0',
 			'wp'           => '5.3',
 			'notification' => '7.0.0',
+			'plugins'      => [
+				[
+					'file'    => 'buddypress/bp-loader.php',
+					'name'    => 'BuddyPress',
+					'version' => '5.1',
+				],
+			],
 		] );
 
 		$requirements->register_checker( __NAMESPACE__ . '\\Requirements\\BasePlugin' );

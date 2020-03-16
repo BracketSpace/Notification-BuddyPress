@@ -41,7 +41,7 @@ class AddToFavoritiesFail extends ActivityTrigger {
 		$this->favoring_user_object = get_user_by( 'id', $user_id );
 		$this->activity_user_object = get_user_by( 'id', $this->activity->user_id );
 
-		$this->activity_favorited_fail_datetime = current_time( 'timestamp' );
+		$this->activity_favorited_fail_datetime = $this->cache( 'activity_favorited_fail_datetime', time() );
 
 	}
 
