@@ -48,6 +48,8 @@ See the list of all available triggers below.
 * Group membership accepted
 * Group membership rejected
 
+This plugin also integrates with BuddyPress notification system with which you can distribute the notifications within your website.
+
 == Installation ==
 
 = Requirements =
@@ -62,6 +64,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 = [Next] =
 * [Changed] Version 7 compatibility.
+
+= 1.1.0 =
+* [Added] BuddyPress Notifiation carrier
 
 = 1.0.0 =
 * Release
