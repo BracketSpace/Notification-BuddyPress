@@ -37,29 +37,6 @@ See the list of all available triggers below.
 * Group deleted
 * Group user invited
 * Group user uninvited
-* Group user join
-* Group user leave
-* Group member removed
-* Group member banned
-* Group member unbanned
-* Group member promoted
-* Group member demoted
-* Group membership requested
-* Group membership accepted
-* Group membership rejected
-
-== Installation ==
-
-= Requirements =
-
-This plugin requires at least PHP 5.6.0.
-
-= Plugin install =
-
-Download and install this plugin from Plugins -> Add New admin screen.
-
-== Changelog ==
-
 [Next]
 * [Changed] Version 7 compatibility.
 

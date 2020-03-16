@@ -1,28 +1,16 @@
 <?php
 /**
- * Plugin Name: Notification : Buddy Press
- * Description: Extension for Notification plugin
- * Plugin URI: https://bracketspace.com
+ * Plugin Name: Notification : BuddyPress
+ * Description: BuddyPress integration with Notification plugin. Add Triggers for all BuddyPress actions.
+ * Plugin URI: http://wordpress.org/plugins/notification-buddypress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 1.0.0
+ * Version: 1.1.0
  * License: GPL3
  * Text Domain: notification-buddypress
- * Domain Path: /src/languages
+ * Domain Path: /languages
  *
  * @package notification/buddypress
- */
-
-/**
- * Things @todo. Replace globally these values:
- * - BuddyPress
- * - Buddy Press
- * - buddypress
- *
- * You can do this with this simple command replacing the sed parts:
- * find . -type f \( -iname \*.php -o -iname \*.txt -o -iname \*.json -o -iname \*.js \) -exec sed -i 's/BuddyPress/YOURNAMESPACE/g; s/Buddy Press/Your Nicename/g; s/buddypress/yourslug/g' {} +
- *
- * Or just execute the rename.sh script
  */
 
 if ( ! class_exists( 'NotificationBuddyPress' ) ) :
