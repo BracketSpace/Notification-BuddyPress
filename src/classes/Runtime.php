@@ -89,7 +89,6 @@ class Runtime {
 		$this->filesystems();
 		$this->singletons();
 		$this->actions();
-		$this->elements();
 
 		do_action( 'notification/buddypress/init' );
 
@@ -217,6 +216,8 @@ class Runtime {
 
 	/**
 	 * Loads elements
+	 *
+	 * @action notification/elements
 	 *
 	 * @since  [Next]
 	 * @return void
