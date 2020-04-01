@@ -8,7 +8,7 @@
 /**
  * Gets one of the plugin filesystems
  *
- * @since  [Next]
+ * @since  1.2.0
  * @param  string $name Filesystem name.
  * @return Filesystem|null
  */

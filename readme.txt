@@ -3,7 +3,7 @@ Contributors: notification, bracketspace, Kubitomakita, insejn
 Tags: notification, notify, email, mail, buddypress
 Requires at least: 4.9
 Tested up to: 5.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -62,7 +62,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
-= [Next] =
+= 1.2.0 =
 * [Changed] Version 7 compatibility.
 
 = 1.1.0 =
