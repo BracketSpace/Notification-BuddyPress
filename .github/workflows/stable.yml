@@ -106,7 +106,7 @@ jobs:
           name: build
           path: .
       - name: Deploy to WordPress repository
-        uses: 10up/action-wordpress-plugin-deploy@1.4.0
+        uses: 10up/action-wordpress-plugin-deploy@1.4.1
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
