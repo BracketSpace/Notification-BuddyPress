@@ -106,7 +106,7 @@ jobs:
           name: build
           path: .
       - name: Fix distignore issue
-      	run: echo ".distignore" > .distignore
+        run: echo ".distignore" > .distignore
       - name: Deploy to WordPress repository
         uses: 10up/action-wordpress-plugin-deploy@1.4.1
         env:
