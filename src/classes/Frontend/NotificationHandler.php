@@ -17,7 +17,7 @@ class NotificationHandler {
 	 *
 	 * @filter bp_notifications_get_registered_components
 	 *
-	 * @since  [Next]
+	 * @since  1.2.1
 	 * @param  array $components Registered components.
 	 * @return array
 	 */
@@ -32,7 +32,7 @@ class NotificationHandler {
 	 *
 	 * @filter bp_notifications_get_notifications_for_user
 	 *
-	 * @since  [Next]
+	 * @since  1.2.1
 	 * @param  string $content               Notification content.
 	 * @param  int    $item_id               Notifiable item ID.
 	 * @param  int    $secondary_item_id     Notifiable secondary item ID.

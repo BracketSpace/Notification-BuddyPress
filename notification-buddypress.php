@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.org/plugins/notification-buddypress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 1.2.0
+ * Version: 1.2.1
  * License: GPL3
  * Text Domain: notification-buddypress
  * Domain Path: /languages
