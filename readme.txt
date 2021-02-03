@@ -62,6 +62,9 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
+= [Next] =
+* [Fixed] BuddyPress Notification Carrier which wasn't displaying the notifications.
+
 = 1.2.0 =
 * [Changed] Version 7 compatibility.
 
