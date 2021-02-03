@@ -192,6 +192,7 @@ class Runtime {
 	public function singletons() {
 
 		$this->add_component( 'admin_settings', new Admin\Settings() );
+		$this->add_component( 'frontend_handler', new Frontend\NotificationHandler() );
 
 	}
 
