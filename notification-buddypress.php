@@ -30,7 +30,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Initializes the plugin runtime
 		 *
-		 * @since  1.2.0
+		 * @since  [Next]
 		 * @param  string $plugin_file Main plugin file.
 		 * @return BracketSpace\Notification\BuddyPress\Runtime
 		 */
@@ -47,7 +47,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  1.2.0
+		 * @since  [Next]
 		 * @return array
 		 */
 		public static function components() {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  1.2.0
+		 * @since  [Next]
 		 * @param  string $component_name Component name.
 		 * @return mixed
 		 */
@@ -68,11 +68,26 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Gets runtime object
 		 *
-		 * @since  1.2.0
+		 * @since  [Next]
 		 * @return BracketSpace\Notification\Runtime
 		 */
 		public static function runtime() {
 			return self::$runtime;
+		}
+
+		/**
+		 * Gets plugin filesystem
+		 *
+		 * @since  [Next]
+		 * @throws \Exception When runtime wasn't invoked yet.
+		 * @return \BracketSpace\Notification\BuddyPress\Vendor\Micropackage\Filesystem\Filesystem
+		 */
+		public static function fs() {
+			if ( ! isset( self::$runtime ) ) {
+				throw new Exception( 'Runtime has not been invoked yet.' );
+			}
+
+			return self::$runtime->get_filesystem();
 		}
 
 	}
