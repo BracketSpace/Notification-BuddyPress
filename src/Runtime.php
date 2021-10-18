@@ -66,7 +66,7 @@ class Runtime {
 	public function init() {
 
 		// Plugin has been already initialized.
-		if ( did_action( 'notification/buddypress/init' ) || $this->requirements_unmet ) {
+		if ( did_action( 'notification/buddypress/init	' ) || $this->requirements_unmet ) {
 			return;
 		}
 
@@ -74,7 +74,7 @@ class Runtime {
 		$requirements = new RequirementsEngine( __( 'Notification : BuddyPress', 'notification-buddypress' ), [
 			'php'          => '7.0',
 			'wp'           => '5.3',
-			'notification' => '7.0.0',
+			'notification' => '8.0.0',
 			'plugins'      => [
 				[
 					'file'    => 'buddypress/bp-loader.php',
