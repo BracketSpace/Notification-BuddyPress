@@ -17,7 +17,7 @@ class Settings {
 	/**
 	 * Registers trigger settings
 	 *
-	 * @since  [Next]
+	 * @since  2.0.0
 	 * @param  object $settings Settings API object.
 	 * @return void
 	 */
@@ -60,7 +60,7 @@ class Settings {
 	/**
 	 * Registers carrier settings
 	 *
-	 * @since  [Next]
+	 * @since  2.0.0
 	 * @param  object $settings Settings API object.
 	 * @return void
 	 */

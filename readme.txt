@@ -62,7 +62,7 @@ Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
 
-= [Next] =
+= 2.0.0 =
 * [Changed] Plugin codebase to match Notification v8 internal API.
 
 = 1.2.1 =
