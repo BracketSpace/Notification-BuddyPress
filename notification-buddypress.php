@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.org/plugins/notification-buddypress/
  * Author: BracketSpace
  * Author URI: https://bracketspace.com
- * Version: 1.2.1
+ * Version: 2.0.0
  * License: GPL3
  * Text Domain: notification-buddypress
  * Domain Path: /languages
@@ -30,7 +30,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Initializes the plugin runtime
 		 *
-		 * @since  [Next]
+		 * @since  2.0.0
 		 * @param  string $plugin_file Main plugin file.
 		 * @return BracketSpace\Notification\BuddyPress\Runtime
 		 */
@@ -47,7 +47,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  [Next]
+		 * @since  2.0.0
 		 * @return array
 		 */
 		public static function components() {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Gets runtime component
 		 *
-		 * @since  [Next]
+		 * @since  2.0.0
 		 * @param  string $component_name Component name.
 		 * @return mixed
 		 */
@@ -68,7 +68,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Gets runtime object
 		 *
-		 * @since  [Next]
+		 * @since  2.0.0
 		 * @return BracketSpace\Notification\Runtime
 		 */
 		public static function runtime() {
@@ -78,7 +78,7 @@ if ( ! class_exists( 'NotificationBuddyPress' ) ) :
 		/**
 		 * Gets plugin filesystem
 		 *
-		 * @since  [Next]
+		 * @since  2.0.0
 		 * @throws \Exception When runtime wasn't invoked yet.
 		 * @return \BracketSpace\Notification\BuddyPress\Vendor\Micropackage\Filesystem\Filesystem
 		 */
