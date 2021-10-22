@@ -96,6 +96,24 @@ jobs:
           src: '.'
           dest: '${{ secrets.BRACKETSPACE_REPO_RSYNC_URL }}${{ secrets.SLUG }}/'
 
+  # Deploys the stable tag to WordPress.org repository
+  wordpress-org-release:
+    name: Release on WordPress.org
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: build
+          path: .
+      - name: Deploy to WordPress repository
+        uses: 10up/action-wordpress-plugin-deploy@1.4.0
+        env:
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SLUG: ${{ secrets.SLUG }}
+
   # Release on GitHub
   github-release:
     name: Release on GitHub
