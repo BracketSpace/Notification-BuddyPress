@@ -2,7 +2,7 @@
 Contributors: notification, bracketspace, Kubitomakita, insejn
 Tags: notification, notify, email, mail, buddypress
 Requires at least: 4.9
-Tested up to: 5.6
+Tested up to: 5.8
 Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -61,6 +61,9 @@ This plugin requires at least PHP 7.0.
 Download and install this plugin from Plugins -> Add New admin screen.
 
 == Changelog ==
+
+= 2.0.0 =
+* [Changed] Plugin codebase to match Notification v8 internal API.
 
 = 1.2.1 =
 * [Fixed] BuddyPress Notification Carrier which wasn't displaying the notifications.
