@@ -11,7 +11,7 @@ Notification triggers for BuddyPress
 
 == Description ==
 
-This is an extension for [Notification plugin](https://wordpress.org/plugins/notification/).
+This is an extension for the [Notification WordPress plugin](https://bracketspace.com/notification/).
 
 See the list of all available triggers below.
 
@@ -50,6 +50,10 @@ See the list of all available triggers below.
 
 This plugin also integrates with BuddyPress notification system with which you can distribute the notifications within your website.
 
+= Custom development =
+
+BracketSpace - the company behind this plugin provides [custom WordPress plugin development services](https://bracketspace.com/custom-development/). We can create any custom plugin for you.
+
 == Installation ==
 
 = Requirements =
@@ -58,7 +62,19 @@ This plugin requires at least PHP 7.0.
 
 = Plugin install =
 
+Make sure you have the [Notification plugin](https://wordpress.org/plugins/notification/) active.
+
 Download and install this plugin from Plugins -> Add New admin screen.
+
+== Frequently Asked Questions ==
+
+= Does this plugin need any other plugins? =
+
+Yes, this plugin is an extension for [Notification plugin](https://wordpress.org/plugins/notification/) so you need it active. You also need the bbPress plugin.
+
+= Can you create a plugin for me? =
+
+Yes! We're offering a [custom plugin development](https://bracketspace.com/custom-development/) services. Feel free to contact us to find out how we can help you.
 
 == Changelog ==
 
