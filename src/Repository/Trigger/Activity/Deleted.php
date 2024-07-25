@@ -5,48 +5,58 @@
  * @package notification/buddypress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\BuddyPress\Repository\Trigger\Activity;
 
 use BracketSpace\Notification\BuddyPress\Repository\Trigger\Activity as ActivityTrigger;
-use BracketSpace\Notification\Defaults\MergeTag;
-use BracketSpace\Notification\BuddyPress\Repository\MergeTag\Activity as ActivityMergeTag;
-
+use BracketSpace\Notification\Repository\MergeTag;
 
 /**
  * Activity deleted trigger class
  */
-class Deleted extends ActivityTrigger {
-
+class Deleted extends ActivityTrigger
+{
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct()
+	{
+		parent::__construct(
+			[
+				'slug' => 'buddypress/activity/deleted',
+				'name' => __('Activity deleted', 'notification-buddypress'),
+			]
+		);
 
-		parent::__construct( array(
-			'slug' => 'buddypress/activity/deleted',
-			'name' => __( 'Activity deleted', 'notification-buddypress' ),
-		) );
-
-		$this->add_action( 'bp_activity_delete', 10 );
+		$this->addAction('bp_activity_delete', 10);
 	}
 
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param array $deleted_activity Array of deleted activity.
+	 * @param array<string, mixed> $activityData Array of deleted activity.
 	 * @return mixed
 	 */
-	public function context( $deleted_activity ) {
-
-		if ( 'activity_update' !== $deleted_activity['type'] ) {
+	public function context($activityData)
+	{
+		if ($activityData['type'] !== 'activity_update') {
 			return false;
 		}
 
-		$this->activity             = new \BP_Activity_Activity( $deleted_activity['id'] );
-		$this->activity_user_object = get_user_by( 'id', $deleted_activity['user_id'] );
+		$activity = is_numeric($activityData['id'])
+			? new \BP_Activity_Activity((int)$activityData['id'])
+			: null;
+		$activityUser = is_numeric($activityData['user_id'])
+			? get_user_by('id', (int)$activityData['user_id'])
+			: null;
 
-		$this->activty_deletion_datetime = $this->cache( 'activty_deletion_datetime', time() );
+		if (!$activity instanceof \BP_Activity_Activity || !$activityUser instanceof \WP_User) {
+			return false;
+		}
 
+		$this->activity = $activity;
+		$this->activityUserObject = $activityUser;
 	}
 
 	/**
@@ -54,16 +64,21 @@ class Deleted extends ActivityTrigger {
 	 *
 	 * @return void
 	 */
-	public function merge_tags() {
+	public function mergeTags()
+	{
+		parent::mergeTags();
 
-		parent::merge_tags();
-
-		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'activty_deletion_datetime',
-			'name'  => __( 'Activity deletion date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification-buddypress' ),
-		) ) );
-
+		$this->addMergeTag(
+			new MergeTag\DateTime\DateTime(
+				[
+					'slug' => 'activty_deletion_datetime',
+					'name' => __('Activity deletion date and time', 'notification-buddypress'),
+					'group' => __('Date', 'notification-buddypress'),
+					'timestamp' => static function () {
+						return time();
+					},
+				]
+			)
+		);
 	}
-
 }

@@ -5,48 +5,56 @@
  * @package notification/buddypress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\BuddyPress\Repository\Trigger\Activity;
 
 use BracketSpace\Notification\BuddyPress\Repository\Trigger\Activity as ActivityTrigger;
-use BracketSpace\Notification\Defaults\MergeTag;
+use BracketSpace\Notification\Repository\MergeTag;
 
 /**
  * Activity added trigger class
  */
-class Added extends ActivityTrigger {
-
+class Added extends ActivityTrigger
+{
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct()
+	{
+		parent::__construct(
+			[
+				'slug' => 'buddypress/activity/added',
+				'name' => __('Activity added', 'notification-buddypress'),
+			]
+		);
 
-		parent::__construct( array(
-			'slug' => 'buddypress/activity/added',
-			'name' => __( 'Activity added', 'notification-buddypress' ),
-		) );
-
-		$this->add_action( 'bp_activity_add', 10, 2 );
-
+		$this->addAction('bp_activity_add', 10, 2);
 	}
 
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param array $r           Array of parsed arguments for the activity item being added.
-	 * @param int   $activity_id The id of the activity item being added.
+	 * @param array<string, mixed> $activityData Activity data.
+	 * @param int   $activityId The id of the activity item being added.
 	 * @return mixed
 	 */
-	public function context( $r, $activity_id ) {
-
-		if ( 'activity_update' !== $r['type'] ) {
+	public function context($activityData, $activityId)
+	{
+		if ($activityData['type'] !== 'activity_update') {
 			return false;
 		}
 
-		$this->activity             = new \BP_Activity_Activity( $activity_id );
-		$this->activity_user_object = get_user_by( 'id', $r['user_id'] );
+		$activityUser = is_numeric($activityData['user_id'])
+			? get_user_by('id', (int)$activityData['user_id'])
+			: null;
 
-		$this->activty_added_datetime = $this->cache( 'activty_added_datetime', time() );
+		if (!$activityUser instanceof \WP_User) {
+			return false;
+		}
 
+		$this->activity = new \BP_Activity_Activity($activityId);
+		$this->activityUserObject = $activityUser;
 	}
 
 	/**
@@ -54,16 +62,21 @@ class Added extends ActivityTrigger {
 	 *
 	 * @return void
 	 */
-	public function merge_tags() {
+	public function mergeTags()
+	{
+		parent::mergeTags();
 
-		parent::merge_tags();
-
-		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'activty_added_datetime',
-			'name'  => __( 'Activity added date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification-buddypress' ),
-		) ) );
-
+		$this->addMergeTag(
+			new MergeTag\DateTime\DateTime(
+				[
+					'slug' => 'activity_added_datetime',
+					'name' => __('Activity added date and time', 'notification-buddypress'),
+					'group' => __('Date', 'notification-buddypress'),
+					'timestamp' => static function () {
+						return time();
+					},
+				]
+			)
+		);
 	}
-
 }

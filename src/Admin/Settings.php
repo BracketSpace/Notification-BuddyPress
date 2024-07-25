@@ -5,6 +5,8 @@
  * @package notification/buddypress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\BuddyPress\Admin;
 
 use BracketSpace\Notification\Utils\Settings\CoreFields;
@@ -12,72 +14,85 @@ use BracketSpace\Notification\Utils\Settings\CoreFields;
 /**
  * Settings class
  */
-class Settings {
-
+class Settings
+{
 	/**
 	 * Registers trigger settings
 	 *
+	 * @action notification/settings/register 20
+	 *
 	 * @since  2.0.0
-	 * @param  object $settings Settings API object.
+	 * @param  \BracketSpace\Notification\Utils\Settings $settings Settings API object.
 	 * @return void
 	 */
-	public function register_trigger_settings( $settings ) {
-		$triggers = $settings->add_section( __( 'Triggers', 'notification-buddypress' ), 'triggers' );
+	public function registerTriggerSettings($settings)
+	{
+		$triggers = $settings->addSection(__('Triggers', 'notification-buddypress'), 'triggers');
 
-		$triggers->add_group( __( 'BuddyPress', 'notification-buddypress' ), 'buddypress' )
-			->add_field( [
-				'name'     => __( 'Activity Triggers', 'notification-buddypress' ),
-				'slug'     => 'activity_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable activity triggers', 'notification-buddypress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] )
-			->add_field( [
-				'name'     => __( 'Friendship Triggers', 'notification-buddypress' ),
-				'slug'     => 'friendship_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable friendship triggers', 'notification-buddypress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] )
-			->add_field( [
-				'name'     => __( 'Group Triggers', 'notification-buddypress' ),
-				'slug'     => 'group_enable',
-				'default'  => true,
-				'addons'   => [
-					'label' => __( 'Enable group triggers', 'notification-buddypress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] );
+		$triggers->addGroup(__('BuddyPress', 'notification-buddypress'), 'buddypress')
+			->addField(
+				[
+					'name' => __('Activity Triggers', 'notification-buddypress'),
+					'slug' => 'activity_enable',
+					'default' => true,
+					'addons' => [
+						'label' => __('Enable activity triggers', 'notification-buddypress'),
+					],
+					'render' => [new CoreFields\Checkbox(), 'input'],
+					'sanitize' => [new CoreFields\Checkbox(), 'sanitize'],
+				]
+			)
+			->addField(
+				[
+					'name' => __('Friendship Triggers', 'notification-buddypress'),
+					'slug' => 'friendship_enable',
+					'default' => true,
+					'addons' => [
+						'label' => __('Enable friendship triggers', 'notification-buddypress'),
+					],
+					'render' => [new CoreFields\Checkbox(), 'input'],
+					'sanitize' => [new CoreFields\Checkbox(), 'sanitize'],
+				]
+			)
+			->addField(
+				[
+					'name' => __('Group Triggers', 'notification-buddypress'),
+					'slug' => 'group_enable',
+					'default' => true,
+					'addons' => [
+						'label' => __('Enable group triggers', 'notification-buddypress'),
+					],
+					'render' => [new CoreFields\Checkbox(), 'input'],
+					'sanitize' => [new CoreFields\Checkbox(), 'sanitize'],
+				]
+			);
 	}
 
 	/**
 	 * Registers carrier settings
 	 *
+	 * @action notification/settings/register 30
+	 *
 	 * @since  2.0.0
-	 * @param  object $settings Settings API object.
+	 * @param  \BracketSpace\Notification\Utils\Settings $settings Settings API object.
 	 * @return void
 	 */
-	public function register_carrier_settings( $settings ) {
-		$carriers = $settings->add_section( __( 'Carriers', 'notification-buddypress' ), 'carriers' );
+	public function registerCarrierSettings($settings)
+	{
+		$carriers = $settings->addSection(__('Carriers', 'notification-buddypress'), 'carriers');
 
-		$carriers->add_group( __( 'BuddyPress', 'notification-buddypress' ), 'buddypress' )
-			->add_field( [
-				'name'     => __( 'Enable', 'notification-buddypress' ),
-				'slug'     => 'enable',
-				'default'  => 'true',
-				'addons'   => [
-					'label' => __( 'Enable BuddyPress Carrier', 'notification-buddypress' ),
-				],
-				'render'   => [ new CoreFields\Checkbox(), 'input' ],
-				'sanitize' => [ new CoreFields\Checkbox(), 'sanitize' ],
-			] );
+		$carriers->addGroup(__('BuddyPress', 'notification-buddypress'), 'buddypress')
+			->addField(
+				[
+					'name' => __('Enable', 'notification-buddypress'),
+					'slug' => 'enable',
+					'default' => 'true',
+					'addons' => [
+						'label' => __('Enable BuddyPress Carrier', 'notification-buddypress'),
+					],
+					'render' => [new CoreFields\Checkbox(), 'input'],
+					'sanitize' => [new CoreFields\Checkbox(), 'sanitize'],
+				]
+			);
 	}
-
 }
