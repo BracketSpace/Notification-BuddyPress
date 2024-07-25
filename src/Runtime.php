@@ -83,6 +83,13 @@ class Runtime
 				'php' => '7.4',
 				'wp' => '5.3',
 				'notification' => '9.0.0',
+				'plugins' => [
+					[
+						'file' => 'buddypress/bp-loader.php',
+						'name' => 'BuddyPress',
+						'version' => '5.1',
+					],
+				],
 			]
 		);
 
