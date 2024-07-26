@@ -5,24 +5,27 @@
  * @package notification/buddypress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\BuddyPress\Frontend;
 
 /**
  * NotificationHandler class
  */
-class NotificationHandler {
-
+class NotificationHandler
+{
 	/**
 	 * Registers BuddyPress Component.
 	 *
 	 * @filter bp_notifications_get_registered_components
 	 *
 	 * @since  1.2.1
-	 * @param  array $components Registered components.
-	 * @return array
+	 * @param  array<string> $components Registered components.
+	 * @return array<string>
 	 */
-	public function register_component( $components = [] ) {
-		array_push( $components, 'notification-buddypress' );
+	public function registerComponent($components = [])
+	{
+		array_push($components, 'notification-buddypress');
 
 		return $components;
 	}
@@ -34,30 +37,35 @@ class NotificationHandler {
 	 *
 	 * @since  1.2.1
 	 * @param  string $content               Notification content.
-	 * @param  int    $item_id               Notifiable item ID.
-	 * @param  int    $secondary_item_id     Notifiable secondary item ID.
-	 * @param  int    $total_items           Total items.
+	 * @param  int    $itemId               Notifiable item ID.
+	 * @param  int    $secondaryItemId     Notifiable secondary item ID.
+	 * @param  int    $totalItems           Total items.
 	 * @param  string $format                Notification format.
-	 * @param  string $component_action_name Component action name.
-	 * @param  string $component_name        Component name.
+	 * @param  string $componentActionName Component action name.
+	 * @param  string $componentName        Component name.
 	 * @param  int    $id                    Notification ID.
-	 * @return void
+	 * @return string|array<mixed>
 	 */
-	public function handle_notification( $content, $item_id, $secondary_item_id, $total_items, $format = 'string', $component_action_name, $component_name, $id ) {
-
-		if ( 'notification-buddypress' !== $component_name ) {
-			return;
+	public function handleNotification(
+		$content,
+		$itemId,
+		$secondaryItemId,
+		$totalItems,
+		$format,
+		$componentActionName,
+		$componentName,
+		$id
+	) {
+		if ($componentName !== 'notification-buddypress') {
+			return $content;
 		}
 
-		$text = bp_notifications_get_meta( $id, 'notification_content', true );
-		$link = bp_notifications_get_meta( $id, 'notification_link', true );
+		/** @var string */
+		$text = bp_notifications_get_meta($id, 'notification_content', true);
+		$link = bp_notifications_get_meta($id, 'notification_link', true);
 
-		if ( 'string' === $format ) {
-			if ( $link ) {
-				$content = '<a href="' . $link . '">' . $text . '</a>';
-			} else {
-				$content = $text;
-			}
+		if ($format === 'string') {
+			$content = $link ? '<a href="' . $link . '">' . $text . '</a>' : $text;
 		} else {
 			$content = [
 				'text' => $text,
@@ -66,7 +74,5 @@ class NotificationHandler {
 		}
 
 		return $content;
-
 	}
-
 }
