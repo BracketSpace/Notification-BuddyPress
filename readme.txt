@@ -78,6 +78,9 @@ Yes! We're offering a [custom plugin development](https://bracketspace.com/custo
 
 == Changelog ==
 
+= [Next] =
+* [Changed] Plugin codebase to match Notification v9 internal API.
+
 = 2.0.0 =
 * [Changed] Plugin codebase to match Notification v8 internal API.
 
