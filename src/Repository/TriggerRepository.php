@@ -21,10 +21,6 @@ class TriggerRepository
 	 */
 	public static function register()
 	{
-		if (! \Notification::settings()->getSetting('triggers/buddypress/enable')) {
-			return;
-		}
-
 		// Activity.
 		if (\Notification::settings()->getSetting('triggers/buddypress/activity_enable')) {
 			Register::trigger(new Trigger\Activity\Added());
