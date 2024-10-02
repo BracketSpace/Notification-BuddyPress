@@ -4,7 +4,7 @@ namespace BracketSpace\Notification\Database\Queries {
     /**
      * Notification Queries class
      *
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     class NotificationQueries
     {
@@ -40,7 +40,7 @@ namespace BracketSpace\Notification\Traits {
     /**
      * Webhook trait
      *
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     trait Webhook
     {
@@ -312,7 +312,7 @@ namespace BracketSpace\Notification\Abstracts {
      * Adapter class
      *
      * @mixin \BracketSpace\Notification\Core\Notification
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     abstract class Adapter implements \BracketSpace\Notification\Interfaces\Adaptable
     {
@@ -386,7 +386,7 @@ namespace BracketSpace\Notification\Defaults\Adapter {
     /**
      * JSON Adapter class
      *
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     class JSON extends \BracketSpace\Notification\Abstracts\Adapter
     {
@@ -415,7 +415,7 @@ namespace BracketSpace\Notification\Defaults\Adapter {
      * WordPress Adapter class
      *
      * @mixin \BracketSpace\Notification\Core\Notification
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     class WordPress extends \BracketSpace\Notification\Abstracts\Adapter
     {
@@ -714,7 +714,7 @@ namespace BracketSpace\Notification\Defaults\Recipient {
     /**
      * Webhook recipient
      *
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     class Webhook extends \BracketSpace\Notification\Repository\Recipient\BaseRecipient
     {
@@ -1187,7 +1187,7 @@ namespace BracketSpace\Notification\Defaults\Carrier {
     /**
      * Webhook Carrier
      *
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     class WebhookJson extends \BracketSpace\Notification\Repository\Carrier\BaseCarrier
     {
@@ -1221,7 +1221,7 @@ namespace BracketSpace\Notification\Defaults\Carrier {
     /**
      * Webhook Carrier
      *
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     class Webhook extends \BracketSpace\Notification\Repository\Carrier\BaseCarrier
     {
@@ -2094,7 +2094,7 @@ namespace Tests {
         /**
          * Test set up.
          *
-         * @since  [Next]
+         * @since  3.0.0
          * @return void
          */
         protected function setUp() : void
@@ -2103,7 +2103,7 @@ namespace Tests {
         /**
          * Test tear down.
          *
-         * @since  [Next]
+         * @since  3.0.0
          * @return void
          */
         protected function tearDown() : void
@@ -2183,7 +2183,7 @@ namespace {
         /**
          * Gets plugin settings instance
          *
-         * @since  [Next]
+         * @since  3.0.0
          * @throws \Exception When runtime wasn't invoked yet.
          * @return \BracketSpace\Notification\Dependencies\Micropackage\Filesystem\Filesystem
          */
@@ -2281,9 +2281,9 @@ namespace BracketSpace\Notification {
          *
          * @throws \Exception When component is already registered.
          * @since 7.0.0
-         * @since [Next] Only the component name is accepter
+         * @since 3.0.0 Only the component name is accepter
          * @param mixed $component Component.
-         * @param null $deprecated Deprecated since [Next].
+         * @param null $deprecated Deprecated since 3.0.0.
          * @return $this
          */
         public function addComponent($component, $deprecated = null)
@@ -2293,7 +2293,7 @@ namespace BracketSpace\Notification {
          * Gets runtime component
          *
          * @since 7.0.0
-         * @since [Next] Components are referenced by FQCN.
+         * @since 3.0.0 Components are referenced by FQCN.
          * @param string $name Component name.
          * @return mixed       Component or null
          */
@@ -2391,7 +2391,7 @@ namespace BracketSpace\Notification\Database {
     /**
      * This class describes a notification database service.
      *
-     * @since [Next]
+     * @since 3.0.0
      */
     class NotificationDatabaseService
     {
@@ -5557,7 +5557,7 @@ namespace BracketSpace\Notification\Interfaces {
         /**
          * Creates Notification from a specific representation
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param string|array<mixed,mixed> $data The notification representation
          * @return Notification
          */
@@ -5565,7 +5565,7 @@ namespace BracketSpace\Notification\Interfaces {
         /**
          * Converts the notification to another type of representation
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param Notification $notification Notification instance
          * @param array<string|int,mixed> $config The additional configuration of the converter
          * @return mixed
@@ -5577,7 +5577,7 @@ namespace BracketSpace\Notification\Repository\Converter {
     /**
      * Array Converter class
      *
-     * @since [Next]
+     * @since 3.0.0
      */
     class ArrayConverter implements \BracketSpace\Notification\Interfaces\Convertable
     {
@@ -5586,7 +5586,7 @@ namespace BracketSpace\Notification\Repository\Converter {
          *
          * @filter notification/from/array
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param NotificationUnconvertedData $data The notification representation
          * @return Notification
          */
@@ -5598,7 +5598,7 @@ namespace BracketSpace\Notification\Repository\Converter {
          *
          * @filter notification/to/array
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param Notification $notification Notification instance
          * @param array<string|int,mixed> $config The additional configuration of the converter
          * @return NotificationAsArray
@@ -5610,7 +5610,7 @@ namespace BracketSpace\Notification\Repository\Converter {
     /**
      * JSON Converter class
      *
-     * @since [Next]
+     * @since 3.0.0
      */
     class JsonConverter implements \BracketSpace\Notification\Interfaces\Convertable
     {
@@ -5619,7 +5619,7 @@ namespace BracketSpace\Notification\Repository\Converter {
          *
          * @filter notification/from/json
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param string $data The notification representation
          * @return Notification
          */
@@ -5631,7 +5631,7 @@ namespace BracketSpace\Notification\Repository\Converter {
          *
          * @filter notification/to/json
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param Notification $notification Notification instance
          * @param array<string|int,mixed> $config The additional configuration of the converter
          * @return mixed
@@ -7431,7 +7431,7 @@ namespace BracketSpace\Notification\Repository\MergeTag\DateTime {
          * Merge tag constructor
          *
          * @param array<mixed> $params merge tag configuration params.
-         * @since [Next] The automatic property lookup searches for camelCase prop first.
+         * @since 3.0.0 The automatic property lookup searches for camelCase prop first.
          * @since 7.0.0 Expects the timestamp without an offset.
          *               You can pass timezone argument as well, use GMT if timestamp is with offset.
          * @since 5.0.0
@@ -7449,7 +7449,7 @@ namespace BracketSpace\Notification\Repository\MergeTag\DateTime {
          * Merge tag constructor
          *
          * @param array<mixed> $params merge tag configuration params.
-         * @since [Next] The automatic property lookup searches for camelCase prop first.
+         * @since 3.0.0 The automatic property lookup searches for camelCase prop first.
          * @since 7.0.0 Expects the timestamp without an offset.
          *               You can pass timezone argument as well, use GMT if timestamp is with offset.
          * @since 5.0.0
@@ -7467,7 +7467,7 @@ namespace BracketSpace\Notification\Repository\MergeTag\DateTime {
          * Merge tag constructor
          *
          * @param array<mixed> $params merge tag configuration params.
-         * @since [Next] The automatic property lookup searches for camelCase prop first.
+         * @since 3.0.0 The automatic property lookup searches for camelCase prop first.
          * @since 7.0.0 Expects the timestamp without an offset.
          *               You can pass timezone argument as well, use GMT if timestamp is with offset.
          * @since 5.0.0
@@ -8525,7 +8525,7 @@ namespace BracketSpace\Notification\Compat {
     /**
      * WebhookCompat class
      *
-     * @since [Next]
+     * @since 3.0.0
      */
     class WebhookCompat
     {
@@ -8823,7 +8823,7 @@ namespace BracketSpace\Notification\Core {
         /**
          * Logs the message in database
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param string $component Component nice name, like `Core` or `Any Plugin Name`.
          * @param string $type Log type, values: notification|error|warning.
          * @param string $message Log formatted message.
@@ -9096,7 +9096,7 @@ namespace BracketSpace\Notification\Core {
          * - 1. Moves the notifications to custom table.
          * - 2. Clears notifications cache.
          *
-         * @since [Next]
+         * @since 3.0.0
          * @return void
          */
         public function upgradeToV3()
@@ -9792,7 +9792,7 @@ namespace BracketSpace\Notification\Core {
          * Dumps the object to array
          *
          * @since  6.0.0
-         * @deprecated [Next] Use Converter instead, via $notification->to('array') method
+         * @deprecated 3.0.0 Use Converter instead, via $notification->to('array') method
          * @param bool $onlyEnabledCarriers If only enabled Carriers should be saved.
          * @return NotificationData|null
          */
@@ -9802,7 +9802,7 @@ namespace BracketSpace\Notification\Core {
         /**
          * Creates Notification from a specific representation
          *
-         * @since [Next]
+         * @since 3.0.0
          * @throws \Exception When no Notification object comes back from the filter
          * @param string $type The type of representation, ie. array or json
          * @param string|array<mixed,mixed> $data The notification representation
@@ -9814,7 +9814,7 @@ namespace BracketSpace\Notification\Core {
         /**
          * Converts the notification to another type of representation.
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param string $type The type of representation, ie. array or json
          * @param array<string|int,mixed> $config The additional configuration of the converter
          * @return mixed
@@ -9973,7 +9973,7 @@ namespace BracketSpace\Notification\Traits {
          * Inserts an item at a specific index.
          *
          * @since 8.0.0
-         * @since [Next] Has third `$replace` param
+         * @since 3.0.0 Has third `$replace` param
          * @param int|string $index Item index.
          * @param TItem $item Item to add.
          * @param bool $replace If should be replaced if exists, default: false.
@@ -10145,7 +10145,7 @@ namespace BracketSpace\Notification\Integration {
          *
          * @filter send_site_admin_email_change_email
          *
-         * @since [Next]
+         * @since 3.0.0
          * @return bool
          */
         public function disableSendConfirmationOnAdminEmailChanged()
@@ -10222,7 +10222,7 @@ namespace BracketSpace\Notification\Integration {
          *
          * @action notification/init 9999999
          *
-         * @since [Next]
+         * @since 3.0.0
          * @return void
          */
         public function loadDatabaseNotifications()
@@ -10311,7 +10311,7 @@ namespace BracketSpace\Notification {
         /**
          * Registers Notification
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param \BracketSpace\Notification\Core\Notification $notification Notification object.
          * @return \BracketSpace\Notification\Core\Notification
          */
@@ -10323,7 +10323,7 @@ namespace BracketSpace\Notification {
          *
          * Accepts both array with Trigger and Carriers objects or static values.
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param NotificationUnconvertedData $data Notification data.
          * @return \WP_Error|true
          */
@@ -10333,7 +10333,7 @@ namespace BracketSpace\Notification {
         /**
          * Registers Notification if newer version is provided or doesn't exist at all
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param \BracketSpace\Notification\Core\Notification $notification Notification object.
          * @return \BracketSpace\Notification\Core\Notification
          */
@@ -10483,7 +10483,7 @@ namespace BracketSpace\Notification\Admin {
          *
          * @action after_delete_post 100
          *
-         * @since [Next]
+         * @since 3.0.0
          * @param int $postId Post ID.
          * @param \WP_Post $post WP Post object.
          * @return void
@@ -10501,7 +10501,7 @@ namespace BracketSpace\Notification\Admin {
          *
          * @action save_post_notification
          *
-         * @since [Next] We're saving the Notification to custom table instead of Post Type. Post is just the shell.
+         * @since 3.0.0 We're saving the Notification to custom table instead of Post Type. Post is just the shell.
          * @param int $postId Current post ID.
          * @param \WP_Post $post WP_Post object.
          * @param bool $update If existing notification is updated.
@@ -10528,7 +10528,7 @@ namespace BracketSpace\Notification\Admin {
         /**
          * Gets all Notifications from database.
          *
-         * @deprecated [Next] Use BracketSpace\Notification\Database\NotificationDatabaseService::getAll();
+         * @deprecated 3.0.0 Use BracketSpace\Notification\Database\NotificationDatabaseService::getAll();
          * @since  6.0.0
          * @return array<Notification>
          */
@@ -10892,7 +10892,7 @@ namespace BracketSpace\Notification\Admin {
          *
          * @since 6.0.0
          * @since 8.0.2 Accepts the items argument, instead reading it from GET.
-         * @since [Next] Uses NotificationDatabaseService instead of get_posts().
+         * @since 3.0.0 Uses NotificationDatabaseService instead of get_posts().
          * @param array<int,string> $items Items to export.
          * @return array<int,string>
          * @throws \Exception When no items selected for export.
@@ -13063,7 +13063,7 @@ namespace {
      * @param \BracketSpace\Notification\Core\Notification $notification Notification object.
      * @return \BracketSpace\Notification\Interfaces\Adaptable
      * @since  6.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     function notification_adapt($adapterName, \BracketSpace\Notification\Core\Notification $notification)
     {
@@ -13076,7 +13076,7 @@ namespace {
      * @param mixed $data Input data needed by adapter.
      * @return \BracketSpace\Notification\Interfaces\Adaptable
      * @since  6.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     function notification_adapt_from($adapterName, $data)
     {
@@ -13088,7 +13088,7 @@ namespace {
      * @param \BracketSpace\Notification\Interfaces\Adaptable $adapter Adapter.
      * @return \BracketSpace\Notification\Interfaces\Adaptable
      * @since  6.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     function notification_swap_adapter($newAdapterName, \BracketSpace\Notification\Interfaces\Adaptable $adapter)
     {
@@ -13097,7 +13097,7 @@ namespace {
      * Logs the message in database
      *
      * @since  6.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      * @param string $component Component nice name, like `Core` or `Any Plugin Name`.
      * @param string $type Log type, values: notification|error|warning.
      * @param string $message Log formatted message.
@@ -13110,7 +13110,7 @@ namespace {
      * Adds Notification to Store
      *
      * @since  6.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      * @param \BracketSpace\Notification\Core\Notification $notification Notification object.
      * @return void
      */
@@ -13126,7 +13126,7 @@ namespace {
      * @param array<mixed> $data Notification static data.
      * @return array<mixed>       Converted data.
      * @since  6.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     function notification_convert_data($data = [])
     {
@@ -13138,7 +13138,7 @@ namespace {
      * @param int $priority Action priority.
      * @return void
      * @since  5.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     function notification_register_settings($callback, $priority = 10)
     {
@@ -13148,7 +13148,7 @@ namespace {
      *
      * @return mixed
      * @since 5.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     function notification_get_settings()
     {
@@ -13160,7 +13160,7 @@ namespace {
      * @return mixed
      * @since  5.0.0
      * @since  7.0.0 The `notifications` section has been changed to `carriers`.
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      */
     function notification_get_setting($setting)
     {
@@ -13168,7 +13168,7 @@ namespace {
     /**
      * Updates single setting value.
      *
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      * @param string $setting setting name in `a/b/c` format.
      * @param mixed $value setting value.
      * @return  mixed
@@ -13180,7 +13180,7 @@ namespace {
      * Creates new Notification from array
      *
      * @since  6.0.0
-     * @deprecated [Next]
+     * @deprecated 3.0.0
      * @param NotificationUnconvertedData $data Notification data.
      * @return void
      */
