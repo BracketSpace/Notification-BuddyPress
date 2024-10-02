@@ -5,15 +5,17 @@
  * @package notification/buddypress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\BuddyPress\Requirements;
 
-use BracketSpace\Notification\BuddyPress\Vendor\Micropackage\Requirements;
+use BracketSpace\Notification\BuddyPress\Dependencies\Micropackage\Requirements;
 
 /**
  * BasePlugin checker
  */
-class BasePlugin extends Requirements\Abstracts\Checker {
-
+class BasePlugin extends Requirements\Abstracts\Checker
+{
 	/**
 	 * Checker name
 	 *
@@ -27,21 +29,27 @@ class BasePlugin extends Requirements\Abstracts\Checker {
 	 * @param  string $value Requirement.
 	 * @return void
 	 */
-	public function check( $value ) {
+	public function check($value)
+	{
 
-		if ( ! class_exists( 'Notification' ) ) {
-			$this->add_error( 'The Notification plugin is required to be active.' );
+		if (! class_exists('Notification')) {
+			$this->add_error('The Notification plugin is required to be active.');
 		}
 
-		if ( version_compare( \Notification::version(), $value, '<' ) ) {
-			$this->add_error( sprintf(
+		if (! version_compare(\Notification::version(), $value, '<')) {
+			return;
+		}
+
+		$this->add_error(
+			sprintf(
 				// Translators: 1. Required Notification version, 2. Used Notification version.
-				__( 'Minimum required version of Notification plugin is %1$s. Your version is %2$s', 'notification-buddypress' ),
+				__(
+					'Minimum required version of Notification plugin is %1$s. Your version is %2$s',
+					'notification-buddypress'
+				),
 				$value,
 				\Notification::version()
-			) );
-		}
-
+			)
+		);
 	}
-
 }

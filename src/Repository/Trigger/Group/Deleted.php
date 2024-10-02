@@ -5,43 +5,43 @@
  * @package notification/buddypress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\BuddyPress\Repository\Trigger\Group;
 
 use BracketSpace\Notification\BuddyPress\Repository\Trigger\Group as GroupTrigger;
-use BracketSpace\Notification\Defaults\MergeTag;
-use BracketSpace\Notification\BuddyPress\Repository\MergeTag\Group as GroupMergeTag;
+use BracketSpace\Notification\Repository\MergeTag;
 
 /**
  * Group created trigger class
  */
-class Deleted extends GroupTrigger {
-
+class Deleted extends GroupTrigger
+{
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 
-		parent::__construct( array(
-			'slug' => 'buddypress/group/deleted',
-			'name' => __( 'Group deleted', 'notification-buddypress' ),
-		) );
+		parent::__construct(
+			[
+				'slug' => 'buddypress/group/deleted',
+				'name' => __('Group deleted', 'notification-buddypress'),
+			]
+		);
 
-		$this->add_action( 'groups_before_delete_group', 10 );
-
+		$this->addAction('groups_before_delete_group', 10);
 	}
 
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param int $group Newly created group ID.
+	 * @param int $groupId Newly created group ID.
 	 * @return mixed
 	 */
-	public function context( $group ) {
-
-		$this->buddy_group = groups_get_group( $group );
-
-		$this->deletion_datetime = $this->cache( 'deletion_datetime', time() );
-
+	public function context($groupId)
+	{
+		$this->buddyGroup = groups_get_group($groupId);
 	}
 
 	/**
@@ -49,16 +49,21 @@ class Deleted extends GroupTrigger {
 	 *
 	 * @return void
 	 */
-	public function merge_tags() {
+	public function mergeTags()
+	{
+		parent::mergeTags();
 
-		parent::merge_tags();
-
-		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'deletion_datetime',
-			'name'  => __( 'Deletion date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification-buddypress' ),
-		) ) );
-
+		$this->addMergeTag(
+			new MergeTag\DateTime\DateTime(
+				[
+					'slug' => 'deletion_datetime',
+					'name' => __('Deletion date and time', 'notification-buddypress'),
+					'group' => __('Date', 'notification-buddypress'),
+					'timestamp' => static function () {
+						return time();
+					},
+				]
+			)
+		);
 	}
-
 }

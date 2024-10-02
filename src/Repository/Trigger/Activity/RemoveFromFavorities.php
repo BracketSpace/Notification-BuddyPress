@@ -5,44 +5,54 @@
  * @package notification/buddypress
  */
 
+declare(strict_types=1);
+
 namespace BracketSpace\Notification\BuddyPress\Repository\Trigger\Activity;
 
 use BracketSpace\Notification\BuddyPress\Repository\Trigger\Activity as ActivityTrigger;
-use BracketSpace\Notification\Defaults\MergeTag;
+use BracketSpace\Notification\Repository\MergeTag;
 
 /**
  * Remove from favorites trigger class
  */
-class RemoveFromFavorities extends ActivityTrigger {
-
+class RemoveFromFavorities extends ActivityTrigger
+{
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct()
+	{
+		parent::__construct(
+			[
+				'slug' => 'buddypress/activity/favorities/remove',
+				'name' => __('Activity removed from favorites', 'notification-buddypress'),
+			]
+		);
 
-		parent::__construct( array(
-			'slug' => 'buddypress/activity/favorities/remove',
-			'name' => __( 'Activity removed from favorites', 'notification-buddypress' ),
-		) );
-
-		$this->add_action( 'bp_activity_remove_user_favorite', 100, 2 );
+		$this->addAction('bp_activity_remove_user_favorite', 100, 2);
 	}
 
 	/**
 	 * Hooks to the action.
 	 *
-	 * @param int $activity_id ID of the activity item being favorited.
-	 * @param int $user_id     ID of the user doing the favoriting.
+	 * @param int $activityId ID of the activity item being favorited.
+	 * @param int $userId     ID of the user doing the favoriting.
 	 * @return mixed
 	 */
-	public function context( $activity_id, $user_id ) {
+	public function context($activityId, $userId)
+	{
+		$activity = new \BP_Activity_Activity($activityId);
+		$favoringUser = get_user_by('id', $userId);
+		// phpcs:ignore Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps
+		$activityUser = get_user_by('id', $activity->user_id);
 
-		$this->activity             = new \BP_Activity_Activity( $activity_id );
-		$this->favoring_user_object = get_user_by( 'id', $user_id );
-		$this->activity_user_object = get_user_by( 'id', $this->activity->user_id );
+		if (!$favoringUser instanceof \WP_User || !$activityUser instanceof \WP_User) {
+			return false;
+		}
 
-		$this->activity_removal_from_favorities_datetime = $this->cache( 'activity_removal_from_favorities_datetime', time() );
-
+		$this->activity = $activity;
+		$this->favoringUserObject = $favoringUser;
+		$this->activityUserObject = $activityUser;
 	}
 
 	/**
@@ -50,18 +60,23 @@ class RemoveFromFavorities extends ActivityTrigger {
 	 *
 	 * @return void
 	 */
-	public function merge_tags() {
+	public function mergeTags()
+	{
+		parent::mergeTags();
 
-		parent::merge_tags();
+		$this->favoringUserMergeTags();
 
-		parent::favoring_user_merge_tags();
-
-		$this->add_merge_tag( new MergeTag\DateTime\DateTime( array(
-			'slug'  => 'activity_removal_from_favorities_datetime',
-			'name'  => __( 'Activity removal from favorities date and time', 'notification-buddypress' ),
-			'group' => __( 'Date', 'notification-buddypress' ),
-		) ) );
-
+		$this->addMergeTag(
+			new MergeTag\DateTime\DateTime(
+				[
+					'slug' => 'activity_removal_from_favorities_datetime',
+					'name' => __('Activity removal from favorities date and time', 'notification-buddypress'),
+					'group' => __('Date', 'notification-buddypress'),
+					'timestamp' => static function () {
+						return time();
+					},
+				]
+			)
+		);
 	}
-
 }
